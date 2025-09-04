@@ -42,11 +42,15 @@ try:
     except ImportError:
         print("⚠️  Enhanced acquisition features not available (v0.0.03)")
         ACQUISITION_AVAILABLE = False
+    FACTORY_API_AVAILABLE = True
 except ImportError as e:
     print(f"❌ Import error: {e}")
     print("Make sure the bioxen-jcvi-vm-lib package is properly installed")
     print("Run from /home/chris/BioXen-luavm/ directory with activated venv")
-    sys.exit(1)
+    FACTORY_API_AVAILABLE = False
+
+# Import os for file operations
+import os
 
 logging.basicConfig(
     level=logging.INFO,
@@ -59,19 +63,39 @@ class InteractiveBioXenFactory:
     """Interactive CLI for BioXen Factory Pattern API with JCVI Integration."""
     def __init__(self):
         """Initialize the interactive BioXen JCVI API interface"""
-        self.hypervisor = BioXenHypervisor()
-        self.resource_manager = BioResourceManager()
-        self.config_manager = ConfigManager()
-        self.validator = BioXenGenomeValidator()
-    self.genome_integrator = None
+        if FACTORY_API_AVAILABLE:
+            self.hypervisor = BioXenHypervisor()
+            self.resource_manager = BioResourceManager()
+            self.config_manager = ConfigManager()
+            self.validator = BioXenGenomeValidator()
+        else:
+            self.hypervisor = None
+            self.resource_manager = None
+            self.config_manager = None
+            self.validator = None
+            
+        self.genome_integrator = None
         
         # Enhanced v0.0.03: Initialize JCVI capabilities
         self.jcvi_manager = None
         self.acquisition_system = None
         self.workflow_coordinator = None
         
+        # Initialize chassis type and biological type
+        self.chassis_type = ChassisType.ECOLI if FACTORY_API_AVAILABLE else "E. coli"
+        self.selected_biological_type = "prokaryotic"
+        self.vm_type = "basic"
+        
+        # Define supported types
+        self.supported_bio_types = ["prokaryotic", "eukaryotic", "synthetic"]
+        self.supported_vm_types = ["basic", "optimized", "jcvi_optimized"]
+        
+        # Active VMs tracking
+        self.active_vms = {}
+        
         try:
-            self.jcvi_manager = create_jcvi_manager()
+            if FACTORY_API_AVAILABLE:
+                self.jcvi_manager = create_jcvi_manager()
             if ACQUISITION_AVAILABLE:
                 self.acquisition_system = JCVIGenomeAcquisition()
                 self.workflow_coordinator = JCVIWorkflowCoordinator()
@@ -85,17 +109,30 @@ class InteractiveBioXenFactory:
     def select_chassis(self):
         """Select chassis type for biological VMs."""
         print("\n🧬 Select Chassis")
-        chassis = questionary.select(
-            "Chassis type:",
-            choices=[
-                Choice("🦠 E. coli (Prokaryotic)", ChassisType.ECOLI),
-                Choice("🍄 Yeast (Eukaryotic, PLACEHOLDER)", ChassisType.YEAST),
-                Choice("🧩 Orthogonal (Experimental)", ChassisType.ORTHOGONAL),
-            ]
-        ).ask()
-        if chassis:
-            self.chassis_type = chassis
-            print(f"\n✅ {chassis.value} chassis selected")
+        if FACTORY_API_AVAILABLE:
+            chassis = questionary.select(
+                "Chassis type:",
+                choices=[
+                    Choice("🦠 E. coli (Prokaryotic)", ChassisType.ECOLI),
+                    Choice("🍄 Yeast (Eukaryotic, PLACEHOLDER)", ChassisType.YEAST),
+                    Choice("🧩 Orthogonal (Experimental)", ChassisType.ORTHOGONAL),
+                ]
+            ).ask()
+            if chassis:
+                self.chassis_type = chassis
+                print(f"\n✅ {chassis.value} chassis selected")
+        else:
+            chassis = questionary.select(
+                "Chassis type:",
+                choices=[
+                    Choice("🦠 E. coli (Prokaryotic)", "E. coli"),
+                    Choice("🍄 Yeast (Eukaryotic, PLACEHOLDER)", "Yeast"),
+                    Choice("🧩 Orthogonal (Experimental)", "Orthogonal"),
+                ]
+            ).ask()
+            if chassis:
+                self.chassis_type = chassis
+                print(f"\n✅ {chassis} chassis selected")
         return chassis
 
     def main_menu(self):
@@ -104,20 +141,21 @@ class InteractiveBioXenFactory:
             print("\n" + "="*70)
             print("🧬 BioXen Factory Pattern API with JCVI Integration")
             print("="*70)
-            print(f"🦠 Current Chassis: {self.chassis_type.value}")
+            chassis_display = self.chassis_type.value if hasattr(self.chassis_type, 'value') else str(self.chassis_type)
+            print(f"🦠 Current Chassis: {chassis_display}")
             print(f"🧬 Biological Type: {self.selected_biological_type}")
             print(f"🏗️ VM Type: {self.vm_type}")
             print(f"⚡ Active VMs: {len(self.active_vms)}")
             
             choices = [
                 Choice("🔍 Browse Genomes", "browse_genomes"),
-                Choice("🧬 Load Genome", "validate_genome"),
+                Choice("🧬 Load Genome", "validate_genomes"),
                 Choice("🖥️ Initialize Hypervisor", "init_hypervisor"),
-                Choice("� Download Genomes", "download_genomes"),
+                Choice("📥 Download Genomes", "download_genomes"),
                 Choice("⚡ Create VM", "create_vm"),
-                Choice("� Manage VMs", "manage_vms"),
+                Choice("🔧 Manage VMs", "manage_vms"),
                 Choice("📺 Terminal Visualization", "terminal_visualization"),
-                Choice("�️ Destroy VM", "destroy_vm"),
+                Choice("🗑️ Destroy VM", "destroy_vm"),
                 Choice("🧪 JCVI Analysis", "jcvi_analysis_menu"),
                 Choice("🧬 Select Chassis", "select_chassis"),
                 Choice("⚙️ Configuration", "configuration_menu"),
@@ -137,6 +175,25 @@ class InteractiveBioXenFactory:
                 logger.error(f"Menu error: {e}")
                 print(f"❌ Error: {e}")
                 questionary.press_any_key_to_continue().ask()
+
+    def browse_genomes(self):
+        """Browse available genomes."""
+        print("\n🔍 Browse Genomes")
+        genome_dir = Path("genomes")
+        if not genome_dir.exists():
+            print("❌ Genomes directory not found")
+            print("💡 Use 'Download Genomes' to create some genomes first")
+        else:
+            genomes = list(genome_dir.glob("*"))
+            if not genomes:
+                print("❌ No genomes found in genomes/ directory")
+                print("💡 Use 'Download Genomes' to add some genomes")
+            else:
+                print(f"📁 Found {len(genomes)} files in genomes/:")
+                for genome in genomes:
+                    size_kb = genome.stat().st_size / 1024 if genome.is_file() else 0
+                    print(f"   🧬 {genome.name} ({size_kb:.1f} KB)")
+        questionary.press_any_key_to_continue().ask()
 
     def select_biological_type(self):
         """Select biological type for VM creation."""
@@ -170,7 +227,10 @@ class InteractiveBioXenFactory:
         print("\n🚀 Initializing Hypervisor")
         try:
             print(f"🔄 Initializing hypervisor...")
-            self.hypervisor = BioXenHypervisor()
+            if FACTORY_API_AVAILABLE:
+                self.hypervisor = BioXenHypervisor()
+            else:
+                self.hypervisor = "Mock Hypervisor"
             print(f"✅ Hypervisor initialized successfully")
         except Exception as e:
             logger.error(f"Init error: {e}")
@@ -181,10 +241,12 @@ class InteractiveBioXenFactory:
         """Create a biological VM using the Factory Pattern API with chassis and JCVI support."""
         if not FACTORY_API_AVAILABLE:
             print("❌ Factory API not available")
-            return
+            print("💡 This is a simulation mode")
+            return self._create_mock_vm()
         
         print(f"\n🧬 Creating Biological VM with JCVI Integration")
-        print(f"🦠 Chassis: {self.chassis_type.value}")
+        chassis_display = self.chassis_type.value if hasattr(self.chassis_type, 'value') else str(self.chassis_type)
+        print(f"🦠 Chassis: {chassis_display}")
         print(f"🔬 Biological Type: {self.selected_biological_type}")
         print(f"🖥️ VM Type: {self.vm_type}")
         
@@ -214,7 +276,8 @@ class InteractiveBioXenFactory:
                 vm = create_bio_vm(vm_id, self.selected_biological_type, self.vm_type, config)
             
             print(f"✅ VM created successfully: {vm_id}")
-            print(f"   🦠 Chassis: {self.chassis_type.value}")
+            chassis_display = self.chassis_type.value if hasattr(self.chassis_type, 'value') else str(self.chassis_type)
+            print(f"   🦠 Chassis: {chassis_display}")
             print(f"   🔬 Type: {vm.get_vm_type()}")
             print(f"   🧬 Biological: {vm.get_biological_type()}")
             
@@ -243,6 +306,32 @@ class InteractiveBioXenFactory:
         
         questionary.press_any_key_to_continue().ask()
 
+    def _create_mock_vm(self):
+        """Create a mock VM when Factory API is not available."""
+        print(f"\n🧬 Creating Mock Biological VM")
+        chassis_display = str(self.chassis_type)
+        print(f"🦠 Chassis: {chassis_display}")
+        print(f"🔬 Biological Type: {self.selected_biological_type}")
+        print(f"🖥️ VM Type: {self.vm_type}")
+        
+        vm_id = questionary.text("Enter VM ID:", default=f"mock_vm_{int(time.time() % 10000)}").ask()
+        if not vm_id:
+            return
+            
+        # Create a simple mock VM object
+        mock_vm = {
+            'id': vm_id,
+            'type': self.vm_type,
+            'biological_type': self.selected_biological_type,
+            'chassis': chassis_display,
+            'status': 'created',
+            'jcvi_available': True
+        }
+        
+        self.active_vms[vm_id] = mock_vm
+        print(f"✅ Mock VM created: {vm_id}")
+        questionary.press_any_key_to_continue().ask()
+
     def jcvi_operations_menu(self):
         """JCVI-specific operations menu (Phase 1.1)."""
         if not self.active_vms:
@@ -253,7 +342,10 @@ class InteractiveBioXenFactory:
         # Select VM for JCVI operations
         choices = []
         for vm_id, vm in self.active_vms.items():
-            jcvi_status = "🧬" if hasattr(vm, 'jcvi_available') and vm.jcvi_available else "  "
+            if isinstance(vm, dict):
+                jcvi_status = "🧬" if vm.get('jcvi_available', False) else "  "
+            else:
+                jcvi_status = "🧬" if hasattr(vm, 'jcvi_available') and vm.jcvi_available else "  "
             choices.append(Choice(f"{jcvi_status} {vm_id}", vm_id))
         choices.append(Choice("🔙 Back", "back"))
         
@@ -279,38 +371,54 @@ class InteractiveBioXenFactory:
             try:
                 if action == "genome_analysis":
                     genome_path = questionary.text("Genome file path:", default="genomes/syn3a.genome").ask()
-                    if genome_path and hasattr(vm, 'analyze_genome'):
-                        result = vm.analyze_genome(genome_path)
-                        print(f"🔬 Genome Analysis Result:")
-                        for key, value in result.items():
-                            print(f"   {key}: {value}")
-                    else:
-                        print("❌ Genome analysis not available")
-                        
+                    if genome_path:
+                        if isinstance(vm, dict):
+                            print(f"🔬 Mock genome analysis for {genome_path}")
+                            print("   Mock results: 1000 genes, 500kb genome size")
+                        elif hasattr(vm, 'analyze_genome'):
+                            result = vm.analyze_genome(genome_path)
+                            print(f"🔬 Genome Analysis Result:")
+                            for key, value in result.items():
+                                print(f"   {key}: {value}")
+                        else:
+                            print("❌ Genome analysis not available")
+                            
                 elif action == "comparative_analysis":
                     genome1 = questionary.text("First genome path:", default="genomes/syn3a.genome").ask()
                     genome2 = questionary.text("Second genome path:", default="genomes/syn3a.genome").ask()
-                    if genome1 and genome2 and hasattr(vm, 'run_comparative_analysis'):
-                        result = vm.run_comparative_analysis(genome1, genome2)
-                        print(f"📊 Comparative Analysis Result:")
-                        for key, value in result.items():
-                            print(f"   {key}: {value}")
-                    else:
-                        print("❌ Comparative analysis not available")
-                        
+                    if genome1 and genome2:
+                        if isinstance(vm, dict):
+                            print(f"📊 Mock comparative analysis between {genome1} and {genome2}")
+                            print("   Mock results: 85% similarity, 150 unique genes")
+                        elif hasattr(vm, 'run_comparative_analysis'):
+                            result = vm.run_comparative_analysis(genome1, genome2)
+                            print(f"📊 Comparative Analysis Result:")
+                            for key, value in result.items():
+                                print(f"   {key}: {value}")
+                        else:
+                            print("❌ Comparative analysis not available")
+                            
                 elif action == "format_conversion":
                     input_path = questionary.text("Input file path:", default="genomes/syn3a.genome").ask()
                     output_path = questionary.text("Output file path:", default="genomes/syn3a.fasta").ask()
-                    if input_path and output_path and hasattr(vm, 'convert_genome_format'):
-                        result = vm.convert_genome_format(input_path, output_path)
-                        print(f"🔄 Format Conversion Result:")
-                        for key, value in result.items():
-                            print(f"   {key}: {value}")
-                    else:
-                        print("❌ Format conversion not available")
-                        
+                    if input_path and output_path:
+                        if isinstance(vm, dict):
+                            print(f"🔄 Mock format conversion: {input_path} -> {output_path}")
+                            print("   Mock conversion completed")
+                        elif hasattr(vm, 'convert_genome_format'):
+                            result = vm.convert_genome_format(input_path, output_path)
+                            print(f"🔄 Format Conversion Result:")
+                            for key, value in result.items():
+                                print(f"   {key}: {value}")
+                        else:
+                            print("❌ Format conversion not available")
+                            
                 elif action == "jcvi_status":
-                    if hasattr(vm, 'get_jcvi_status'):
+                    if isinstance(vm, dict):
+                        print(f"📈 Mock JCVI Status for {vm_id}:")
+                        print(f"   Available: {vm.get('jcvi_available', False)}")
+                        print(f"   Version: Mock v1.0")
+                    elif hasattr(vm, 'get_jcvi_status'):
                         status = vm.get_jcvi_status()
                         print(f"📈 JCVI Status for {vm_id}:")
                         for key, value in status.items():
@@ -336,11 +444,18 @@ class InteractiveBioXenFactory:
         
         for vm_id, vm in self.active_vms.items():
             try:
-                status = vm.get_status()
-                jcvi_indicator = "🧬" if hasattr(vm, 'jcvi_available') and vm.jcvi_available else ""
-                print(f"🖥️ {vm_id} {jcvi_indicator}")
-                print(f"   Type: {vm.get_vm_type()} | Bio: {vm.get_biological_type()}")
-                print(f"   Status: {status}")
+                if isinstance(vm, dict):
+                    status = vm.get('status', 'unknown')
+                    jcvi_indicator = "🧬" if vm.get('jcvi_available', False) else ""
+                    print(f"🖥️ {vm_id} {jcvi_indicator}")
+                    print(f"   Type: {vm.get('type', 'unknown')} | Bio: {vm.get('biological_type', 'unknown')}")
+                    print(f"   Status: {status}")
+                else:
+                    status = vm.get_status()
+                    jcvi_indicator = "🧬" if hasattr(vm, 'jcvi_available') and vm.jcvi_available else ""
+                    print(f"🖥️ {vm_id} {jcvi_indicator}")
+                    print(f"   Type: {vm.get_vm_type()} | Bio: {vm.get_biological_type()}")
+                    print(f"   Status: {status}")
                 print()
             except Exception as e:
                 print(f"❌ Error getting status for {vm_id}: {e}")
@@ -392,40 +507,70 @@ class InteractiveBioXenFactory:
                 break
                 
             try:
-                if action == "start":
-                    result = vm.start()
-                    print(f"{'✅' if result else '❌'} Start result: {result}")
-                elif action == "pause":
-                    result = vm.pause()
-                    print(f"{'✅' if result else '❌'} Pause result: {result}")
-                elif action == "resume":
-                    result = vm.resume()
-                    print(f"{'✅' if result else '❌'} Resume result: {result}")
-                elif action == "status":
-                    status = vm.get_status()
-                    print(f"📊 Status: {status}")
-                elif action == "execute":
-                    process = questionary.text("Enter biological process code:").ask()
-                    if process:
-                        result = vm.execute_biological_process(process)
-                        print(f"🧬 Process result: {result}")
-                elif action == "install_package":
-                    package = questionary.text("Enter package name:").ask()
-                    if package:
-                        result = vm.install_biological_package(package)
-                        print(f"📦 Install result: {result}")
-                elif action == "metrics":
-                    metrics = vm.get_biological_metrics()
-                    print(f"📈 Metrics: {metrics}")
-                elif action == "destroy":
-                    if questionary.confirm(f"Destroy VM {vm_id}?").ask():
-                        result = vm.destroy()
-                        if result:
+                if isinstance(vm, dict):
+                    # Mock VM operations
+                    if action == "start":
+                        vm['status'] = 'running'
+                        print("✅ Mock VM started")
+                    elif action == "pause":
+                        vm['status'] = 'paused'
+                        print("✅ Mock VM paused")
+                    elif action == "resume":
+                        vm['status'] = 'running'
+                        print("✅ Mock VM resumed")
+                    elif action == "status":
+                        print(f"📊 Status: {vm.get('status', 'unknown')}")
+                    elif action == "execute":
+                        process = questionary.text("Enter biological process code:").ask()
+                        if process:
+                            print(f"🧬 Mock process executed: {process}")
+                    elif action == "install_package":
+                        package = questionary.text("Enter package name:").ask()
+                        if package:
+                            print(f"📦 Mock package installed: {package}")
+                    elif action == "metrics":
+                        print("📈 Mock metrics: CPU: 10%, Memory: 256MB, Processes: 5")
+                    elif action == "destroy":
+                        if questionary.confirm(f"Destroy VM {vm_id}?").ask():
                             del self.active_vms[vm_id]
                             print(f"🗑️ VM {vm_id} destroyed")
                             break
-                        else:
-                            print(f"❌ Failed to destroy VM {vm_id}")
+                else:
+                    # Real VM operations
+                    if action == "start":
+                        result = vm.start()
+                        print(f"{'✅' if result else '❌'} Start result: {result}")
+                    elif action == "pause":
+                        result = vm.pause()
+                        print(f"{'✅' if result else '❌'} Pause result: {result}")
+                    elif action == "resume":
+                        result = vm.resume()
+                        print(f"{'✅' if result else '❌'} Resume result: {result}")
+                    elif action == "status":
+                        status = vm.get_status()
+                        print(f"📊 Status: {status}")
+                    elif action == "execute":
+                        process = questionary.text("Enter biological process code:").ask()
+                        if process:
+                            result = vm.execute_biological_process(process)
+                            print(f"🧬 Process result: {result}")
+                    elif action == "install_package":
+                        package = questionary.text("Enter package name:").ask()
+                        if package:
+                            result = vm.install_biological_package(package)
+                            print(f"📦 Install result: {result}")
+                    elif action == "metrics":
+                        metrics = vm.get_biological_metrics()
+                        print(f"📈 Metrics: {metrics}")
+                    elif action == "destroy":
+                        if questionary.confirm(f"Destroy VM {vm_id}?").ask():
+                            result = vm.destroy()
+                            if result:
+                                del self.active_vms[vm_id]
+                                print(f"🗑️ VM {vm_id} destroyed")
+                                break
+                            else:
+                                print(f"❌ Failed to destroy VM {vm_id}")
                             
             except Exception as e:
                 logger.error(f"VM operation error: {e}")
@@ -482,8 +627,11 @@ class InteractiveBioXenFactory:
                     print(f"📈 Available resources: {available}")
                 elif action == "vm_resources":
                     # VM-specific resource info
-                    status = vm.get_status()
-                    print(f"⚡ VM {vm_id} resources: {status}")
+                    if isinstance(vm, dict):
+                        print(f"⚡ VM {vm_id} resources: {vm}")
+                    else:
+                        status = vm.get_status()
+                        print(f"⚡ VM {vm_id} resources: {status}")
                 
                 questionary.press_any_key_to_continue().ask()
                 
@@ -495,23 +643,21 @@ class InteractiveBioXenFactory:
     def jcvi_analysis_menu(self):
         """Enhanced JCVI analysis and operations menu with v0.0.03 features."""
         if not FACTORY_API_AVAILABLE:
-            print("❌ Factory API not available")
-            questionary.press_any_key_to_continue().ask()
-            return
-            
+            print("❌ Factory API not available - using simulation mode")
+        
         while True:
             print(f"\n🧪 JCVI Analysis {'(Enhanced v0.0.03)' if ACQUISITION_AVAILABLE else '(Legacy)'}")
             
             choices = [
                 Choice("🔬 Analyze Genome", "analyze_genome"),
                 Choice("📊 Comparative Analysis", "comparative_analysis"),
-                Choice("🧬 Format Conversion", "format_conversion"),
+                Choice("🔄 Format Conversion", "format_conversion"),
                 Choice("📈 JCVI Status", "jcvi_status"),
             ]
             
             # Add v0.0.03 enhanced features if available
             if ACQUISITION_AVAILABLE and self.jcvi_manager:
-                choices.insert(1, Choice("� Acquire & Analyze", "acquire_analyze"))
+                choices.insert(1, Choice("📥 Acquire & Analyze", "acquire_analyze"))
                 choices.insert(2, Choice("🔄 Complete Workflow", "complete_workflow_local"))
                 choices.insert(3, Choice("📋 List Available Genomes", "list_genomes"))
             
@@ -524,20 +670,23 @@ class InteractiveBioXenFactory:
             try:
                 if action == "acquire_analyze":
                     # New v0.0.03 feature: acquire and immediately analyze
-                    available = self.jcvi_manager.list_available_genomes()
-                    if available:
-                        choices = [Choice(f"🧬 {genome}", genome) for genome in available]
-                        genome = questionary.select("Select genome:", choices=choices).ask()
-                        if genome:
-                            print(f"📥 Acquiring and analyzing {genome}...")
-                            success = self.jcvi_manager.acquire_genome(genome)
-                            if success:
-                                result = self.jcvi_manager.run_complete_workflow([genome])
-                                print(f"✅ Analysis complete: {result}")
-                            else:
-                                print("❌ Acquisition failed")
+                    if self.jcvi_manager:
+                        available = self.jcvi_manager.list_available_genomes()
+                        if available:
+                            choices = [Choice(f"🧬 {genome}", genome) for genome in available]
+                            genome = questionary.select("Select genome:", choices=choices).ask()
+                            if genome:
+                                print(f"📥 Acquiring and analyzing {genome}...")
+                                success = self.jcvi_manager.acquire_genome(genome)
+                                if success:
+                                    result = self.jcvi_manager.run_complete_workflow([genome])
+                                    print(f"✅ Analysis complete: {result}")
+                                else:
+                                    print("❌ Acquisition failed")
+                        else:
+                            print("❌ No genomes available")
                     else:
-                        print("❌ No genomes available")
+                        print("❌ JCVI manager not available")
                         
                 elif action == "complete_workflow_local":
                     # Local version of complete workflow
@@ -556,15 +705,17 @@ class InteractiveBioXenFactory:
                     if genome_file and os.path.exists(genome_file):
                         # Use enhanced JCVI manager if available
                         manager = self.jcvi_manager if self.jcvi_manager else None
-                        if not manager:
+                        if not manager and FACTORY_API_AVAILABLE:
                             from src.api.jcvi_manager import JCVIManager
                             manager = JCVIManager()
                             
-                        if manager and manager.is_available():
+                        if manager and hasattr(manager, 'is_available') and manager.is_available():
                             result = manager.analyze_genome(genome_file)
                             print(f"📊 Analysis Result:\n{result}")
                         else:
-                            print("❌ JCVI not available")
+                            print("❌ JCVI not available - using simulation")
+                            print(f"🔬 Mock analysis for {genome_file}")
+                            print("   Mock results: 1000 genes, 500kb genome")
                     else:
                         print("❌ File not found")
                         
@@ -573,47 +724,64 @@ class InteractiveBioXenFactory:
                     genome1 = questionary.text("Enter first genome file:").ask()
                     genome2 = questionary.text("Enter second genome file:").ask()
                     
-                    if genome1 and genome2 and os.path.exists(genome1) and os.path.exists(genome2):
-                        from src.api.jcvi_manager import JCVIManager
-                        manager = JCVIManager()
-                        if manager.is_available():
-                            result = manager.run_comparative_analysis(genome1, genome2)
-                            print(f"📈 Comparative Analysis:\n{result}")
+                    if genome1 and genome2:
+                        if FACTORY_API_AVAILABLE and os.path.exists(genome1) and os.path.exists(genome2):
+                            from src.api.jcvi_manager import JCVIManager
+                            manager = JCVIManager()
+                            if hasattr(manager, 'is_available') and manager.is_available():
+                                result = manager.run_comparative_analysis(genome1, genome2)
+                                print(f"📈 Comparative Analysis:\n{result}")
+                            else:
+                                print("❌ JCVI not available - using simulation")
+                                print(f"📊 Mock comparative analysis: {genome1} vs {genome2}")
+                                print("   Mock results: 85% similarity, 150 unique genes")
                         else:
-                            print("❌ JCVI not available")
-                    else:
-                        print("❌ Invalid files")
+                            print("❌ Invalid files or API not available - using simulation")
+                            print(f"📊 Mock comparative analysis: {genome1} vs {genome2}")
+                            print("   Mock results: 85% similarity, 150 unique genes")
                         
                 elif action == "format_conversion":
                     input_file = questionary.text("Enter input file:").ask()
                     output_format = questionary.select("Output format:", 
                                                      choices=["fasta", "genbank", "gff"]).ask()
                     
-                    if input_file and output_format and os.path.exists(input_file):
-                        from src.api.jcvi_manager import JCVIManager
-                        manager = JCVIManager()
-                        if manager.is_available():
-                            output_file = f"{os.path.splitext(input_file)[0]}.{output_format}"
-                            success = manager.convert_format(input_file, output_file, output_format)
-                            if success:
-                                print(f"✅ Converted to: {output_file}")
+                    if input_file and output_format:
+                        if FACTORY_API_AVAILABLE and os.path.exists(input_file):
+                            from src.api.jcvi_manager import JCVIManager
+                            manager = JCVIManager()
+                            if hasattr(manager, 'is_available') and manager.is_available():
+                                output_file = f"{os.path.splitext(input_file)[0]}.{output_format}"
+                                success = manager.convert_format(input_file, output_file, output_format)
+                                if success:
+                                    print(f"✅ Converted to: {output_file}")
+                                else:
+                                    print("❌ Conversion failed")
                             else:
-                                print("❌ Conversion failed")
+                                print("❌ JCVI not available - using simulation")
+                                output_file = f"{os.path.splitext(input_file)[0]}.{output_format}"
+                                print(f"🔄 Mock conversion: {input_file} -> {output_file}")
                         else:
-                            print("❌ JCVI not available")
-                    else:
-                        print("❌ Invalid input")
+                            print("❌ Invalid input or API not available - using simulation")
+                            output_file = f"{os.path.splitext(input_file)[0]}.{output_format}"
+                            print(f"🔄 Mock conversion: {input_file} -> {output_file}")
                         
                 elif action == "jcvi_status":
-                    from src.api.jcvi_manager import JCVIManager
-                    manager = JCVIManager()
-                    print(f"🧬 JCVI Available: {'✅' if manager.is_available() else '❌'}")
-                    if manager.is_available():
-                        print("🔧 Available operations:")
-                        print("   • Genome analysis")
-                        print("   • Comparative genomics")
-                        print("   • Format conversion")
-                        print("   • Synteny analysis")
+                    if FACTORY_API_AVAILABLE:
+                        from src.api.jcvi_manager import JCVIManager
+                        manager = JCVIManager()
+                        available = hasattr(manager, 'is_available') and manager.is_available()
+                        print(f"🧬 JCVI Available: {'✅' if available else '❌'}")
+                        if available:
+                            print("🔧 Available operations:")
+                            print("   • Genome analysis")
+                            print("   • Comparative genomics")
+                            print("   • Format conversion")
+                            print("   • Synteny analysis")
+                        else:
+                            print("💡 JCVI toolkit not found - using simulation mode")
+                    else:
+                        print("🧬 JCVI Available: ❌ (API not available)")
+                        print("💡 Running in simulation mode")
                     
                 questionary.press_any_key_to_continue().ask()
                 
@@ -761,14 +929,17 @@ class InteractiveBioXenFactory:
         for genome in genomes:
             print(f"\n🔬 Validating {genome['name']}...")
             try:
-                is_valid, messages = self.validator.validate_genome(genome['file_path'])
-                if is_valid:
-                    print("✅ Valid")
+                if FACTORY_API_AVAILABLE and self.validator:
+                    is_valid, messages = self.validator.validate_genome(genome['file_path'])
+                    if is_valid:
+                        print("✅ Valid")
+                    else:
+                        print("❌ Invalid:")
+                        for msg in messages:
+                            print(f"   - {msg}")
+                        all_valid = False
                 else:
-                    print("❌ Invalid:")
-                    for msg in messages:
-                        print(f"   - {msg}")
-                    all_valid = False
+                    print("✅ Mock validation passed")
             except Exception as e:
                 logger.error(f"Validation error: {e}")
                 print(f"❌ Error: {e}")
@@ -779,16 +950,19 @@ class InteractiveBioXenFactory:
         """Validate single genome."""
         print(f"\n🔬 Validating {genome['name']}...")
         try:
-            is_valid, messages = self.validator.validate_genome(genome['file_path'])
-            if is_valid:
-                print("✅ Valid")
-                if not hasattr(self, 'available_genomes'):
-                    self.available_genomes = []
-                self.available_genomes.append({"name": genome['name'], "file_path": genome['file_path'], "data": None})
+            if FACTORY_API_AVAILABLE and self.validator:
+                is_valid, messages = self.validator.validate_genome(genome['file_path'])
+                if is_valid:
+                    print("✅ Valid")
+                    if not hasattr(self, 'available_genomes'):
+                        self.available_genomes = []
+                    self.available_genomes.append({"name": genome['name'], "file_path": genome['file_path'], "data": None})
+                else:
+                    print("❌ Invalid:")
+                    for msg in messages:
+                        print(f"   - {msg}")
             else:
-                print("❌ Invalid:")
-                for msg in messages:
-                    print(f"   - {msg}")
+                print("✅ Mock validation passed")
         except Exception as e:
             logger.error(f"Validation error: {e}")
             print(f"❌ Error: {e}")
@@ -914,10 +1088,16 @@ class InteractiveBioXenFactory:
         if questionary.confirm(f"⚠️ Really destroy VM '{vm_id}'?").ask():
             try:
                 vm = self.active_vms[vm_id]
-                if hasattr(vm, 'shutdown'):
-                    vm.shutdown()
-                del self.active_vms[vm_id]
-                print(f"✅ VM '{vm_id}' destroyed")
+                if isinstance(vm, dict):
+                    # Mock VM
+                    del self.active_vms[vm_id]
+                    print(f"✅ Mock VM '{vm_id}' destroyed")
+                else:
+                    # Real VM
+                    if hasattr(vm, 'shutdown'):
+                        vm.shutdown()
+                    del self.active_vms[vm_id]
+                    print(f"✅ VM '{vm_id}' destroyed")
             except Exception as e:
                 logger.error(f"Error destroying VM: {e}")
                 print(f"❌ Error destroying VM: {e}")
@@ -929,8 +1109,10 @@ class InteractiveBioXenFactory:
         while True:
             choices = [
                 Choice("🔧 Set VM Type", "set_vm_type"),
+                Choice("🧬 Select Biological Type", "select_biological_type"),
                 Choice("📋 Show Current Config", "show_config"),
                 Choice("🧬 JCVI Settings", "jcvi_settings"),
+                Choice("ℹ️ API Info", "api_info"),
                 Choice("🔙 Back", "back")
             ]
             
@@ -955,11 +1137,17 @@ class InteractiveBioXenFactory:
                         if new_type == "jcvi_optimized":
                             print("   🧬 JCVI integration and hardware optimization enabled")
                             
+                elif action == "select_biological_type":
+                    self.select_biological_type()
+                    
                 elif action == "show_config":
+                    chassis_display = self.chassis_type.value if hasattr(self.chassis_type, 'value') else str(self.chassis_type)
+                    print(f"🦠 Chassis: {chassis_display}")
                     print(f"🔬 Biological Type: {self.selected_biological_type}")
                     print(f"🖥️ VM Type: {self.vm_type}")
                     print(f"🖥️ Active VMs: {len(self.active_vms)}")
                     print(f"⚙️ Factory API: {'✅ Available' if FACTORY_API_AVAILABLE else '❌ Not Available'}")
+                    print(f"🧬 JCVI Acquisition: {'✅ Available' if ACQUISITION_AVAILABLE else '❌ Not Available'}")
                     
                 elif action == "jcvi_settings":
                     print("🧬 JCVI Integration Settings:")
@@ -968,6 +1156,13 @@ class InteractiveBioXenFactory:
                     print("   • Format conversion: .genome ↔ .fasta")
                     print("   • Hardware optimization: Available in jcvi_optimized VMs")
                     print("   • Synteny analysis: Available with JCVI CLI tools")
+                    if ACQUISITION_AVAILABLE:
+                        print("   • Enhanced acquisition (v0.0.03): ✅ Available")
+                    else:
+                        print("   • Enhanced acquisition (v0.0.03): ❌ Not Available")
+                        
+                elif action == "api_info":
+                    self.api_info()
                     
             except Exception as e:
                 logger.error(f"Configuration error: {e}")
@@ -997,14 +1192,30 @@ class InteractiveBioXenFactory:
             print("   • Automatic format conversion (.genome ↔ .fasta)")
             print("   • Hardware optimization for JCVI workflows")
             print("   • Graceful fallback when JCVI unavailable")
+            
+            if ACQUISITION_AVAILABLE:
+                print("\n📥 Enhanced Acquisition (v0.0.03):")
+                print("   • Automated genome acquisition from databases")
+                print("   • Complete workflow coordination")
+                print("   • Integrated analysis pipelines")
         else:
             print("\n💡 To use the Factory API:")
             print("   1. Ensure src/api/ directory exists")
             print("   2. Install bioxen-jcvi-vm-lib library")
             print("   3. Run from correct working directory")
+            print("   4. Currently running in simulation mode")
         
         questionary.press_any_key_to_continue().ask()
 
+
 if __name__ == "__main__":
-    bioxen = InteractiveBioXenFactory()
-    bioxen.main_menu()
+    try:
+        bioxen = InteractiveBioXenFactory()
+        bioxen.main_menu()
+    except KeyboardInterrupt:
+        print("\n👋 Goodbye!")
+    except Exception as e:
+        logger.error(f"Fatal error: {e}")
+        print(f"❌ Fatal error: {e}")
+        import traceback
+        traceback.print_exc()

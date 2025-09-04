@@ -1,31 +1,22 @@
 #!/usr/bin/env python3
 """
 Interactive BioXen CLI with Factory Pattern API and JCVI Integration.
-Updated            choices = [
-                Choice("🔍 Browse Genomes", "browse_genomes"),
-                Choice("🧬 Load Genome", "validate_genome"),
-                Choice("🖥️ Initialize Hypervisor", "init_hypervisor"),
-                Choice("📥 Download Genomes", "download_genomes"),
-                Choice("📥 Acquire Genome (v0.0.03)", "acquire_genome"),  # NEW
-                Choice("⚡ Create VM", "create_vm"),
-                Choice("⚡ Manage VMs", "manage_vms"),
-                Choice("📺 Terminal Visualization", "terminal_visualization"),
-                Choice("🗑️ Destroy VM", "destroy_vm"),
-                Choice("🧪 JCVI Analysis", "jcvi_analysis_menu"),
-                Choice("🔄 Complete Workflow (v0.0.03)", "complete_workflow"),  # NEW
-                Choice("🧬 Select Chassis", "select_chassis"),
-                Choice("⚙️ Configuration", "configuration_menu"),
-                Choice("❌ Exit", "exit"),
-            ] compatibility with chassis selection
+Updated compatibility with chassis selection
 """
 
 import sys
-sys.path.append('/home/chris/BioXen-luavm/venv/lib/python3.10/site-packages/src')
-
 import time
 import logging
+import typing
 from pathlib import Path
 from typing import List, Dict, Optional
+
+# Fix typing._ClassVar compatibility issue for bioxen-jcvi-vm-lib
+if not hasattr(typing, '_ClassVar'):
+    typing._ClassVar = typing.ClassVar
+
+# Add the correct path for the API module
+sys.path.insert(0, '/home/chris/BioXen-luavm/venv/lib/python3.10/site-packages')
 
 try:
     import questionary
@@ -53,7 +44,8 @@ try:
         ACQUISITION_AVAILABLE = False
 except ImportError as e:
     print(f"❌ Import error: {e}")
-    print("Make sure you're running from the BioXen_jcvi_vm_lib root directory")
+    print("Make sure the bioxen-jcvi-vm-lib package is properly installed")
+    print("Run from /home/chris/BioXen-luavm/ directory with activated venv")
     sys.exit(1)
 
 logging.basicConfig(
@@ -71,7 +63,7 @@ class InteractiveBioXenFactory:
         self.resource_manager = BioResourceManager()
         self.config_manager = ConfigManager()
         self.validator = BioXenGenomeValidator()
-        self.genome_integrator = BioXenRealGenomeIntegrator()
+    self.genome_integrator = None
         
         # Enhanced v0.0.03: Initialize JCVI capabilities
         self.jcvi_manager = None
@@ -989,7 +981,6 @@ class InteractiveBioXenFactory:
         print("🧬 BioXen Factory Pattern API v0.0.2 + JCVI Integration")
         print("="*60)
         print(f"📊 Status: {'✅ Available' if FACTORY_API_AVAILABLE else '❌ Not Available'}")
-        print(f"🔬 Supported Biological Types: {', '.join(self.supported_bio_types)}")
         print(f"🖥️ Supported VM Types: {', '.join(self.supported_vm_types)}")
         print(f"⚡ Active VMs: {len(self.active_vms)}")
         
