@@ -1,0 +1,68 @@
+# interactive-bioxen-from-lib.py Migration Report
+
+## Overview
+This script is designed to use the `bioxen-jcvi-vm-lib` (and previously `pylua_bioxen_vm_lib`) library for BioXen genome selection, hypervisor, and VM management. It integrates package management, environment management, and Lua VM lifecycle using the library's API.
+
+## What Needs To Be Done To Use The Library
+
+### 1. **Install the Library and Dependencies**
+- Ensure you install the correct library from PyPI (main or test):
+  ```bash
+  pip install --extra-index-url https://pypi.org/simple/ -i https://test.pypi.org/simple/ bioxen-jcvi-vm-lib
+  ```
+- Also install `questionary` and any other dependencies required by the library:
+  ```bash
+  pip install questionary
+  ```
+
+### 2. **Update Imports**
+- The script currently imports from `pylua_bioxen_vm_lib`. Update all imports to use `bioxen_jcvi_vm_lib` if the new library uses a different module name.
+- Example:
+  ```python
+  from bioxen_jcvi_vm_lib import VMManager, InteractiveSession
+  # ...other imports...
+  ```
+- Check the documentation or the installed package for the correct import paths.
+
+### 3. **API Compatibility**
+- Review all usage of classes and methods from the library (e.g., `VMManager`, `PackageInstaller`, `PackageRegistry`, etc.).
+- If the new library has different class/method names or signatures, update the code accordingly.
+- Pay special attention to:
+  - VM creation and session management
+  - Package management (search, install, update, remove)
+  - Environment management
+  - Exception handling (import correct exceptions)
+
+### 4. **Test All Features**
+- After updating imports and API calls, run the script and test:
+  - Genome browsing and validation
+  - Hypervisor initialization
+  - VM creation, attachment, and destruction
+  - Package management menu (search, install, update, remove)
+  - Environment management
+- Fix any runtime errors due to API changes or missing features.
+
+### 5. **Logging and Error Handling**
+- The script uses Python `logging` for error reporting. Ensure logging works with the new library and update log messages if needed.
+
+### 6. **Documentation and Comments**
+- Update docstrings and comments to reflect the new library and any changes in usage or behavior.
+
+## Summary Checklist
+- [ ] Install `bioxen-jcvi-vm-lib` and dependencies
+- [ ] Update all imports to use the new library name/module
+- [ ] Review and update API usage for compatibility
+- [ ] Test all CLI features and fix any issues
+- [ ] Update documentation and comments
+
+## Notes
+- If the new library is a drop-in replacement for `pylua_bioxen_vm_lib`, minimal changes may be needed.
+- If the API is different, more extensive refactoring will be required.
+- Always consult the official documentation or README for the new library for migration details.
+
+---
+
+**Next Steps:**
+1. Update imports and test the script.
+2. Fix any incompatibilities or errors.
+3. Confirm all features work as expected.
