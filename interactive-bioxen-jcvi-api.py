@@ -63,7 +63,7 @@ class InteractiveBioXenFactory:
         self.resource_manager = BioResourceManager()
         self.config_manager = ConfigManager()
         self.validator = BioXenGenomeValidator()
-        self.genome_integrator = BioXenRealGenomeIntegrator()
+    self.genome_integrator = None
         
         # Enhanced v0.0.03: Initialize JCVI capabilities
         self.jcvi_manager = None
