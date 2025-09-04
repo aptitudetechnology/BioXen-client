@@ -1,7 +1,22 @@
 #!/usr/bin/env python3
 """
 Interactive BioXen CLI with Factory Pattern API and JCVI Integration.
-Updated for Phase 1.1 compatibility with chassis selection
+Updated            choices = [
+                Choice("🔍 Browse Genomes", "browse_genomes"),
+                Choice("🧬 Load Genome", "validate_genome"),
+                Choice("🖥️ Initialize Hypervisor", "init_hypervisor"),
+                Choice("📥 Download Genomes", "download_genomes"),
+                Choice("📥 Acquire Genome (v0.0.03)", "acquire_genome"),  # NEW
+                Choice("⚡ Create VM", "create_vm"),
+                Choice("⚡ Manage VMs", "manage_vms"),
+                Choice("📺 Terminal Visualization", "terminal_visualization"),
+                Choice("🗑️ Destroy VM", "destroy_vm"),
+                Choice("🧪 JCVI Analysis", "jcvi_analysis_menu"),
+                Choice("🔄 Complete Workflow (v0.0.03)", "complete_workflow"),  # NEW
+                Choice("🧬 Select Chassis", "select_chassis"),
+                Choice("⚙️ Configuration", "configuration_menu"),
+                Choice("❌ Exit", "exit"),
+            ] compatibility with chassis selection
 """
 
 import sys
@@ -24,9 +39,18 @@ try:
     from src.api import create_bio_vm, create_biological_vm
     from src.api.resource_manager import BioResourceManager
     from src.api.config_manager import ConfigManager
+    from src.api.jcvi_manager import create_jcvi_manager
     from src.hypervisor.core import BioXenHypervisor, ChassisType
     from src.genome.schema import BioXenGenomeValidator
     from src.genome.parser import BioXenRealGenomeIntegrator
+    # Enhanced v0.0.03: Import acquisition capabilities
+    try:
+        from src.jcvi_integration.genome_acquisition import JCVIGenomeAcquisition
+        from src.jcvi_integration.analysis_coordinator import JCVIWorkflowCoordinator
+        ACQUISITION_AVAILABLE = True
+    except ImportError:
+        print("⚠️  Enhanced acquisition features not available (v0.0.03)")
+        ACQUISITION_AVAILABLE = False
 except ImportError as e:
     print(f"❌ Import error: {e}")
     print("Make sure you're running from the BioXen_jcvi_vm_lib root directory")
@@ -42,14 +66,29 @@ logger = logging.getLogger(__name__)
 class InteractiveBioXenFactory:
     """Interactive CLI for BioXen Factory Pattern API with JCVI Integration."""
     def __init__(self):
-        self.validator = BioXenGenomeValidator()
-        self.resource_manager = None  # Initialize when needed
+        """Initialize the interactive BioXen JCVI API interface"""
+        self.hypervisor = BioXenHypervisor()
+        self.resource_manager = BioResourceManager()
         self.config_manager = ConfigManager()
-        self.active_vms = {}
-        self.chassis_type = ChassisType.ECOLI  # Default chassis
-        self.selected_biological_type = "syn3a"
-        self.vm_type = "basic"
-        logger.info("BioXen Factory API initialized")
+        self.validator = BioXenGenomeValidator()
+        self.genome_integrator = BioXenRealGenomeIntegrator()
+        
+        # Enhanced v0.0.03: Initialize JCVI capabilities
+        self.jcvi_manager = None
+        self.acquisition_system = None
+        self.workflow_coordinator = None
+        
+        try:
+            self.jcvi_manager = create_jcvi_manager()
+            if ACQUISITION_AVAILABLE:
+                self.acquisition_system = JCVIGenomeAcquisition()
+                self.workflow_coordinator = JCVIWorkflowCoordinator()
+                print("✅ v0.0.03 Enhanced JCVI acquisition capabilities loaded")
+        except Exception as e:
+            print(f"⚠️  JCVI features partially available: {e}")
+        
+        self.current_vm = None
+        self.vms = []
 
     def select_chassis(self):
         """Select chassis type for biological VMs."""
@@ -462,33 +501,74 @@ class InteractiveBioXenFactory:
             questionary.press_any_key_to_continue().ask()
 
     def jcvi_analysis_menu(self):
-        """JCVI analysis and operations menu."""
+        """Enhanced JCVI analysis and operations menu with v0.0.03 features."""
         if not FACTORY_API_AVAILABLE:
             print("❌ Factory API not available")
             questionary.press_any_key_to_continue().ask()
             return
             
         while True:
+            print(f"\n🧪 JCVI Analysis {'(Enhanced v0.0.03)' if ACQUISITION_AVAILABLE else '(Legacy)'}")
+            
             choices = [
                 Choice("🔬 Analyze Genome", "analyze_genome"),
                 Choice("📊 Comparative Analysis", "comparative_analysis"),
                 Choice("🧬 Format Conversion", "format_conversion"),
                 Choice("📈 JCVI Status", "jcvi_status"),
-                Choice("🔙 Back", "back")
             ]
+            
+            # Add v0.0.03 enhanced features if available
+            if ACQUISITION_AVAILABLE and self.jcvi_manager:
+                choices.insert(1, Choice("� Acquire & Analyze", "acquire_analyze"))
+                choices.insert(2, Choice("🔄 Complete Workflow", "complete_workflow_local"))
+                choices.insert(3, Choice("📋 List Available Genomes", "list_genomes"))
+            
+            choices.append(Choice("🔙 Back", "back"))
             
             action = questionary.select("JCVI Analysis:", choices=choices).ask()
             if action == "back" or action is None:
                 break
                 
             try:
-                if action == "analyze_genome":
+                if action == "acquire_analyze":
+                    # New v0.0.03 feature: acquire and immediately analyze
+                    available = self.jcvi_manager.list_available_genomes()
+                    if available:
+                        choices = [Choice(f"🧬 {genome}", genome) for genome in available]
+                        genome = questionary.select("Select genome:", choices=choices).ask()
+                        if genome:
+                            print(f"📥 Acquiring and analyzing {genome}...")
+                            success = self.jcvi_manager.acquire_genome(genome)
+                            if success:
+                                result = self.jcvi_manager.run_complete_workflow([genome])
+                                print(f"✅ Analysis complete: {result}")
+                            else:
+                                print("❌ Acquisition failed")
+                    else:
+                        print("❌ No genomes available")
+                        
+                elif action == "complete_workflow_local":
+                    # Local version of complete workflow
+                    self.complete_workflow()
+                    
+                elif action == "list_genomes":
+                    # List available genomes
+                    if self.jcvi_manager:
+                        available = self.jcvi_manager.list_available_genomes()
+                        print(f"🧬 Available genomes: {available}")
+                    else:
+                        print("❌ JCVI manager not available")
+                        
+                elif action == "analyze_genome":
                     genome_file = questionary.text("Enter genome file path:").ask()
                     if genome_file and os.path.exists(genome_file):
-                        # Use JCVI manager for analysis
-                        from src.api.jcvi_manager import JCVIManager
-                        manager = JCVIManager()
-                        if manager.is_available():
+                        # Use enhanced JCVI manager if available
+                        manager = self.jcvi_manager if self.jcvi_manager else None
+                        if not manager:
+                            from src.api.jcvi_manager import JCVIManager
+                            manager = JCVIManager()
+                            
+                        if manager and manager.is_available():
                             result = manager.analyze_genome(genome_file)
                             print(f"📊 Analysis Result:\n{result}")
                         else:
@@ -549,6 +629,96 @@ class InteractiveBioXenFactory:
                 logger.error(f"JCVI analysis error: {e}")
                 print(f"❌ Error: {e}")
                 questionary.press_any_key_to_continue().ask()
+
+    def acquire_genome(self):
+        """Enhanced v0.0.03: Acquire genome using new acquisition system."""
+        if not ACQUISITION_AVAILABLE or not self.acquisition_system:
+            print("⚠️  Enhanced acquisition features not available")
+            print("   Falling back to legacy download_genomes()")
+            self.download_genomes()
+            return
+            
+        print("\n📥 Genome Acquisition (v0.0.03)")
+        print("="*50)
+        
+        try:
+            # List available genomes
+            if self.jcvi_manager:
+                available = self.jcvi_manager.list_available_genomes()
+                print(f"🧬 Available genomes: {available}")
+                
+                if available:
+                    choices = [Choice(f"🧬 {genome}", genome) for genome in available]
+                    choices.append(Choice("🔙 Back", "back"))
+                    
+                    genome = questionary.select("Select genome to acquire:", choices=choices).ask()
+                    if genome == "back" or genome is None:
+                        return
+                        
+                    print(f"📥 Acquiring {genome}...")
+                    success = self.acquisition_system.acquire_genome(genome)
+                    
+                    if success:
+                        print(f"✅ Successfully acquired {genome}")
+                        print("🔧 Genome is ready for JCVI analysis")
+                        
+                        # Offer immediate analysis
+                        analyze = questionary.confirm("Start JCVI analysis now?").ask()
+                        if analyze:
+                            self.jcvi_analysis_menu()
+                    else:
+                        print(f"❌ Failed to acquire {genome}")
+                else:
+                    print("❌ No genomes available for acquisition")
+                    
+        except Exception as e:
+            logger.error(f"Acquisition error: {e}")
+            print(f"❌ Acquisition error: {e}")
+            
+        questionary.press_any_key_to_continue().ask()
+
+    def complete_workflow(self):
+        """Enhanced v0.0.03: Run complete acquisition + analysis workflow."""
+        if not ACQUISITION_AVAILABLE or not self.workflow_coordinator:
+            print("⚠️  Complete workflow features not available")
+            return
+            
+        print("\n🔄 Complete Workflow (v0.0.03)")
+        print("="*50)
+        print("This will acquire genomes and run comparative analysis")
+        
+        try:
+            # Get species for comparative analysis
+            species_list = []
+            print("\n📝 Enter species for comparative analysis:")
+            print("   (Enter empty line to finish)")
+            
+            while True:
+                species = questionary.text("Species name:").ask()
+                if not species:
+                    break
+                species_list.append(species)
+                print(f"   ✅ Added: {species}")
+                
+            if len(species_list) < 2:
+                print("❌ Need at least 2 species for comparative analysis")
+                return
+                
+            # Run complete workflow
+            print(f"\n🔄 Running complete workflow for {len(species_list)} species...")
+            results = self.workflow_coordinator.run_complete_workflow(species_list)
+            
+            if results:
+                print("✅ Workflow completed successfully!")
+                print(f"📊 Results: {results}")
+            else:
+                print("❌ Workflow failed")
+                
+        except Exception as e:
+            logger.error(f"Workflow error: {e}")
+            print(f"❌ Workflow error: {e}")
+            
+        questionary.press_any_key_to_continue().ask()
 
     def _check_hypervisor(self):
         """Check if hypervisor is initialized."""
@@ -632,10 +802,21 @@ class InteractiveBioXenFactory:
             print(f"❌ Error: {e}")
 
     def download_genomes(self):
-        """Download genomes from NCBI."""
+        """Enhanced: Download genomes with v0.0.03 acquisition when available."""
         if not self._check_hypervisor():
             return
+            
         print("\n🌐 Download Genomes")
+        
+        # Check if enhanced acquisition is available
+        if ACQUISITION_AVAILABLE and self.jcvi_manager:
+            print("✅ v0.0.03 Enhanced acquisition available")
+            use_enhanced = questionary.confirm("Use enhanced JCVI acquisition?").ask()
+            if use_enhanced:
+                self.acquire_genome()
+                return
+        
+        print("📥 Legacy genome simulation mode")
         print("📥 Available genome options:")
         
         options = [
