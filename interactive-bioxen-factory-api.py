@@ -10,9 +10,6 @@ import logging
 from pathlib import Path
 from typing import List, Dict, Optional
 
-# Add src path for the factory API
-sys.path.insert(0, str(Path(__file__).parent / 'src'))
-
 try:
     import questionary
     from questionary import Choice
@@ -22,7 +19,7 @@ except ImportError:
 
 # New Factory Pattern API imports - bioxen-jcvi-vm-lib v0.0.5 (Hypervisor-Focused)
 try:
-    from src.api import (
+    from bioxen_jcvi_vm_lib.api import (
         create_bio_vm, 
         BioResourceManager, 
         ConfigManager,
@@ -31,7 +28,7 @@ try:
         validate_biological_type,
         validate_vm_type
     )
-    from src.api.biological_vm import BiologicalVM
+    from bioxen_jcvi_vm_lib.api.biological_vm import BiologicalVM
     
     # For v0.0.5 hypervisor-focused architecture, avoid direct hypervisor imports
     # All functionality should go through the clean API layer
@@ -40,7 +37,7 @@ try:
     print("✅ BioXen JCVI VM Library v0.0.5 (Hypervisor-Focused) Factory API loaded successfully")
 except ImportError as e:
     print(f"⚠️ BioXen JCVI VM library Factory API not available: {e}")
-    print("💡 Make sure you're running from the correct directory with src/api/ available")
+    print("💡 Install with: pip install bioxen-jcvi-vm-lib")
     FACTORY_API_AVAILABLE = False
 
 logging.basicConfig(
@@ -104,6 +101,7 @@ class InteractiveBioXenFactoryAPI:
         """Create a biological VM using the Factory Pattern API v0.0.5 with corrected workflow."""
         if not FACTORY_API_AVAILABLE:
             print("❌ Factory API not available")
+            questionary.press_any_key_to_continue().ask()
             return
         
         print(f"\n🧬 Creating Biological VM (v0.0.5 Hypervisor-Focused)")
@@ -338,7 +336,7 @@ class InteractiveBioXenFactoryAPI:
                         else:
                             print(f"❌ Failed to destroy VM {vm_id}")
                             
-            except Exception in e:
+            except Exception as e:
                 logger.error(f"VM operation error: {e}")
                 print(f"❌ Error: {e}")
             
