@@ -17,3 +17,16 @@
 2025-09-05 09:17:31,682 - src.hypervisor.core - INFO - BioXen Hypervisor initialized with ecoli chassis
 2025-09-05 09:47:24,892 - src.chassis.ecoli - INFO - E. coli chassis ecoli_primary initialized successfully
 2025-09-05 09:47:24,893 - src.hypervisor.core - INFO - BioXen Hypervisor initialized with ecoli chassis
+2025-09-05 21:09:43,272 - src.chassis.ecoli - INFO - E. coli chassis ecoli_primary initialized successfully
+2025-09-05 21:09:43,273 - src.hypervisor.core - INFO - BioXen Hypervisor initialized with ecoli chassis
+2025-09-05 21:11:01,708 - __main__ - ERROR - VM creation error: Unsupported biological type: prokaryotic. Supported: ['syn3a', 'ecoli', 'minimal_cell']
+2025-09-05 21:11:09,880 - src.chassis.ecoli - INFO - E. coli chassis ecoli_primary initialized successfully
+2025-09-05 21:11:09,881 - src.hypervisor.core - INFO - BioXen Hypervisor initialized with ecoli chassis
+2025-09-05 21:11:15,761 - __main__ - ERROR - VM creation error: Unsupported biological type: prokaryotic. Supported: ['syn3a', 'ecoli', 'minimal_cell']
+2025-09-05 21:13:59,134 - __main__ - ERROR - VM creation error: Unsupported biological type: prokaryotic. Supported: ['syn3a', 'ecoli', 'minimal_cell']
+2025-09-05 21:17:48,894 - __main__ - ERROR - VM creation error: Unsupported biological type: prokaryotic. Supported: ['syn3a', 'ecoli', 'minimal_cell']
+2025-09-05 21:18:41,669 - __main__ - ERROR - VM creation error: Unsupported biological type: prokaryotic. Supported: ['syn3a', 'ecoli', 'minimal_cell']
+2025-09-05 21:18:52,775 - src.chassis.ecoli - INFO - E. coli chassis ecoli_primary initialized successfully
+2025-09-05 21:18:52,776 - src.hypervisor.core - INFO - BioXen Hypervisor initialized with ecoli chassis
+2025-09-05 21:18:58,197 - __main__ - ERROR - VM creation error: Unsupported biological type: prokaryotic. Supported: ['syn3a', 'ecoli', 'minimal_cell']
+2025-09-05 21:19:07,025 - __main__ - ERROR - VM creation error: Unsupported biological type: prokaryotic. Supported: ['syn3a', 'ecoli', 'minimal_cell']
