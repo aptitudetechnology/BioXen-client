@@ -8,8 +8,24 @@ import sys
 import time
 import logging
 import typing
+import os
 from pathlib import Path
 from typing import List, Dict, Optional
+
+# Import the working genome downloader
+try:
+    from download_genomes import (
+        MINIMAL_GENOMES, 
+        download_genome, 
+        list_available_genomes,
+        download_and_convert_genome,
+        interactive_genome_selection
+    )
+    REAL_GENOME_DOWNLOADER_AVAILABLE = True
+    print("✅ Real genome downloader available")
+except ImportError as e:
+    print(f"⚠️  Real genome downloader not available: {e}")
+    REAL_GENOME_DOWNLOADER_AVAILABLE = False
 
 # Fix typing._ClassVar compatibility issue for bioxen-jcvi-vm-lib
 if not hasattr(typing, '_ClassVar'):
@@ -48,6 +64,7 @@ except ImportError as e:
     print("Make sure the bioxen-jcvi-vm-lib package is properly installed")
     print("Run from /home/chris/BioXen-luavm/ directory with activated venv")
     FACTORY_API_AVAILABLE = False
+    ACQUISITION_AVAILABLE = False
 
 # Import os for file operations
 import os
@@ -791,50 +808,150 @@ class InteractiveBioXenFactory:
                 questionary.press_any_key_to_continue().ask()
 
     def acquire_genome(self):
-        """Enhanced v0.0.03: Acquire genome using new acquisition system."""
-        if not ACQUISITION_AVAILABLE or not self.acquisition_system:
-            print("⚠️  Enhanced acquisition features not available")
-            print("   Falling back to legacy download_genomes()")
-            self.download_genomes()
-            return
-            
-        print("\n📥 Genome Acquisition (v0.0.03)")
+        """Acquire genome using JCVI manager if available."""
+        print("\n📥 Genome Acquisition")
         print("="*50)
         
         try:
-            # List available genomes
-            if self.jcvi_manager:
+            # Check if JCVI manager is available
+            if not self.jcvi_manager:
+                print("❌ JCVI manager not available")
+                print("   Creating simulated genomes instead...")
+                self._create_default_genomes()
+                return
+            
+            # Try to get available genomes from JCVI manager
+            try:
                 available = self.jcvi_manager.list_available_genomes()
                 print(f"🧬 Available genomes: {available}")
+            except Exception as e:
+                print(f"⚠️  Could not list genomes: {e}")
+                available = []
+            
+            # If no genomes available, create some defaults
+            if not available:
+                print("📝 No remote genomes found, creating local simulated genomes...")
+                self._create_default_genomes()
+                return
                 
-                if available:
-                    choices = [Choice(f"🧬 {genome}", genome) for genome in available]
-                    choices.append(Choice("🔙 Back", "back"))
-                    
-                    genome = questionary.select("Select genome to acquire:", choices=choices).ask()
-                    if genome == "back" or genome is None:
-                        return
-                        
-                    print(f"📥 Acquiring {genome}...")
-                    success = self.acquisition_system.acquire_genome(genome)
-                    
+            # Let user select from available genomes
+            choices = [Choice(f"🧬 {genome}", genome) for genome in available]
+            choices.append(Choice("🔙 Back", "back"))
+            
+            genome = questionary.select("Select genome to acquire:", choices=choices).ask()
+            if genome == "back" or genome is None:
+                return
+                
+            print(f"📥 Acquiring {genome}...")
+            
+            # Try to acquire genome using JCVI manager
+            try:
+                if hasattr(self.jcvi_manager, 'acquire_genome'):
+                    success = self.jcvi_manager.acquire_genome(genome)
                     if success:
                         print(f"✅ Successfully acquired {genome}")
-                        print("🔧 Genome is ready for JCVI analysis")
-                        
-                        # Offer immediate analysis
-                        analyze = questionary.confirm("Start JCVI analysis now?").ask()
-                        if analyze:
-                            self.jcvi_analysis_menu()
+                        print("🔧 Genome is ready for analysis")
                     else:
                         print(f"❌ Failed to acquire {genome}")
+                        print("   Creating simulated version instead...")
+                        self._create_simulated_genome(f"sim_{genome}", genome, 1000000)
                 else:
-                    print("❌ No genomes available for acquisition")
+                    print("⚠️  Direct acquisition not supported")
+                    print("   Creating simulated version...")
+                    self._create_simulated_genome(f"sim_{genome}", genome, 1000000)
+            except Exception as e:
+                print(f"❌ Acquisition error: {e}")
+                print("   Creating simulated version...")
+                self._create_simulated_genome(f"sim_{genome}", genome, 1000000)
                     
         except Exception as e:
             logger.error(f"Acquisition error: {e}")
             print(f"❌ Acquisition error: {e}")
             
+        questionary.press_any_key_to_continue().ask()
+
+    def _create_default_genomes(self):
+        """Create a set of default simulated genomes."""
+        print("🧬 Creating default genome collection...")
+        default_genomes = [
+            {"accession": "NC_000913.3", "name": "E_coli_K12", "size": 4641652},
+            {"accession": "NC_000908.2", "name": "M_genitalium", "size": 580076},
+            {"accession": "NC_001133.9", "name": "S_cerevisiae", "size": 230218},
+            {"accession": "SYN3A", "name": "Syn3A_minimal", "size": 531000}
+        ]
+        
+        for genome in default_genomes:
+            self._create_simulated_genome(genome["accession"], genome["name"], genome["size"])
+            
+        print("✅ Default genome collection created")
+
+    def _use_real_genome_downloader(self):
+        """Use the real NCBI genome downloader."""
+        print("\n🧬 Real NCBI Genome Downloader")
+        print("="*50)
+        
+        # Show available genomes
+        print("📋 Available minimal genomes:")
+        for key, info in MINIMAL_GENOMES.items():
+            print(f"   🔑 {key}: {info['description']}")
+        
+        # Let user choose download option
+        choices = [
+            Choice("📋 List All Available Genomes", "list"),
+            Choice("📥 Download Single Genome", "single"), 
+            Choice("🌐 Download All Genomes", "all"),
+            Choice("🔙 Back to Simulated Mode", "back")
+        ]
+        
+        action = questionary.select("Select download option:", choices=choices).ask()
+        if action == "back" or action is None:
+            return
+            
+        # Create output directory
+        output_dir = Path("genomes")
+        output_dir.mkdir(exist_ok=True)
+        
+        try:
+            if action == "list":
+                list_available_genomes()
+                
+            elif action == "single":
+                # Let user select specific genome
+                genome_choices = [Choice(f"🧬 {key}: {info['description']}", key) 
+                                for key, info in MINIMAL_GENOMES.items()]
+                genome_choices.append(Choice("🔙 Back", "back"))
+                
+                genome_key = questionary.select("Select genome to download:", choices=genome_choices).ask()
+                if genome_key != "back" and genome_key is not None:
+                    print(f"\n📥 Downloading {genome_key}...")
+                    success = download_and_convert_genome(genome_key, output_dir)
+                    if success:
+                        print(f"✅ Successfully downloaded and converted {genome_key}")
+                        print(f"📁 Available in: {output_dir}")
+                    else:
+                        print(f"❌ Failed to download {genome_key}")
+                        
+            elif action == "all":
+                if questionary.confirm("Download ALL minimal genomes? This may take several minutes.").ask():
+                    print("\n🌐 Downloading all minimal genomes...")
+                    success_count = 0
+                    for genome_key in MINIMAL_GENOMES.keys():
+                        print(f"\n📥 Downloading {genome_key}...")
+                        if download_and_convert_genome(genome_key, output_dir):
+                            success_count += 1
+                            print(f"✅ {genome_key} completed")
+                        else:
+                            print(f"❌ {genome_key} failed")
+                    
+                    print(f"\n📊 Download Summary: {success_count}/{len(MINIMAL_GENOMES)} genomes successful")
+                    if success_count > 0:
+                        print(f"📁 Genomes available in: {output_dir}")
+                        
+        except Exception as e:
+            print(f"❌ Download error: {e}")
+            print("   Falling back to simulated genomes...")
+            self._create_default_genomes()
+        
         questionary.press_any_key_to_continue().ask()
 
     def complete_workflow(self):
@@ -968,21 +1085,36 @@ class InteractiveBioXenFactory:
             print(f"❌ Error: {e}")
 
     def download_genomes(self):
-        """Enhanced: Download genomes with v0.0.03 acquisition when available."""
+        """Enhanced: Download genomes with real NCBI downloads when available."""
         if not self._check_hypervisor():
             return
             
         print("\n🌐 Download Genomes")
         
-        # Check if enhanced acquisition is available
-        if ACQUISITION_AVAILABLE and self.jcvi_manager:
-            print("✅ v0.0.03 Enhanced acquisition available")
-            use_enhanced = questionary.confirm("Use enhanced JCVI acquisition?").ask()
-            if use_enhanced:
-                self.acquire_genome()
+        # Check if real genome downloader is available
+        if REAL_GENOME_DOWNLOADER_AVAILABLE:
+            print("✅ Real NCBI genome downloader available")
+            use_real = questionary.confirm("Use real NCBI genome downloads?").ask()
+            if use_real:
+                self._use_real_genome_downloader()
                 return
         
-        print("📥 Legacy genome simulation mode")
+        # Check if JCVI manager is available for real genome download
+        if FACTORY_API_AVAILABLE and self.jcvi_manager:
+            print("✅ JCVI manager available - attempting real genome acquisition")
+            try:
+                # Try to list available genomes from JCVI manager
+                available = self.jcvi_manager.list_available_genomes()
+                if available:
+                    print(f"🧬 Available genomes: {available}")
+                    use_real = questionary.confirm("Download real genomes using JCVI?").ask()
+                    if use_real:
+                        self.acquire_genome()
+                        return
+            except Exception as e:
+                print(f"⚠️  JCVI acquisition failed: {e}")
+        
+        print("📥 Simulated genome creation mode")
         print("📥 Available genome options:")
         
         options = [

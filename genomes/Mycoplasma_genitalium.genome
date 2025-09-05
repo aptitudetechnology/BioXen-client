@@ -1,0 +1,1115 @@
+# BioXen Genome Format v1.0
+# Organism: Mycoplasma genitalium
+# Total genes: 1108
+# Genome size: 580,076 bp
+# Coding density: 190.7%
+# Format: start length end strand type gene_id description
+#
+     686   1143     1828  1  1  gene-ABS333_RS00005   Unknown function
+     686   1143     1828  1  1  cds-WP_009885562.1    DNA polymerase III subunit beta
+    1828    933     2760  1  1  gene-ABS333_RS00010   Unknown function
+    1828    933     2760  1  1  cds-WP_009885561.1    J domain-containing protein
+    2845   1953     4797  1  1  gene-ABS333_RS00015   Unknown function
+    2845   1953     4797  1  1  cds-WP_009885560.1    DNA topoisomerase (ATP-hydrolyzing) subunit B
+    4812   2511     7322  1  1  gene-ABS333_RS00020   Unknown function
+    4812   2511     7322  1  1  cds-WP_009885559.1    DNA topoisomerase (ATP-hydrolyzing) subunit A
+    7294   1254     8547  1  1  gene-ABS333_RS00025   Unknown function
+    7294   1254     8547  1  2  cds-WP_010869286.1    serine--tRNA ligase
+    8551    633     9183  1  1  gene-ABS333_RS00030   Unknown function
+    8551    633     9183  1  1  cds-WP_009885557.1    dTMP kinase
+    9156    765     9920  1  1  gene-ABS333_RS00035   Unknown function
+    9156    765     9920  1  1  cds-WP_009885556.1    DNA polymerase III subunit delta'
+    9923   1329    11251  1  1  gene-ABS333_RS00040   Unknown function
+    9923   1329    11251  1  2  cds-WP_010869287.1    tRNA uridine-5-carboxymethylaminomethyl(34) synthesis GTPase MnmE
+   11251    789    12039  1  1  gene-ABS333_RS00045   Unknown function
+   11251    789    12039  1  1  cds-WP_009885976.1    TatD family hydrolase
+   12068    657    12724  1  1  gene-ABS333_RS00050   Unknown function
+   12068    657    12724  1  1  cds-WP_010869288.1    DNA primase-like protein
+   12701    864    13564 -1  1  gene-ABS333_RS00055   Unknown function
+   12701    864    13564 -1  1  cds-WP_009885973.1    ATP-grasp domain-containing protein
+   13569    864    14432 -1  1  gene-ABS333_RS00060   Unknown function
+   13569    864    14432 -1  1  cds-WP_010869289.1    RimK family alpha-L-glutamate ligase
+   14395    822    15216 -1  1  gene-ABS333_RS00065   Unknown function
+   14395    822    15216 -1  1  cds-WP_009885972.1    bifunctional 5,10-methylenetetrahydrofolate dehydrogenase/5,10-methenyltetrahydrofolate cyclohydrolase
+   15294     76    15369 -1  1  gene-ABS333_RS00070   Unknown function
+   15294     76    15369 -1  2  rna-ABS333_RS00070    tRNA-Ala
+   15375     77    15451 -1  1  gene-ABS333_RS00075   Unknown function
+   15375     77    15451 -1  2  rna-ABS333_RS00075    tRNA-Ile
+   15555   1872    17426  1  1  gene-ABS333_RS00080   Unknown function
+   15555   1872    17426  1  1  cds-WP_010869290.1    ABC transporter ATP-binding protein
+   17473   1770    19242  1  1  gene-ABS333_RS00085   Unknown function
+   17473   1770    19242  1  1  cds-WP_010869291.1    ABC transporter ATP-binding protein
+   19252   3096    22347  1  1  gene-ABS333_RS00090   Unknown function
+   19252   3096    22347  1  1  cds-WP_010869292.1    DEAD/DEAH box helicase
+   22389   1170    23558  1  1  gene-ABS333_RS00095   Unknown function
+   22389   1170    23558  1  1  cds-WP_009885921.1    molecular chaperone DnaJ
+   23542    927    24468  1  1  gene-ABS333_RS00100   Unknown function
+   23542    927    24468  1  1  cds-WP_009885920.1    prolyl aminopeptidase
+   24468   1539    26006  1  1  gene-ABS333_RS00105   Unknown function
+   24468   1539    26006  1  2  cds-WP_009885919.1    methionine--tRNA ligase
+   26036    438    26473  1  1  gene-ABS333_RS00110   Unknown function
+   26036    438    26473  1  1  cds-WP_009885918.1    DNA-directed RNA polymerase subunit delta
+   26479    867    27345  1  1  gene-ABS333_RS00115   Unknown function
+   26479    867    27345  1  1  cds-WP_009885917.1    class II fructose-1,6-bisphosphate aldolase
+   27346   1104    28449  1  1  gene-ABS333_RS00120   Unknown function
+   27346   1104    28449  1  1  cds-WP_009885916.1    redox-regulated ATPase YchF
+   28652    897    29548  1  1  gene-ABS333_RS00125   Unknown function
+   28652    897    29548  1  1  cds-WP_010869293.1    glycosyltransferase family 2 protein
+   29552    573    30124  1  1  gene-ABS333_RS00130   Unknown function
+   29552    573    30124  1  1  cds-WP_010869294.1    elongation factor P
+   30105    444    30548  1  1  gene-ABS333_RS00135   Unknown function
+   30105    444    30548  1  1  cds-WP_009885915.1    DUF1948 domain-containing protein
+   30548    606    31153  1  1  gene-ABS333_RS00140   Unknown function
+   30548    606    31153  1  1  cds-WP_009885914.1    DUF5453 family protein
+   31143    561    31703 -1  1  gene-ABS333_RS00145   Unknown function
+   31143    561    31703 -1  1  cds-WP_009885913.1    DJ-1/PfpI family protein
+   31705    621    32325 -1  1  gene-ABS333_RS00150   Unknown function
+   31705    621    32325 -1  1  cds-WP_009885912.1    uracil phosphoribosyltransferase
+   32359   4356    36714 -1  1  gene-ABS333_RS00155   Unknown function
+   32359   4356    36714 -1  1  cds-WP_010869296.1    DNA polymerase III subunit alpha
+   36977   2001    38977  1  1  gene-ABS333_RS00160   Unknown function
+   36977   2001    38977  1  1  cds-WP_010869297.1    DUF240 domain-containing protein
+   39127    777    39903  1  1  gene-ABS333_RS00165   Unknown function
+   39127    777    39903  1  1  cds-WP_009885697.1    MIP/aquaporin family protein
+   39872    642    40513 -1  1  gene-ABS333_RS00170   Unknown function
+   39872    642    40513 -1  1  cds-WP_009885698.1    thymidine kinase
+   40542   1245    41786  1  1  gene-ABS333_RS00175   Unknown function
+   40542   1245    41786  1  2  cds-WP_009885699.1    histidine--tRNA ligase
+   41758   1671    43428  1  1  gene-ABS333_RS00180   Unknown function
+   41758   1671    43428  1  2  cds-WP_009885700.1    aspartate--tRNA ligase
+   43404   1350    44753  1  1  gene-ABS333_RS00185   Unknown function
+   43404   1350    44753  1  1  cds-WP_029329854.1    nicotinate phosphoribosyltransferase
+   44750   1527    46276 -1  1  gene-ABS333_RS00190   Unknown function
+   44750   1527    46276 -1  1  cds-WP_010869300.1    glycerol kinase GlpK
+   46267   1155    47421 -1  1  gene-ABS333_RS00195   Unknown function
+   46267   1155    47421 -1  1  cds-WP_010869301.1    type 2 glycerol-3-phosphate oxidase
+   47580   1776    49355  1  1  gene-ABS333_RS00200   Unknown function
+   47580   1776    49355  1  1  cds-WP_009885703.1    BMP family ABC transporter substrate-binding protein
+   49376    267    49642  1  1  gene-ABS333_RS00205   Unknown function
+   49376    267    49642  1  1  cds-WP_010869302.1    HPr family phosphocarrier protein
+   49840   1680    51519  1  1  gene-ABS333_RS00210   Unknown function
+   49840   1680    51519  1  1  cds-WP_010869303.1    ATP-binding cassette domain-containing protein
+   51524    858    52381  1  1  gene-ABS333_RS00215   Unknown function
+   51524    858    52381  1  1  cds-WP_010869304.1    ABC transporter permease
+   52365    855    53219  1  1  gene-ABS333_RS00220   Unknown function
+   52365    855    53219  1  1  cds-WP_009885706.1    ABC transporter permease
+   53204   1452    54655  1  1  gene-ABS333_RS00225   Unknown function
+   53204   1452    54655  1  1  cds-WP_010869305.1    hypothetical protein
+   54657    948    55604  1  1  gene-ABS333_RS00230   Unknown function
+   54657    948    55604  1  2  cds-WP_009885708.1    tRNA (adenosine(37)-N6)-threonylcarbamoyltransferase complex transferase subunit TsaD
+   55588   1152    56739  1  1  gene-ABS333_RS00235   Unknown function
+   55588   1152    56739  1  1  cds-WP_009885709.1    methionine adenosyltransferase
+   56715    258    56972  1  1  gene-ABS333_RS00240   Unknown function
+   56715    258    56972  1  1  cds-WP_009885710.1    hypothetical protein
+   56969   1341    58309 -1  1  gene-ABS333_RS00245   Unknown function
+   56969   1341    58309 -1  1  cds-WP_010869306.1    signal recognition particle protein
+   58362    717    59078  1  1  gene-ABS333_RS00250   Unknown function
+   58362    717    59078  1  1  cds-WP_009885712.1    purine-nucleoside phosphorylase
+   59082    672    59753  1  1  gene-ABS333_RS00255   Unknown function
+   59082    672    59753  1  1  cds-WP_010869307.1    deoxyribose-phosphate aldolase
+   59740   1266    61005  1  1  gene-ABS333_RS00260   Unknown function
+   59740   1266    61005  1  1  cds-WP_009885713.1    thymidine phosphorylase
+   61014    393    61406  1  1  gene-ABS333_RS00265   Unknown function
+   61014    393    61406  1  1  cds-WP_010869308.1    cytidine deaminase
+   61406   1653    63058  1  1  gene-ABS333_RS00270   Unknown function
+   61406   1653    63058  1  1  cds-WP_009885715.1    phospho-sugar mutase
+   63035    951    63985 -1  1  gene-ABS333_RS00275   Unknown function
+   63035    951    63985 -1  1  cds-WP_009885716.1    transcription termination/antitermination protein NusG
+   63989    372    64360 -1  1  gene-ABS333_RS00280   Unknown function
+   63989    372    64360 -1  1  cds-WP_010869309.1    preprotein translocase subunit SecE
+   64367    147    64513 -1  1  gene-ABS333_RS00285   Unknown function
+   64367    147    64513 -1  1  cds-WP_009885719.1    50S ribosomal protein L33
+   64527    384    64910 -1  1  gene-ABS333_RS00290   Unknown function
+   64527    384    64910 -1  1  cds-WP_009885720.1    MPN070 family protein
+   64897    834    65730 -1  1  gene-ABS333_RS00295   Unknown function
+   64897    834    65730 -1  3  cds-WP_009885721.1    16S rRNA (cytidine(1402)-2'-O)-methyltransferase
+   65712    537    66248 -1  1  gene-ABS333_RS00300   Unknown function
+   65712    537    66248 -1  1  cds-WP_009885722.1    ribonuclease M5
+   66227    999    67225 -1  1  gene-ABS333_RS00305   Unknown function
+   66227    999    67225 -1  1  cds-WP_009885723.1    ribose-phosphate diphosphokinase
+   67206    438    67643 -1  1  gene-ABS333_RS00310   Unknown function
+   67206    438    67643 -1  1  cds-WP_009885724.1    SsrA-binding protein
+   67650    894    68543  1  1  gene-ABS333_RS00315   Unknown function
+   67650    894    68543  1  1  cds-WP_010869310.1    glycosyltransferase family 2 protein
+   68522   1704    70225 -1  1  gene-ABS333_RS00320   Unknown function
+   68522   1704    70225 -1  1  cds-WP_010869311.1    hypothetical protein
+   70393     89    70481 -1  1  gene-ABS333_RS00325   Unknown function
+   70393     89    70481 -1  2  rna-ABS333_RS00325    tRNA-Ser
+   70530   2043    72572  1  1  gene-ABS333_RS00330   Unknown function
+   70530   2043    72572  1  1  cds-WP_010869312.1    fructose-specific PTS transporter subunit EIIC
+   72523    912    73434  1  1  gene-ABS333_RS00335   Unknown function
+   72523    912    73434  1  1  cds-WP_010869313.1    1-phosphofructokinase
+   73445    204    73648  1  1  gene-ABS333_RS00340   Unknown function
+   73445    204    73648  1  1  cds-WP_009885728.1    hypothetical protein
+   73690   3996    77685  1  1  gene-ABS333_RS00345   Unknown function
+   73690   3996    77685  1  1  cds-WP_010869314.1    ABC transporter permease
+   77685   1401    79085  1  1  gene-ABS333_RS00350   Unknown function
+   77685   1401    79085  1  1  cds-WP_010869315.1    ABC transporter ATP-binding protein
+   79089   1947    81035  1  1  gene-ABS333_RS00355   Unknown function
+   79089   1947    81035  1  1  cds-WP_010869316.1    transketolase
+   81085   1512    82596  1  1  gene-ABS333_RS00360   Unknown function
+   81085   1512    82596  1  1  cds-WP_009885730.1    DUF31 family protein
+   82620   1425    84044  1  1  gene-ABS333_RS00365   Unknown function
+   82620   1425    84044  1  1  cds-WP_009885731.1    DUF31 family protein
+   84082    327    84408  1  1  gene-ABS333_RS00370   Unknown function
+   84082    327    84408  1  1  cds-WP_009885732.1    hypothetical protein
+   84551   1005    85555  1  1  gene-ABS333_RS00375   Unknown function
+   84551   1005    85555  1  1  cds-WP_009885733.1    hypothetical protein
+   85562    288    85849  1  1  cds-ABS333_RS02840    hypothetical protein
+   85996    615    86610  1  1  cds-ABS333_RS00385    adhesin P1
+   87536    210    87745  1  1  cds-ABS333_RS02845    adhesin
+   87935    273    88207  1  1  gene-ABS333_RS00395   Unknown function
+   87935    273    88207  1  1  cds-WP_009885924.1    MPN207a family PTS transporter accessory protein
+   88228   2727    90954  1  1  gene-ABS333_RS00400   Unknown function
+   88228   2727    90954  1  1  cds-WP_009885925.1    glucose-specific PTS IICBA transporter
+   91065    855    91919  1  1  gene-ABS333_RS00405   Unknown function
+   91065    855    91919  1  1  cds-WP_009885926.1    30S ribosomal protein S2
+   91924   2625    94548  1  1  gene-ABS333_RS00410   Unknown function
+   91924   2625    94548  1  1  cds-WP_009885927.1    cation-translocating P-type ATPase
+   94535   2421    96955  1  1  gene-ABS333_RS00415   Unknown function
+   94535   2421    96955  1  1  cds-WP_009885928.1    preprotein translocase subunit SecA
+   96933   1971    98903  1  1  gene-ABS333_RS00420   Unknown function
+   96933   1971    98903  1  1  cds-WP_010869318.1    excinuclease ABC subunit UvrB
+   98906    414    99319  1  1  gene-ABS333_RS00425   Unknown function
+   98906    414    99319  1  1  cds-WP_010869319.1    DUF5426 family protein
+   99383   3075   102457  1  1  gene-ABS333_RS00430   Unknown function
+   99383   3075   102457  1  1  cds-WP_010869320.1    P116 family lipid acquisition surface protein
+  102454    417   102870 -1  1  gene-ABS333_RS00435   Unknown function
+  102454    417   102870 -1  1  cds-WP_009885931.1    MPN214 family protein
+  103149   1179   104327  1  1  gene-ABS333_RS00440   Unknown function
+  103149   1179   104327  1  1  cds-WP_148211297.1    ABC transporter permease
+  104320   1131   105450  1  1  gene-ABS333_RS00445   Unknown function
+  104320   1131   105450  1  1  cds-WP_009885933.1    ABC transporter permease
+  105452   1209   106660  1  1  gene-ABS333_RS00450   Unknown function
+  105452   1209   106660  1  1  cds-WP_010869322.1    ABC transporter ATP-binding protein
+  106660   2547   109206  1  1  gene-ABS333_RS00455   Unknown function
+  106660   2547   109206  1  1  cds-WP_009885637.1    ATP-binding cassette domain-containing protein
+  109262    414   109675  1  1  gene-ABS333_RS00460   Unknown function
+  109262    414   109675  1  1  cds-WP_009885638.1    50S ribosomal protein L11
+  109675    681   110355  1  1  gene-ABS333_RS00465   Unknown function
+  109675    681   110355  1  1  cds-WP_010869323.1    50S ribosomal protein L1
+  110355    570   110924  1  1  gene-ABS333_RS00470   Unknown function
+  110355    570   110924  1  2  cds-WP_009885642.1    aminoacyl-tRNA hydrolase
+  110917    873   111789  1  1  gene-ABS333_RS00475   Unknown function
+  110917    873   111789  1  2  cds-WP_010869324.1    tRNA lysidine(34) synthetase TilS
+  111790    936   112725  1  1  gene-ABS333_RS00480   Unknown function
+  111790    936   112725  1  1  cds-WP_010869325.1    HPr(Ser) kinase/phosphatase
+  112718   1149   113866  1  1  gene-ABS333_RS00485   Unknown function
+  112718   1149   113866  1  1  cds-WP_009885643.1    prolipoprotein diacylglyceryl transferase
+  113895    420   114314  1  1  gene-ABS333_RS00490   Unknown function
+  113895    420   114314  1  1  cds-WP_010869326.1    30S ribosomal protein S12
+  114328    471   114798  1  1  gene-ABS333_RS00495   Unknown function
+  114328    471   114798  1  1  cds-WP_408634319.1    30S ribosomal protein S7
+  114808   2067   116874  1  1  gene-ABS333_RS00500   Unknown function
+  114808   2067   116874  1  1  cds-WP_009885646.1    elongation factor G
+  116926    627   117552  1  1  gene-ABS333_RS00505   Unknown function
+  116926    627   117552  1  1  cds-WP_009885647.1    30S ribosomal protein S6
+  117553    483   118035  1  1  gene-ABS333_RS00510   Unknown function
+  117553    483   118035  1  1  cds-WP_010869327.1    single-stranded DNA-binding protein
+  118028    315   118342  1  1  gene-ABS333_RS00515   Unknown function
+  118028    315   118342  1  1  cds-WP_009885648.1    30S ribosomal protein S18
+  118345    453   118797  1  1  gene-ABS333_RS00520   Unknown function
+  118345    453   118797  1  1  cds-WP_009885649.1    50S ribosomal protein L9
+  118781   1407   120187  1  1  gene-ABS333_RS00525   Unknown function
+  118781   1407   120187  1  1  cds-WP_010869329.1    replicative DNA helicase
+  120191   1197   121387  1  1  gene-ABS333_RS00530   Unknown function
+  120191   1197   121387  1  1  cds-WP_009885652.1    hypothetical protein
+  121571   1953   123523  1  1  gene-ABS333_RS00535   Unknown function
+  121571   1953   123523  1  1  cds-WP_010869330.1    DUF240 domain-containing protein
+  123586    732   124317  1  1  gene-ABS333_RS00540   Unknown function
+  123586    732   124317  1  1  cds-WP_014894390.1    uracil-DNA glycosylase
+  124417   1434   125850  1  1  gene-ABS333_RS00545   Unknown function
+  124417   1434   125850  1  2  cds-WP_009885655.1    Asp-tRNA(Asn)/Glu-tRNA(Gln) amidotransferase subunit GatC
+  125853   1434   127286  1  1  gene-ABS333_RS00550   Unknown function
+  125853   1434   127286  1  2  cds-WP_010869331.1    Asp-tRNA(Asn)/Glu-tRNA(Gln) amidotransferase subunit GatA
+  127279   1434   128712  1  1  gene-ABS333_RS00555   Unknown function
+  127279   1434   128712  1  2  cds-WP_009885658.1    Asp-tRNA(Asn)/Glu-tRNA(Gln) amidotransferase subunit GatB
+  128687    669   129355  1  1  gene-ABS333_RS00560   Unknown function
+  128687    669   129355  1  1  cds-WP_009885659.1    GntR family transcriptional regulator
+  129348    948   130295  1  1  gene-ABS333_RS00565   Unknown function
+  129348    948   130295  1  1  cds-WP_009885660.1    thioredoxin-disulfide reductase
+  130285    843   131127  1  1  gene-ABS333_RS00570   Unknown function
+  130285    843   131127  1  1  cds-WP_010869332.1    DNA-binding protein WhiA
+  131149    234   131382  1  1  gene-ABS333_RS00575   Unknown function
+  131149    234   131382  1  1  cds-WP_010869333.1    preprotein translocase subunit SecG
+  131385   2178   133562  1  1  gene-ABS333_RS00580   Unknown function
+  131385   2178   133562  1  1  cds-WP_009885662.1    ribonuclease R
+  133570    603   134172  1  1  gene-ABS333_RS00585   Unknown function
+  133570    603   134172  1  1  cds-WP_009885663.1    diadenylate cyclase CdaM
+  134147    651   134797 -1  1  gene-ABS333_RS00590   Unknown function
+  134147    651   134797 -1  1  cds-WP_234943745.1    peptide deformylase
+  134685    654   135338  1  1  gene-ABS333_RS00595   Unknown function
+  134685    654   135338  1  1  cds-WP_408634320.1    guanylate kinase
+  135338    783   136120  1  1  gene-ABS333_RS00600   Unknown function
+  135338    783   136120  1  1  cds-WP_010869334.1    PP2C family protein-serine/threonine phosphatase
+  136105   1164   137268  1  1  gene-ABS333_RS00605   Unknown function
+  136105   1164   137268  1  1  cds-WP_009885667.1    serine/threonine-protein kinase
+  137255    837   138091  1  1  gene-ABS333_RS00610   Unknown function
+  137255    837   138091  1  1  cds-WP_010869335.1    ribosome small subunit-dependent GTPase A
+  138112   1296   139407  1  1  gene-ABS333_RS00615   Unknown function
+  138112   1296   139407  1  1  cds-WP_010869336.1    glucose-6-phosphate isomerase
+  139397    630   140026  1  1  gene-ABS333_RS00620   Unknown function
+  139397    630   140026  1  1  cds-WP_009885669.1    ribulose-phosphate 3-epimerase
+  140040   1371   141410  1  1  gene-ABS333_RS00625   Unknown function
+  140040   1371   141410  1  2  cds-WP_009885670.1    asparagine--tRNA ligase
+  141367    690   142056  1  1  gene-ABS333_RS00630   Unknown function
+  141367    690   142056  1  1  cds-WP_193328795.1    CDP-diacylglycerol--glycerol-3-phosphate 3-phosphatidyltransferase
+  142081    474   142554  1  1  gene-ABS333_RS00635   Unknown function
+  142081    474   142554  1  1  cds-WP_009885673.1    nicotinamide-nucleotide amidohydrolase family protein
+  142563    756   143318  1  1  gene-ABS333_RS00640   Unknown function
+  142563    756   143318  1  1  cds-WP_010869338.1    2-C-methyl-D-erythritol 4-phosphate cytidylyltransferase
+  143311    645   143955  1  1  gene-ABS333_RS00645   Unknown function
+  143311    645   143955  1  1  cds-WP_010869339.1    MPN256 family protein
+  143936   1023   144958  1  1  gene-ABS333_RS00650   Unknown function
+  143936   1023   144958  1  1  cds-WP_010869340.1    UDP-glucose 4-epimerase GalE
+  144973   1695   146667  1  1  gene-ABS333_RS00655   Unknown function
+  144973   1695   146667  1  1  cds-WP_009885675.1    ABC transporter ATP-binding protein
+  146674   1563   148236  1  1  gene-ABS333_RS00660   Unknown function
+  146674   1563   148236  1  1  cds-WP_010869341.1    ABC transporter permease
+  148239    921   149159  1  1  gene-ABS333_RS00665   Unknown function
+  148239    921   149159  1  1  cds-WP_009885677.1    ABC transporter permease
+  149199   2130   151328  1  1  gene-ABS333_RS00670   Unknown function
+  149199   2130   151328  1  1  cds-WP_009885678.1    type I DNA topoisomerase
+  151306   1416   152721  1  1  gene-ABS333_RS00675   Unknown function
+  151306   1416   152721  1  1  cds-WP_010869342.1    MPN262 family protein
+  152768    309   153076  1  1  gene-ABS333_RS00680   Unknown function
+  152768    309   153076  1  1  cds-WP_010869343.1    thioredoxin
+  153082    858   153939  1  1  gene-ABS333_RS00685   Unknown function
+  153082    858   153939  1  1  cds-WP_010869344.1    Cof-type HAD-IIB family hydrolase
+  153920   1044   154963 -1  1  gene-ABS333_RS00690   Unknown function
+  153920   1044   154963 -1  2  cds-WP_009885680.1    tryptophan--tRNA ligase
+  154999    438   155436  1  1  gene-ABS333_RS00695   Unknown function
+  154999    438   155436  1  1  cds-WP_010869345.1    Spx/MgsR family RNA polymerase-binding regulatory protein
+  155444    780   156223  1  1  gene-ABS333_RS00700   Unknown function
+  155444    780   156223  1  1  cds-WP_009885682.1    NAD(+) kinase
+  156223    354   156576  1  1  gene-ABS333_RS00705   Unknown function
+  156223    354   156576  1  1  cds-WP_009885683.1    PTS sugar transporter subunit IIB
+  156566   1455   158020  1  1  gene-ABS333_RS00710   Unknown function
+  156566   1455   158020  1  1  cds-WP_010869346.1    ribonuclease Y
+  158023    287   158309  1  1  cds-ABS333_RS00715    MPN270 family protein
+  158323    282   158604  1  1  gene-ABS333_RS00720   Unknown function
+  158323    282   158604  1  1  cds-WP_237711663.1    hypothetical protein
+  158581    426   159006 -1  1  gene-ABS333_RS00725   Unknown function
+  158581    426   159006 -1  1  cds-WP_009885688.1    HIT family protein
+  158984    795   159778 -1  1  gene-ABS333_RS00730   Unknown function
+  158984    795   159778 -1  1  cds-WP_009885689.1    DUF1600 domain-containing protein
+  159798    303   160100  1  1  gene-ABS333_RS00735   Unknown function
+  159798    303   160100  1  1  cds-WP_010869347.1    YbaB/EbfC family nucleoid-associated protein
+  160072    843   160914 -1  1  gene-ABS333_RS00740   Unknown function
+  160072    843   160914 -1  1  cds-WP_010869348.1    DUF5378 family protein
+  160963   1473   162435  1  1  gene-ABS333_RS00745   Unknown function
+  160963   1473   162435  1  2  cds-WP_009885692.1    lysine--tRNA ligase
+  162395   1197   163591  1  1  gene-ABS333_RS00750   Unknown function
+  162395   1197   163591  1  1  cds-WP_193328796.1    UDP-galactopyranose mutase
+  163591   1797   165387  1  1  gene-ABS333_RS00755   Unknown function
+  163591   1797   165387  1  1  cds-WP_010869350.1    translation elongation factor 4
+  165471   1710   167180  1  1  gene-ABS333_RS00760   Unknown function
+  165471   1710   167180  1  1  cds-WP_009885694.1    ribonuclease J
+  167209    405   167613  1  1  gene-ABS333_RS00765   Unknown function
+  167209    405   167613  1  1  cds-WP_244374789.1    adhesin
+  167730    501   168230  1  1  gene-ABS333_RS00770   Unknown function
+  167730    501   168230  1  1  cds-WP_041593668.1    adhesin
+  168379   1431   169809  1  1  cds-ABS333_RS00775    adhesin P110
+  170012   1518   171529  1  1  gene-ABS333_RS00780   Unknown function
+  170012   1518   171529  1  3  rna-ABS333_RS00780    16S ribosomal RNA
+  171729   2916   174644  1  1  gene-ABS333_RS00785   Unknown function
+  171729   2916   174644  1  3  rna-ABS333_RS00785    23S ribosomal RNA
+  174685    109   174793  1  1  gene-ABS333_RS00790   Unknown function
+  174685    109   174793  1  3  rna-ABS333_RS00790    5S ribosomal RNA
+  174977    384   175360  1  1  gene-ABS333_RS00795   Unknown function
+  174977    384   175360  1  1  cds-WP_318023847.1    hypothetical protein
+  175311    217   175527  1  1  cds-ABS333_RS02850    hypothetical protein
+  175548    120   175667  1  1  gene-ABS333_RS02855   Unknown function
+  175548    120   175667  1  1  cds-WP_014894407.1    MgpC family cytadherence protein
+  175805   3342   179146  1  1  gene-ABS333_RS00805   Unknown function
+  175805   3342   179146  1  1  cds-WP_010869351.1    AAA domain-containing protein
+  179151   1596   180746  1  1  gene-ABS333_RS00810   Unknown function
+  179151   1596   180746  1  1  cds-WP_009885827.1    transcription termination factor NusA
+  180746    273   181018  1  1  gene-ABS333_RS00815   Unknown function
+  180746    273   181018  1  1  cds-WP_009885828.1    YlxR family protein
+  181005   1860   182864  1  1  gene-ABS333_RS00820   Unknown function
+  181005   1860   182864  1  1  cds-WP_010869352.1    translation initiation factor IF-2
+  182851    339   183189  1  1  gene-ABS333_RS00825   Unknown function
+  182851    339   183189  1  1  cds-WP_009885829.1    30S ribosome-binding factor RbfA
+  183214    840   184053  1  1  gene-ABS333_RS00830   Unknown function
+  183214    840   184053  1  1  cds-WP_009885830.1    MPN157 family protein
+  184053    810   184862  1  1  gene-ABS333_RS00835   Unknown function
+  184053    810   184862  1  1  cds-WP_009885831.1    riboflavin biosynthesis protein RibF
+  184875   1275   186149  1  1  gene-ABS333_RS00840   Unknown function
+  184875   1275   186149  1  1  cds-WP_010869353.1    CNNM domain-containing protein
+  186136   1128   187263  1  1  gene-ABS333_RS00845   Unknown function
+  186136   1128   187263  1  1  cds-WP_010869354.1    MPN160 family protein
+  187302   1230   188531  1  1  gene-ABS333_RS00850   Unknown function
+  187302   1230   188531  1  1  cds-WP_010869355.1    DUF2130 domain-containing protein
+  188607    846   189452  1  1  gene-ABS333_RS00855   Unknown function
+  188607    846   189452  1  1  cds-WP_010869356.1    MPN162 family protein
+  189492    465   189956  1  1  gene-ABS333_RS00860   Unknown function
+  189492    465   189956  1  1  cds-WP_010869357.1    MPN163 family protein
+  190046    321   190366  1  1  gene-ABS333_RS00865   Unknown function
+  190046    321   190366  1  1  cds-WP_009885835.1    30S ribosomal protein S10
+  190370    774   191143  1  1  gene-ABS333_RS00870   Unknown function
+  190370    774   191143  1  1  cds-WP_010869358.1    50S ribosomal protein L3
+  191143    636   191778  1  1  gene-ABS333_RS00875   Unknown function
+  191143    636   191778  1  1  cds-WP_009885836.1    50S ribosomal protein L4
+  191782    321   192102  1  1  gene-ABS333_RS00880   Unknown function
+  191782    321   192102  1  1  cds-WP_009885837.1    50S ribosomal protein L23
+  192102    858   192959  1  1  gene-ABS333_RS00885   Unknown function
+  192102    858   192959  1  1  cds-WP_009885838.1    50S ribosomal protein L2
+  192959    264   193222  1  1  gene-ABS333_RS00890   Unknown function
+  192959    264   193222  1  1  cds-WP_009885839.1    30S ribosomal protein S19
+  193225    435   193659  1  1  gene-ABS333_RS00895   Unknown function
+  193225    435   193659  1  1  cds-WP_009885840.1    50S ribosomal protein L22
+  193662    807   194468  1  1  gene-ABS333_RS00900   Unknown function
+  193662    807   194468  1  1  cds-WP_009885841.1    30S ribosomal protein S3
+  194474    417   194890  1  1  gene-ABS333_RS00905   Unknown function
+  194474    417   194890  1  1  cds-WP_009885842.1    50S ribosomal protein L16
+  194890    603   195492  1  1  gene-ABS333_RS00910   Unknown function
+  194890    603   195492  1  1  cds-WP_009885843.1    50S ribosomal protein L29
+  195492    258   195749  1  1  gene-ABS333_RS00915   Unknown function
+  195492    258   195749  1  1  cds-WP_009885844.1    30S ribosomal protein S17
+  195753    369   196121  1  1  gene-ABS333_RS00920   Unknown function
+  195753    369   196121  1  1  cds-WP_009885845.1    50S ribosomal protein L14
+  196121    327   196447  1  1  gene-ABS333_RS00925   Unknown function
+  196121    327   196447  1  1  cds-WP_009885846.1    50S ribosomal protein L24
+  196453    543   196995  1  1  gene-ABS333_RS00930   Unknown function
+  196453    543   196995  1  1  cds-WP_009885847.1    50S ribosomal protein L5
+  196998    186   197183  1  1  gene-ABS333_RS00935   Unknown function
+  196998    186   197183  1  1  cds-WP_009885848.1    type Z 30S ribosomal protein S14
+  197177    426   197602  1  1  gene-ABS333_RS00940   Unknown function
+  197177    426   197602  1  1  cds-WP_010869359.1    30S ribosomal protein S8
+  197609    555   198163  1  1  gene-ABS333_RS00945   Unknown function
+  197609    555   198163  1  1  cds-WP_010869360.1    50S ribosomal protein L6
+  198165    348   198512  1  1  gene-ABS333_RS00950   Unknown function
+  198165    348   198512  1  1  cds-WP_009885853.1    50S ribosomal protein L18
+  198517    636   199152  1  1  gene-ABS333_RS00955   Unknown function
+  198517    636   199152  1  1  cds-WP_009885854.1    30S ribosomal protein S5
+  199158    453   199610  1  1  gene-ABS333_RS00960   Unknown function
+  199158    453   199610  1  1  cds-WP_010869361.1    50S ribosomal protein L15
+  199610   1428   201037  1  1  gene-ABS333_RS00965   Unknown function
+  199610   1428   201037  1  1  cds-WP_009885855.1    preprotein translocase subunit SecY
+  201031    645   201675  1  1  gene-ABS333_RS00970   Unknown function
+  201031    645   201675  1  1  cds-WP_009885856.1    nucleoside monophosphate kinase
+  201678    747   202424  1  1  gene-ABS333_RS00975   Unknown function
+  201678    747   202424  1  1  cds-WP_009885857.1    type I methionyl aminopeptidase
+  202424    213   202636  1  1  gene-ABS333_RS00980   Unknown function
+  202424    213   202636  1  1  cds-WP_009885858.1    translation initiation factor IF-1
+  202647    114   202760  1  1  gene-ABS333_RS00985   Unknown function
+  202647    114   202760  1  1  cds-WP_009885859.1    50S ribosomal protein L36
+  202760    375   203134  1  1  gene-ABS333_RS00990   Unknown function
+  202760    375   203134  1  1  cds-WP_009885860.1    30S ribosomal protein S13
+  203134    366   203499  1  1  gene-ABS333_RS00995   Unknown function
+  203134    366   203499  1  1  cds-WP_009885861.1    30S ribosomal protein S11
+  203515    987   204501  1  1  gene-ABS333_RS01000   Unknown function
+  203515    987   204501  1  1  cds-WP_009885862.1    DNA-directed RNA polymerase subunit alpha
+  204514    372   204885  1  1  gene-ABS333_RS01005   Unknown function
+  204514    372   204885  1  1  cds-WP_010869362.1    50S ribosomal protein L17
+  204872    825   205696  1  1  gene-ABS333_RS01010   Unknown function
+  204872    825   205696  1  1  cds-WP_009885864.1    energy-coupling factor transporter ATPase
+  205681    915   206595  1  1  gene-ABS333_RS01015   Unknown function
+  205681    915   206595  1  1  cds-WP_009885865.1    energy-coupling factor transporter ATPase
+  206588   1263   207850  1  1  gene-ABS333_RS01020   Unknown function
+  206588   1263   207850  1  1  cds-WP_009885866.1    energy-coupling factor transporter transmembrane component T family protein
+  207843    735   208577  1  1  gene-ABS333_RS01025   Unknown function
+  207843    735   208577  1  2  cds-WP_009885867.1    tRNA pseudouridine(38-40) synthase TruA
+  208567   1824   210390  1  1  gene-ABS333_RS01030   Unknown function
+  208567   1824   210390  1  1  cds-WP_009885868.1    oligoendopeptidase F
+  210391    954   211344  1  1  gene-ABS333_RS01035   Unknown function
+  210391    954   211344  1  1  cds-WP_010869363.1    adenine-specific methyltransferase EcoRI family protein
+  211444   2106   213549  1  1  gene-ABS333_RS01040   Unknown function
+  211444   2106   213549  1  1  cds-WP_009885871.1    P68 family surface lipoprotein
+  213558   1005   214562  1  1  cds-ABS333_RS01045    hypothetical protein
+  214792    681   215472  1  1  cds-ABS333_RS01050    hypothetical protein
+  215654    177   215830  1  1  cds-ABS333_RS02860    MgpC family cytadherence protein
+  216016    753   216768  1  1  gene-ABS333_RS01060   Unknown function
+  216016    753   216768  1  1  cds-WP_010869364.1    thermonuclease family protein
+  216761   1758   218518  1  1  gene-ABS333_RS01065   Unknown function
+  216761   1758   218518  1  1  cds-WP_010869365.1    ATP-binding cassette domain-containing protein
+  218521    990   219510  1  1  gene-ABS333_RS01070   Unknown function
+  218521    990   219510  1  1  cds-WP_009886002.1    carbohydrate ABC transporter permease
+  219482    957   220438  1  1  gene-ABS333_RS01075   Unknown function
+  219482    957   220438  1  1  cds-WP_009886003.1    carbohydrate ABC transporter permease
+  220440    159   220598  1  1  gene-ABS333_RS01080   Unknown function
+  220440    159   220598  1  1  cds-WP_009886004.1    hypothetical protein
+  220607    957   221563  1  1  gene-ABS333_RS01085   Unknown function
+  220607    957   221563  1  1  cds-WP_009886005.1    DHH family phosphoesterase
+  221570   4335   225904  1  1  gene-ABS333_RS01090   Unknown function
+  221570   4335   225904  1  1  cds-WP_010869366.1    adhesin P1
+  225915   3153   229067  1  1  gene-ABS333_RS01095   Unknown function
+  225915   3153   229067  1  1  cds-WP_041593683.1    adhesin P110
+  229168    168   229335  1  1  gene-ABS333_RS01100   Unknown function
+  229168    168   229335  1  1  cds-WP_009886012.1    hypothetical protein
+  229461    408   229868  1  1  gene-ABS333_RS02865   Unknown function
+  229461    408   229868  1  1  cds-WP_041593670.1    hypothetical protein
+  229988    495   230482  1  1  gene-ABS333_RS02870   Unknown function
+  229988    495   230482  1  1  cds-WP_041593671.1    adhesin
+  231270    186   231455  1  1  cds-ABS333_RS02875    adhesin
+  231431    243   231673  1  1  gene-ABS333_RS02880   Unknown function
+  231431    243   231673  1  1  cds-WP_408634318.1    MgpC family cytadherence protein
+  232009   1026   233034  1  1  gene-ABS333_RS01125   Unknown function
+  232009   1026   233034  1  2  cds-WP_010869368.1    phenylalanine--tRNA ligase subunit alpha
+  233038   2421   235458  1  1  gene-ABS333_RS01130   Unknown function
+  233038   2421   235458  1  2  cds-WP_009885736.1    phenylalanine--tRNA ligase subunit beta
+  235517    546   236062  1  1  gene-ABS333_RS01135   Unknown function
+  235517    546   236062  1  1  cds-WP_009885737.1    translation initiation factor IF-3
+  236065    180   236244  1  1  gene-ABS333_RS01140   Unknown function
+  236065    180   236244  1  1  cds-WP_009885738.1    50S ribosomal protein L35
+  236247    375   236621  1  1  gene-ABS333_RS01145   Unknown function
+  236247    375   236621  1  1  cds-WP_009885739.1    50S ribosomal protein L20
+  236593    708   237300 -1  1  gene-ABS333_RS01150   Unknown function
+  236593    708   237300 -1  1  cds-WP_009885740.1    ribonuclease HIII
+  237347   1806   239152  1  1  gene-ABS333_RS01160   Unknown function
+  237347   1806   239152  1  1  cds-WP_010869369.1    DnaJ domain-containing protein
+  239164    654   239817  1  1  gene-ABS333_RS01165   Unknown function
+  239164    654   239817  1  1  cds-WP_009885741.1    nucleotide exchange factor GrpE
+  239827    369   240195  1  1  gene-ABS333_RS01170   Unknown function
+  239827    369   240195  1  1  cds-WP_010869370.1    MPN121 family protein
+  240213     74   240286 -1  1  gene-ABS333_RS01175   Unknown function
+  240213     74   240286 -1  2  rna-ABS333_RS01175    tRNA-Thr
+  240323   1902   242224  1  1  gene-ABS333_RS01180   Unknown function
+  240323   1902   242224  1  1  cds-WP_010869371.1    DNA topoisomerase IV subunit B
+  242224   2346   244569  1  1  gene-ABS333_RS01185   Unknown function
+  242224   2346   244569  1  1  cds-WP_010869372.1    DNA topoisomerase IV subunit A
+  244566   1032   245597 -1  1  gene-ABS333_RS01190   Unknown function
+  244566   1032   245597 -1  1  cds-WP_009885743.1    heat-inducible transcriptional repressor HrcA
+  245633   1794   247426  1  1  gene-ABS333_RS01195   Unknown function
+  245633   1794   247426  1  1  cds-WP_010869373.1    excinuclease ABC subunit UvrC
+  247419    492   247910  1  1  gene-ABS333_RS01200   Unknown function
+  247419    492   247910  1  1  cds-WP_193328797.1    metallophosphoesterase
+  247903    591   248493 -1  1  gene-ABS333_RS01205   Unknown function
+  247903    591   248493 -1  2  cds-WP_009885745.1    tRNA (adenosine(37)-N6)-threonylcarbamoyltransferase complex dimerization subunit type 1 TsaB
+  248477    927   249403 -1  1  gene-ABS333_RS01210   Unknown function
+  248477    927   249403 -1  1  cds-WP_009885746.1    RluA family pseudouridine synthase
+  249403    546   249948 -1  1  gene-ABS333_RS01215   Unknown function
+  249403    546   249948 -1  1  cds-WP_009885747.1    signal peptidase II
+  250149    660   250808  1  1  gene-ABS333_RS01220   Unknown function
+  250149    660   250808  1  1  cds-WP_009885748.1    DUF5454 family protein
+  250808    189   250996  1  1  gene-ABS333_RS01225   Unknown function
+  250808    189   250996  1  1  cds-WP_009885749.1    30S ribosomal protein S21
+  250998    444   251441  1  1  gene-ABS333_RS01230   Unknown function
+  250998    444   251441  1  1  cds-WP_009885750.1    DivIVA domain-containing protein
+  251444    345   251788  1  1  gene-ABS333_RS01235   Unknown function
+  251444    345   251788  1  1  cds-WP_009885751.1    holo-ACP synthase
+  251781    807   252587  1  1  gene-ABS333_RS01240   Unknown function
+  251781    807   252587  1  1  cds-WP_009885752.1    1-acyl-sn-glycerol-3-phosphate acyltransferase
+  252580   1416   253995  1  1  gene-ABS333_RS01245   Unknown function
+  252580   1416   253995  1  1  cds-WP_010869374.1    segregation/condensation protein A
+  253979    624   254602  1  1  gene-ABS333_RS01250   Unknown function
+  253979    624   254602  1  1  cds-WP_009885754.1    SMC-Scp complex subunit ScpB
+  254621    972   255592  1  1  gene-ABS333_RS01255   Unknown function
+  254621    972   255592  1  1  cds-WP_010869375.1    ATP-dependent 6-phosphofructokinase
+  255595   1527   257121  1  1  gene-ABS333_RS01260   Unknown function
+  255595   1527   257121  1  1  cds-WP_009885755.1    pyruvate kinase
+  257158     77   257234  1  1  gene-ABS333_RS01265   Unknown function
+  257158     77   257234  1  2  rna-ABS333_RS01265    tRNA-Cys
+  257269     77   257345  1  1  gene-ABS333_RS01270   Unknown function
+  257269     77   257345  1  2  rna-ABS333_RS01270    tRNA-Pro
+  257349     77   257425  1  1  gene-ABS333_RS01275   Unknown function
+  257349     77   257425  1  2  rna-ABS333_RS01275    tRNA-Met
+  257445     77   257521  1  1  gene-ABS333_RS01280   Unknown function
+  257445     77   257521  1  2  rna-ABS333_RS01280    tRNA-Ile
+  257559     92   257650  1  1  gene-ABS333_RS01285   Unknown function
+  257559     92   257650  1  2  rna-ABS333_RS01285    tRNA-Ser
+  257664     77   257740  1  1  gene-ABS333_RS01290   Unknown function
+  257664     77   257740  1  2  rna-ABS333_RS01290    tRNA-Met
+  257742     74   257815  1  1  gene-ABS333_RS01295   Unknown function
+  257742     74   257815  1  2  rna-ABS333_RS01295    tRNA-Asp
+  257818     76   257893  1  1  gene-ABS333_RS01300   Unknown function
+  257818     76   257893  1  2  rna-ABS333_RS01300    tRNA-Phe
+  258041   1119   259159  1  1  gene-ABS333_RS01305   Unknown function
+  258041   1119   259159  1  1  cds-WP_010869376.1    cytadherence-associated protein P65
+  259177   5418   264594  1  1  gene-ABS333_RS01310   Unknown function
+  259177   5418   264594  1  1  cds-WP_010869377.1    terminal organelle tip protein HMW2
+  264597   1041   265637  1  1  gene-ABS333_RS01315   Unknown function
+  264597   1041   265637  1  1  cds-WP_010869378.1    MPN311 family protein
+  265630    414   266043  1  1  gene-ABS333_RS01320   Unknown function
+  265630    414   266043  1  1  cds-WP_014894000.1    hypothetical protein
+  266075    282   266356 -1  1  gene-ABS333_RS01325   Unknown function
+  266075    282   266356 -1  1  cds-WP_009885758.1    MPN313 family protein
+  266423     77   266499  1  1  gene-ABS333_RS01330   Unknown function
+  266423     77   266499  1  2  rna-ABS333_RS01330    tRNA-Arg
+  266666    426   267091  1  1  gene-ABS333_RS01335   Unknown function
+  266666    426   267091  1  1  cds-WP_010869380.1    division/cell wall cluster transcriptional repressor MraZ
+  267081    930   268010  1  1  gene-ABS333_RS01340   Unknown function
+  267081    930   268010  1  3  cds-WP_009885760.1    16S rRNA (cytosine(1402)-N(4))-methyltransferase RsmH
+  268012   1236   269247  1  1  gene-ABS333_RS01345   Unknown function
+  268012   1236   269247  1  1  cds-WP_010869381.1    MPN316 family protein
+  269250   1110   270359  1  1  gene-ABS333_RS01350   Unknown function
+  269250   1110   270359  1  1  cds-WP_010869382.1    cell division protein FtsZ
+  270405   1470   271874  1  1  gene-ABS333_RS01355   Unknown function
+  270405   1470   271874  1  1  cds-WP_010869383.1    APC family permease
+  271840   1479   273318  1  1  gene-ABS333_RS01360   Unknown function
+  271840   1479   273318  1  1  cds-WP_010869384.1    APC family permease
+  273347    368   273714  1  1  cds-ABS333_RS01370    adhesin
+  273790    864   274653  1  1  gene-ABS333_RS01375   Unknown function
+  273790    864   274653  1  1  cds-WP_010869385.1    thymidylate synthase
+  274653    483   275135  1  1  gene-ABS333_RS01380   Unknown function
+  274653    483   275135  1  1  cds-WP_009885765.1    dihydrofolate reductase
+  275141   1023   276163  1  1  gene-ABS333_RS01385   Unknown function
+  275141   1023   276163  1  1  cds-WP_009885766.1    class 1b ribonucleoside-diphosphate reductase subunit beta
+  276167    462   276628  1  1  gene-ABS333_RS01390   Unknown function
+  276167    462   276628  1  1  cds-WP_010869386.1    class Ib ribonucleoside-diphosphate reductase assembly flavoprotein NrdI
+  276647   2166   278812  1  1  gene-ABS333_RS01395   Unknown function
+  276647   2166   278812  1  1  cds-WP_009885768.1    class 1b ribonucleoside-diphosphate reductase subunit alpha
+  278905    303   279207  1  1  gene-ABS333_RS01400   Unknown function
+  278905    303   279207  1  1  cds-WP_009885769.1    50S ribosomal protein L21
+  279200    300   279499  1  1  gene-ABS333_RS01405   Unknown function
+  279200    300   279499  1  1  cds-WP_009885770.1    ribosomal-processing cysteine protease Prp
+  279492    315   279806  1  1  gene-ABS333_RS01410   Unknown function
+  279492    315   279806  1  1  cds-WP_009885771.1    50S ribosomal protein L27
+  279799    876   280674  1  1  gene-ABS333_RS01415   Unknown function
+  279799    876   280674  1  1  cds-WP_009885772.1    deoxyribonuclease IV
+  280664    423   281086  1  1  gene-ABS333_RS01420   Unknown function
+  280664    423   281086  1  1  cds-WP_009885773.1    Fur family transcriptional regulator
+  281079    885   281963  1  1  gene-ABS333_RS01425   Unknown function
+  281079    885   281963  1  1  cds-WP_009885774.1    DUF3196 family protein
+  281993   1335   283327  1  1  gene-ABS333_RS01430   Unknown function
+  281993   1335   283327  1  1  cds-WP_009885775.1    trigger factor
+  283396   2388   285783  1  1  gene-ABS333_RS01435   Unknown function
+  283396   2388   285783  1  1  cds-WP_009885776.1    endopeptidase La
+  285780   1053   286832 -1  1  gene-ABS333_RS01440   Unknown function
+  285780   1053   286832 -1  1  cds-WP_010869387.1    nicotinate-nucleotide adenylyltransferase
+  286885   1863   288747  1  1  gene-ABS333_RS01445   Unknown function
+  286885   1863   288747  1  1  cds-WP_010869388.1    MPN337 family protein
+  288753   1893   290645  1  1  gene-ABS333_RS01450   Unknown function
+  288753   1893   290645  1  1  cds-WP_010869389.1    MPN338 family protein
+  290648    681   291328  1  1  gene-ABS333_RS01455   Unknown function
+  290648    681   291328  1  1  cds-WP_014894004.1    RDD family protein
+  291334   2112   293445  1  1  gene-ABS333_RS01460   Unknown function
+  291334   2112   293445  1  1  cds-WP_010869390.1    ATP-dependent helicase
+  293448    498   293945  1  1  gene-ABS333_RS01465   Unknown function
+  293448    498   293945  1  1  cds-WP_009885782.1    5-formyltetrahydrofolate cyclo-ligase
+  293938    846   294783  1  1  gene-ABS333_RS01470   Unknown function
+  293938    846   294783  1  1  cds-WP_010869391.1    TIGR00282 family metallophosphoesterase
+  294767    720   295486 -1  1  gene-ABS333_RS01475   Unknown function
+  294767    720   295486 -1  1  cds-WP_009885785.1    glycerol-3-phosphate 1-O-acyltransferase PlsY
+  295473    657   296129 -1  1  gene-ABS333_RS01480   Unknown function
+  295473    657   296129 -1  2  cds-WP_009885786.1    tRNA (adenine(22)-N(1))-methyltransferase TrmK
+  296113   1494   297606 -1  1  gene-ABS333_RS01485   Unknown function
+  296113   1494   297606 -1  1  cds-WP_009885787.1    RNA polymerase sigma factor
+  297651   1824   299474 -1  1  gene-ABS333_RS01490   Unknown function
+  297651   1824   299474 -1  1  cds-WP_009885788.1    DNA primase
+  299464   1341   300804 -1  1  gene-ABS333_RS01495   Unknown function
+  299464   1341   300804 -1  2  cds-WP_010869392.1    glycine--tRNA ligase
+  300824    729   301552 -1  1  gene-ABS333_RS01500   Unknown function
+  300824    729   301552 -1  3  cds-WP_010869393.1    23S rRNA (guanosine(2251)-2'-O)-methyltransferase RlmB
+  301555   1311   302865 -1  1  gene-ABS333_RS01505   Unknown function
+  301555   1311   302865 -1  2  cds-WP_014894005.1    cysteine--tRNA ligase
+  302846   1977   304822 -1  1  gene-ABS333_RS01510   Unknown function
+  302846   1977   304822 -1  1  cds-WP_009885791.1    NAD-dependent DNA ligase LigA
+  304892     74   304965 -1  1  gene-ABS333_RS01515   Unknown function
+  304892     74   304965 -1  2  rna-ABS333_RS01515    tRNA-Gly
+  305001   1098   306098  1  1  gene-ABS333_RS01520   Unknown function
+  305001   1098   306098  1  1  cds-WP_010869396.1    hypothetical protein
+  306617     75   306691  1  1  gene-ABS333_RS01525   Unknown function
+  306617     75   306691  1  2  rna-ABS333_RS01525    tRNA-Arg
+  306740     74   306813  1  1  gene-ABS333_RS01530   Unknown function
+  306740     74   306813  1  2  rna-ABS333_RS01530    tRNA-Trp
+  306821    771   307591  1  1  gene-ABS333_RS01535   Unknown function
+  306821    771   307591  1  1  cds-WP_010869397.1    MPN359 family protein
+  307637    294   307930  1  1  gene-ABS333_RS01540   Unknown function
+  307637    294   307930  1  1  cds-WP_010869398.1    50S ribosomal protein L31
+  307930   1080   309009  1  1  gene-ABS333_RS01545   Unknown function
+  307930   1080   309009  1  1  cds-WP_009885793.1    peptide chain release factor 1
+  309010   1371   310380  1  1  gene-ABS333_RS01550   Unknown function
+  309010   1371   310380  1  1  cds-WP_009885794.1    methyltransferase
+  310511   2298   312808  1  1  gene-ABS333_RS01555   Unknown function
+  310511   2298   312808  1  1  cds-WP_009885795.1    P68 family surface lipoprotein
+  312819    429   313247  1  1  cds-ABS333_RS01560    hypothetical protein
+  313247    576   313822  1  1  cds-ABS333_RS01565    adhesin P1
+  314864    342   315205  1  1  cds-ABS333_RS02885    MgpC family cytadherence protein
+  315301     77   315377 -1  1  gene-ABS333_RS01575   Unknown function
+  315301     77   315377 -1  2  rna-ABS333_RS01575    tRNA-Arg
+  315467    231   315697  1  1  gene-ABS333_RS01580   Unknown function
+  315467    231   315697  1  1  cds-WP_009885892.1    hypothetical protein
+  315701   2625   318325  1  1  gene-ABS333_RS01585   Unknown function
+  315701   2625   318325  1  1  cds-WP_009885893.1    DNA polymerase III subunit alpha
+  318332    876   319207  1  1  gene-ABS333_RS01590   Unknown function
+  318332    876   319207  1  1  cds-WP_010869399.1    5'-3' exonuclease
+  319207    855   320061  1  1  gene-ABS333_RS01595   Unknown function
+  319207    855   320061  1  1  cds-WP_010869400.1    DNA-formamidopyrimidine glycosylase
+  320177    876   321052  1  1  gene-ABS333_RS01600   Unknown function
+  320177    876   321052  1  1  cds-WP_009885894.1    Cof-type HAD-IIB family hydrolase
+  321046    597   321642  1  1  gene-ABS333_RS01605   Unknown function
+  321046    597   321642  1  1  cds-WP_009885895.1    dephospho-CoA kinase
+  321578    837   322414 -1  1  gene-ABS333_RS01610   Unknown function
+  321578    837   322414 -1  1  cds-WP_009885896.1    Cof-type HAD-IIB family hydrolase
+  322433   2379   324811 -1  1  gene-ABS333_RS01615   Unknown function
+  322433   2379   324811 -1  2  cds-WP_010869401.1    leucine--tRNA ligase
+  324812    348   325159 -1  1  gene-ABS333_RS01620   Unknown function
+  324812    348   325159 -1  1  cds-WP_009885898.1    MPN385 family protein
+  325193    687   325879 -1  1  gene-ABS333_RS01625   Unknown function
+  325193    687   325879 -1  1  cds-WP_009885899.1    deoxynucleoside kinase
+  325915     96   326010 -1  1  gene-ABS333_RS01630   Unknown function
+  326030   1023   327052 -1  1  gene-ABS333_RS01635   Unknown function
+  326030   1023   327052 -1  1  cds-WP_009885900.1    hypothetical protein
+  327045    387   327431 -1  1  gene-ABS333_RS01640   Unknown function
+  327045    387   327431 -1  1  cds-WP_009885901.1    hypothetical protein
+  327433   1011   328443 -1  1  gene-ABS333_RS01645   Unknown function
+  327433   1011   328443 -1  1  cds-WP_009885902.1    lipoate--protein ligase
+  328454   1374   329827 -1  1  gene-ABS333_RS01650   Unknown function
+  328454   1374   329827 -1  1  cds-WP_009885903.1    dihydrolipoyl dehydrogenase
+  329831   1155   330985 -1  1  gene-ABS333_RS01655   Unknown function
+  329831   1155   330985 -1  1  cds-WP_009885904.1    dihydrolipoamide acetyltransferase family protein
+  331235    981   332215 -1  1  gene-ABS333_RS01660   Unknown function
+  331235    981   332215 -1  1  cds-WP_009885905.1    alpha-ketoacid dehydrogenase subunit beta
+  332233   1077   333309 -1  1  gene-ABS333_RS01665   Unknown function
+  332233   1077   333309 -1  1  cds-WP_009885906.1    pyruvate dehydrogenase (acetyl-transferring) E1 component subunit alpha
+  333337   1437   334773 -1  1  gene-ABS333_RS01670   Unknown function
+  333337   1437   334773 -1  1  cds-WP_009885907.1    FAD-dependent oxidoreductase
+  334856    543   335398 -1  1  gene-ABS333_RS01675   Unknown function
+  334856    543   335398 -1  1  cds-WP_010869402.1    adenine phosphoribosyltransferase
+  335412   2913   338324 -1  1  gene-ABS333_RS01680   Unknown function
+  335412   2913   338324 -1  1  cds-WP_010869403.1    MPN396 family protein
+  338367   2163   340529  1  1  gene-ABS333_RS01685   Unknown function
+  338367   2163   340529  1  1  cds-WP_009885909.1    RelA/SpoT family protein
+  340526    657   341182 -1  1  gene-ABS333_RS01690   Unknown function
+  340526    657   341182 -1  1  cds-WP_010869404.1    MG_279/MG_280 family protein
+  341175    798   341972 -1  1  gene-ABS333_RS01695   Unknown function
+  341175    798   341972 -1  1  cds-WP_009885910.1    MG_279/MG_280 family protein
+  342033   1671   343703 -1  1  gene-ABS333_RS01700   Unknown function
+  342033   1671   343703 -1  1  cds-WP_010869405.1    IgG-blocking protein M
+  343884     74   343957 -1  1  gene-ABS333_RS01705   Unknown function
+  343884     74   343957 -1  2  rna-ABS333_RS01705    tRNA-Gly
+  343965     86   344050 -1  1  gene-ABS333_RS01710   Unknown function
+  343965     86   344050 -1  2  rna-ABS333_RS01710    tRNA-Leu
+  344051     75   344125 -1  1  gene-ABS333_RS01715   Unknown function
+  344051     75   344125 -1  2  rna-ABS333_RS01715    tRNA-Lys
+  344172     75   344246 -1  1  gene-ABS333_RS01720   Unknown function
+  344172     75   344246 -1  2  rna-ABS333_RS01720    tRNA-Gln
+  344251     87   344337 -1  1  gene-ABS333_RS01725   Unknown function
+  344251     87   344337 -1  2  rna-ABS333_RS01725    tRNA-Tyr
+  344365    486   344850 -1  1  gene-ABS333_RS01730   Unknown function
+  344365    486   344850 -1  1  cds-WP_009885993.1    transcription elongation factor GreA
+  345031    135   345165  1  1  gene-ABS333_RS01735   Unknown function
+  345031    135   345165  1  1  cds-WP_261156652.1    hypothetical protein
+  345182   1452   346633  1  1  gene-ABS333_RS01740   Unknown function
+  345182   1452   346633  1  2  cds-WP_009885995.1    proline--tRNA ligase
+  346854    399   347252  1  1  gene-ABS333_RS01745   Unknown function
+  346854    399   347252  1  1  cds-WP_010869406.1    MG284/MPN403 family protein
+  347215   1044   348258  1  1  gene-ABS333_RS01750   Unknown function
+  347215   1044   348258  1  1  cds-WP_010869407.1    DUF5443 family protein
+  348261    591   348851  1  1  gene-ABS333_RS01755   Unknown function
+  348261    591   348851  1  1  cds-WP_010869408.1    DUF5452 family protein
+  348883    255   349137  1  1  gene-ABS333_RS01760   Unknown function
+  348883    255   349137  1  1  cds-WP_009885999.1    phosphopantetheine-binding protein
+  349128     75   349202  1  1  gene-ABS333_RS01765   Unknown function
+  349128     75   349202  1  2  rna-ABS333_RS01765    tRNA-Trp
+  349282    396   349677  1  1  gene-ABS333_RS01770   Unknown function
+  349282    396   349677  1  1  cds-WP_318023844.1    adhesin
+  349674    585   350258  1  1  cds-ABS333_RS01775    adhesin P1
+  350425   1356   351780  1  1  cds-ABS333_RS01780    MgpC family cytadherence protein
+  351791   1245   353035 -1  1  gene-ABS333_RS01785   Unknown function
+  351791   1245   353035 -1  1  cds-WP_041360951.1    DUF237 domain-containing protein
+  352975    708   353682 -1  1  cds-ABS333_RS02890    DUF240 domain-containing protein
+  354024   1107   355130  1  1  gene-ABS333_RS01795   Unknown function
+  354024   1107   355130  1  1  cds-WP_009885873.1    high affinity transport system protein p37
+  355120    738   355857  1  1  gene-ABS333_RS01800   Unknown function
+  355120    738   355857  1  1  cds-WP_010869409.1    ABC transporter ATP-binding protein
+  355847   1632   357478  1  1  gene-ABS333_RS01805   Unknown function
+  355847   1632   357478  1  1  cds-WP_010869410.1    ABC transporter permease
+  357475    417   357891 -1  1  gene-ABS333_RS01810   Unknown function
+  357475    417   357891 -1  1  cds-WP_010869411.1    Holliday junction resolvase RuvX
+  357891   2703   360593 -1  1  gene-ABS333_RS01815   Unknown function
+  357891   2703   360593 -1  2  cds-WP_010869412.1    alanine--tRNA ligase
+  360651    735   361385 -1  1  gene-ABS333_RS01820   Unknown function
+  360651    735   361385 -1  1  cds-WP_010869413.1    glycerophosphodiester phosphodiesterase
+  361378   1419   362796 -1  1  gene-ABS333_RS01825   Unknown function
+  361378   1419   362796 -1  1  cds-WP_014894023.1    MFS transporter
+  362920   1104   364023 -1  1  gene-ABS333_RS01830   Unknown function
+  362920   1104   364023 -1  2  cds-WP_010869415.1    tRNA 2-thiouridine(34) synthase MnmA
+  364026    390   364415 -1  1  gene-ABS333_RS01835   Unknown function
+  364026    390   364415 -1  1  cds-WP_009885876.1    MG296/MPN423 family protein
+  364535   1041   365575 -1  1  gene-ABS333_RS01840   Unknown function
+  364535   1041   365575 -1  1  cds-WP_009885877.1    signal recognition particle-docking protein FtsY
+  365582   2949   368530 -1  1  gene-ABS333_RS01845   Unknown function
+  365582   2949   368530 -1  1  cds-WP_010869416.1    chromosome segregation protein SMC
+  368733    963   369695 -1  1  gene-ABS333_RS01850   Unknown function
+  368733    963   369695 -1  1  cds-WP_009885878.1    phosphate acetyltransferase
+  369713   1236   370948 -1  1  gene-ABS333_RS01855   Unknown function
+  369713   1236   370948 -1  1  cds-WP_010869417.1    phosphoglycerate kinase
+  370950   1014   371963 -1  1  gene-ABS333_RS01860   Unknown function
+  370950   1014   371963 -1  1  cds-WP_009885879.1    type I glyceraldehyde-3-phosphate dehydrogenase
+  371994    954   372947 -1  1  gene-ABS333_RS01865   Unknown function
+  371994    954   372947 -1  1  cds-WP_010869418.1    energy-coupling factor transporter transmembrane component T family protein
+  372926   1074   373999 -1  1  gene-ABS333_RS01870   Unknown function
+  372926   1074   373999 -1  1  cds-WP_010869419.1    ABC transporter ATP-binding protein
+  373981    813   374793 -1  1  gene-ABS333_RS01875   Unknown function
+  373981    813   374793 -1  1  cds-WP_009885882.1    energy-coupling factor ABC transporter ATP-binding protein
+  374919   1788   376706 -1  1  gene-ABS333_RS01880   Unknown function
+  374919   1788   376706 -1  1  cds-WP_009885883.1    molecular chaperone DnaK
+  376794   1182   377975 -1  1  gene-ABS333_RS01885   Unknown function
+  376794   1182   377975 -1  1  cds-WP_010869420.1    lysylphosphatidylglycerol synthase transmembrane domain-containing protein
+  377975   3534   381508 -1  1  gene-ABS333_RS01890   Unknown function
+  377975   3534   381508 -1  1  cds-WP_010869421.1    DUF3713 domain-containing protein
+  381493   1233   382725 -1  1  gene-ABS333_RS01895   Unknown function
+  381493   1233   382725 -1  1  cds-WP_010869422.1    DEAD/DEAH box helicase
+  382732   3678   386409 -1  1  gene-ABS333_RS01900   Unknown function
+  382732   3678   386409 -1  1  cds-WP_010869423.1    DUF3713 domain-containing protein
+  386463    807   387269  1  1  gene-ABS333_RS01905   Unknown function
+  386463    807   387269  1  1  cds-WP_009885888.1    alpha/beta fold hydrolase
+  387276    618   387893 -1  1  gene-ABS333_RS01910   Unknown function
+  387276    618   387893 -1  1  cds-WP_009885889.1    30S ribosomal protein S4
+  387916   3420   391335 -1  1  gene-ABS333_RS01915   Unknown function
+  387916   3420   391335 -1  1  cds-WP_010869424.1    terminal organelle protein HMW1
+  391395    864   392258 -1  1  gene-ABS333_RS01920   Unknown function
+  391395    864   392258 -1  1  cds-WP_010869425.1    ECF transporter S component
+  392303   1332   393634 -1  1  gene-ABS333_RS01925   Unknown function
+  392303   1332   393634 -1  1  cds-WP_009885988.1    MPN449 family protein
+  393658    894   394551 -1  1  gene-ABS333_RS01930   Unknown function
+  393658    894   394551 -1  1  cds-WP_009885989.1    DNA polymerase III subunit delta
+  394475   1110   395584 -1  1  gene-ABS333_RS01935   Unknown function
+  394475   1110   395584 -1  1  cds-WP_009885990.1    ComEC/Rec2 family competence protein
+  395625   1800   397424 -1  1  gene-ABS333_RS01940   Unknown function
+  395625   1800   397424 -1  1  cds-WP_010869426.1    terminal organelle protein HMW3
+  397439    843   398281 -1  1  gene-ABS333_RS01945   Unknown function
+  397439    843   398281 -1  1  cds-WP_010869427.1    adhesin P32
+  398298    537   398834 -1  1  gene-ABS333_RS01950   Unknown function
+  398298    537   398834 -1  1  cds-WP_010869428.1    MG319/MPN454 family protein
+  398938    861   399798 -1  1  gene-ABS333_RS01955   Unknown function
+  398938    861   399798 -1  1  cds-WP_010869429.1    MPN455 family protein
+  399868     91   399958  1  1  gene-ABS333_RS01960   Unknown function
+  399868     91   399958  1  2  rna-ABS333_RS01960    tRNA-Ser
+  399960     89   400048  1  1  gene-ABS333_RS01965   Unknown function
+  399960     89   400048  1  2  rna-ABS333_RS01965    tRNA-Ser
+  400119   2805   402923 -1  1  gene-ABS333_RS01970   Unknown function
+  400119   2805   402923 -1  1  cds-WP_010869430.1    MG321/MPN456 family lipoprotein
+  403134     85   403218 -1  1  gene-ABS333_RS01975   Unknown function
+  403134     85   403218 -1  2  rna-ABS333_RS01975    tRNA-Leu
+  403224     76   403299 -1  1  gene-ABS333_RS01980   Unknown function
+  403224     76   403299 -1  2  rna-ABS333_RS01980    tRNA-Lys
+  403306     76   403381 -1  1  gene-ABS333_RS01985   Unknown function
+  403306     76   403381 -1  2  rna-ABS333_RS01985    tRNA-Thr
+  403383     76   403458 -1  1  gene-ABS333_RS01990   Unknown function
+  403383     76   403458 -1  2  rna-ABS333_RS01990    tRNA-Val
+  403467     75   403541 -1  1  gene-ABS333_RS01995   Unknown function
+  403467     75   403541 -1  2  rna-ABS333_RS01995    tRNA-Thr
+  403544     77   403620 -1  1  gene-ABS333_RS02000   Unknown function
+  403544     77   403620 -1  2  rna-ABS333_RS02000    tRNA-Glu
+  403627     75   403701 -1  1  gene-ABS333_RS02005   Unknown function
+  403627     75   403701 -1  2  rna-ABS333_RS02005    tRNA-Asn
+  403723   1698   405420 -1  1  gene-ABS333_RS02010   Unknown function
+  403723   1698   405420 -1  1  cds-WP_009885956.1    potassium transporter TrkG
+  405456    684   406139  1  1  gene-ABS333_RS02015   Unknown function
+  405456    684   406139  1  1  cds-WP_010869432.1    potassium channel family protein
+  406179    341   406519 -1  1  gene-ABS333_RS02020   Unknown function
+  406542    388   406929  1  1  gene-ABS333_RS02025   Unknown function
+  406975    810   407784 -1  1  gene-ABS333_RS02030   Unknown function
+  406975    810   407784 -1  1  cds-WP_009885959.1    hypothetical protein
+  407729   1065   408793 -1  1  gene-ABS333_RS02035   Unknown function
+  407729   1065   408793 -1  1  cds-WP_009885960.1    aminopeptidase P family protein
+  408793    162   408954 -1  1  gene-ABS333_RS02040   Unknown function
+  408793    162   408954 -1  1  cds-WP_009885961.1    50S ribosomal protein L33
+  408971    888   409858 -1  1  gene-ABS333_RS02045   Unknown function
+  408971    888   409858 -1  1  cds-WP_009885962.1    DegV family protein
+  409871    807   410677 -1  1  gene-ABS333_RS02050   Unknown function
+  409871    807   410677 -1  1  cds-WP_010869433.1    alpha/beta fold hydrolase
+  410664   2271   412934 -1  1  gene-ABS333_RS02055   Unknown function
+  410664   2271   412934 -1  1  cds-WP_010869434.1    MG328/MPN474 family protein
+  412973   1347   414319 -1  1  gene-ABS333_RS02060   Unknown function
+  412973   1347   414319 -1  1  cds-WP_009885980.1    ribosome biogenesis GTPase Der
+  414323    654   414976 -1  1  gene-ABS333_RS02065   Unknown function
+  414323    654   414976 -1  1  cds-WP_010869435.1    (d)CMP kinase
+  414985    639   415623 -1  1  gene-ABS333_RS02070   Unknown function
+  414985    639   415623 -1  1  cds-WP_010869436.1    MPN477 family protein
+  415611    720   416330 -1  1  gene-ABS333_RS02075   Unknown function
+  415611    720   416330 -1  1  cds-WP_009885985.1    YebC/PmpR family DNA-binding transcriptional regulator
+  416337    594   416930 -1  1  gene-ABS333_RS02080   Unknown function
+  416337    594   416930 -1  1  cds-WP_009885986.1    FMN-dependent NADH-azoreductase
+  416967   2514   419480 -1  1  gene-ABS333_RS02085   Unknown function
+  416967   2514   419480 -1  2  cds-WP_010869437.1    valine--tRNA ligase
+  419470    576   420045 -1  1  gene-ABS333_RS02090   Unknown function
+  419470    576   420045 -1  1  cds-WP_010869438.1    ribosome biogenesis GTP-binding protein YihA/YsxC
+  420053    222   420274 -1  1  gene-ABS333_RS02095   Unknown function
+  420053    222   420274 -1  1  cds-WP_009885966.1    YneF family protein
+  420333   1026   421358  1  1  gene-ABS333_RS02100   Unknown function
+  420333   1026   421358  1  1  cds-WP_010869439.1    glycosyltransferase family 2 protein
+  421467   1227   422693  1  1  gene-ABS333_RS02105   Unknown function
+  421467   1227   422693  1  1  cds-WP_010869440.1    cysteine desulfurase
+  422697    417   423113  1  1  gene-ABS333_RS02110   Unknown function
+  422697    417   423113  1  1  cds-WP_009885968.1    iron-sulfur cluster assembly scaffold protein
+  423100   3813   426912 -1  1  gene-ABS333_RS02115   Unknown function
+  423100   3813   426912 -1  1  cds-WP_009885969.1    DUF3713 domain-containing protein
+  427090   1023   428112 -1  1  gene-ABS333_RS02120   Unknown function
+  427090   1023   428112 -1  1  cds-WP_009885970.1    recombinase RecA
+  428307   1317   429623  1  1  cds-ABS333_RS02125    MgpC family cytadherence protein
+  429619    330   429948  1  1  cds-ABS333_RS02895    hypothetical protein
+  430098    486   430583  1  1  gene-ABS333_RS02135   Unknown function
+  430098    486   430583  1  1  cds-WP_041593680.1    adhesin
+  430580   3879   434458 -1  1  gene-ABS333_RS02140   Unknown function
+  430580   3879   434458 -1  1  cds-WP_014894042.1    DNA-directed RNA polymerase subunit beta'
+  434468   4173   438640 -1  1  gene-ABS333_RS02145   Unknown function
+  434468   4173   438640 -1  1  cds-WP_009885798.1    DNA-directed RNA polymerase subunit beta
+  438730    507   439236 -1  1  gene-ABS333_RS02150   Unknown function
+  438730    507   439236 -1  1  cds-WP_009885799.1    NADPH-dependent FMN reductase
+  439315   1041   440355 -1  1  gene-ABS333_RS02155   Unknown function
+  439315   1041   440355 -1  1  cds-WP_010869442.1    MPN518 family protein
+  440359    822   441180 -1  1  gene-ABS333_RS02160   Unknown function
+  440359    822   441180 -1  1  cds-WP_009885800.1    alpha/beta hydrolase
+  441191   2688   443878 -1  1  gene-ABS333_RS02165   Unknown function
+  441191   2688   443878 -1  2  cds-WP_010869443.1    isoleucine--tRNA ligase
+  443922    501   444422  1  1  gene-ABS333_RS02170   Unknown function
+  443922    501   444422  1  2  cds-WP_009885804.1    tRNA (uridine(34)/cytosine(34)/5-carboxymethylaminomethyluridine(34)-2'-O)-methyltransferase TrmL
+  444413    633   445045  1  1  gene-ABS333_RS02175   Unknown function
+  444413    633   445045  1  2  cds-WP_009885805.1    tRNA (guanosine(46)-N7)-methyltransferase TrmB
+  445078     76   445153  1  1  gene-ABS333_RS02180   Unknown function
+  445078     76   445153  1  2  rna-ABS333_RS02180    tRNA-His
+  445197    969   446165 -1  1  gene-ABS333_RS02185   Unknown function
+  445197    969   446165 -1  1  cds-WP_009885806.1    hypothetical protein
+  446178     88   446265 -1  1  gene-ABS333_RS02190   Unknown function
+  446178     88   446265 -1  2  rna-ABS333_RS02190    tRNA-Leu
+  446618   1173   447790  1  1  gene-ABS333_RS02195   Unknown function
+  446618   1173   447790  1  1  cds-WP_009885807.1    replication initiation and membrane attachment family protein
+  447790    936   448725  1  1  gene-ABS333_RS02200   Unknown function
+  447790    936   448725  1  1  cds-WP_010869445.1    MPN526 family protein
+  448783     82   448864  1  1  gene-ABS333_RS02205   Unknown function
+  448783     82   448864  1  2  rna-ABS333_RS02205    tRNA-Leu
+  448943    675   449617 -1  1  gene-ABS333_RS02210   Unknown function
+  448943    675   449617 -1  1  cds-WP_009885808.1    MPN527 family putative ECF transporter permease subunit
+  449665    555   450219  1  1  gene-ABS333_RS02215   Unknown function
+  449665    555   450219  1  1  cds-WP_009885809.1    inorganic diphosphatase
+  450222    501   450722  1  1  gene-ABS333_RS02220   Unknown function
+  450222    501   450722  1  1  cds-WP_009885810.1    Holliday junction resolvase RecU
+  450719    330   451048 -1  1  gene-ABS333_RS02225   Unknown function
+  450719    330   451048 -1  1  cds-WP_009885811.1    HU family DNA-binding protein
+  451197    414   451610  1  1  gene-ABS333_RS02230   Unknown function
+  451197    414   451610  1  1  cds-WP_009885812.1    DUF1951 domain-containing protein
+  451613   2145   453757 -1  1  gene-ABS333_RS02235   Unknown function
+  451613   2145   453757 -1  1  cds-WP_010869446.1    ATP-dependent Clp protease ATP-binding subunit
+  453911    843   454753 -1  1  gene-ABS333_RS02240   Unknown function
+  453911    843   454753 -1  1  cds-WP_009885813.1    phosphotransferase family protein
+  454766   1182   455947 -1  1  gene-ABS333_RS02245   Unknown function
+  454766   1182   455947 -1  1  cds-WP_009885814.1    acetate/propionate family kinase
+  456055    210   456264  1  1  gene-ABS333_RS02250   Unknown function
+  456055    210   456264  1  1  cds-WP_014894048.1    hypothetical protein
+  456327    426   456752  1  1  gene-ABS333_RS02255   Unknown function
+  456327    426   456752  1  1  cds-WP_009885815.1    MPN534 family protein
+  456755    618   457372  1  1  gene-ABS333_RS02260   Unknown function
+  456755    618   457372  1  1  cds-WP_010869447.1    Holliday junction branch migration protein RuvA
+  457347    924   458270  1  1  gene-ABS333_RS02265   Unknown function
+  457347    924   458270  1  1  cds-WP_009885816.1    Holliday junction branch migration DNA helicase RuvB
+  458260   1236   459495 -1  1  gene-ABS333_RS02270   Unknown function
+  458260   1236   459495 -1  1  cds-WP_010869448.1    Y-family DNA polymerase
+  459615    489   460103  1  1  gene-ABS333_RS02275   Unknown function
+  459615    489   460103  1  1  cds-WP_009885818.1    50S ribosomal protein L10
+  460126    369   460494  1  1  gene-ABS333_RS02280   Unknown function
+  460126    369   460494  1  1  cds-WP_009885819.1    50S ribosomal protein L7/L12
+  460497    174   460670  1  1  gene-ABS333_RS02285   Unknown function
+  460497    174   460670  1  1  cds-WP_009885820.1    50S ribosomal protein L32
+  460685    267   460951 -1  1  gene-ABS333_RS02290   Unknown function
+  460685    267   460951 -1  1  cds-WP_009885821.1    30S ribosomal protein S20
+  461015    675   461689  1  1  gene-ABS333_RS02295   Unknown function
+  461015    675   461689  1  1  cds-WP_010869449.1    DUF5385 family protein
+  461682    936   462617  1  1  gene-ABS333_RS02300   Unknown function
+  461682    936   462617  1  2  cds-WP_010869450.1    methionyl-tRNA formyltransferase
+  462619   2004   464622  1  1  gene-ABS333_RS02305   Unknown function
+  462619   2004   464622  1  1  cds-WP_010869451.1    DUF2779 domain-containing protein
+  464600    835   465434 -1  1  cds-ABS333_RS02310    ribonuclease III
+  465424    987   466410 -1  1  gene-ABS333_RS02315   Unknown function
+  465424    987   466410 -1  1  cds-WP_009885824.1    phosphate acyltransferase PlsX
+  466410   1674   468083 -1  1  gene-ABS333_RS02320   Unknown function
+  466410   1674   468083 -1  1  cds-WP_010869453.1    DAK2 domain-containing protein
+  468152    972   469123 -1  1  gene-ABS333_RS02325   Unknown function
+  468152    972   469123 -1  1  cds-WP_010869454.1    RluA family pseudouridine synthase
+  469110    975   470084 -1  1  gene-ABS333_RS02330   Unknown function
+  469110    975   470084 -1  1  cds-WP_010869455.1    DHH family phosphoesterase
+  470077   1158   471234 -1  1  gene-ABS333_RS02335   Unknown function
+  470077   1158   471234 -1  2  cds-WP_009885937.1    tRNA uracil 4-sulfurtransferase ThiI
+  471221    846   472066 -1  1  gene-ABS333_RS02340   Unknown function
+  471221    846   472066 -1  1  cds-WP_009885938.1    MPN551 family DNA-binding protein
+  472067    825   472891 -1  1  gene-ABS333_RS02345   Unknown function
+  472067    825   472891 -1  1  cds-WP_010869456.1    MPN552 family protein
+  472884   1695   474578 -1  1  gene-ABS333_RS02350   Unknown function
+  472884   1695   474578 -1  2  cds-WP_010869457.1    threonine--tRNA ligase
+  474578    315   474892 -1  1  gene-ABS333_RS02355   Unknown function
+  474578    315   474892 -1  1  cds-WP_009885939.1    DUF3217 domain-containing protein
+  474898    582   475479 -1  1  gene-ABS333_RS02360   Unknown function
+  474898    582   475479 -1  1  cds-WP_009885940.1    MPN555 family protein chaperone
+  475526   1614   477139 -1  1  gene-ABS333_RS02365   Unknown function
+  475526   1614   477139 -1  2  cds-WP_009885941.1    arginine--tRNA ligase
+  477168   1839   479006  1  1  gene-ABS333_RS02370   Unknown function
+  477168   1839   479006  1  2  cds-WP_010869458.1    tRNA uridine-5-carboxymethylaminomethyl(34) synthesis enzyme MnmG
+  478999    579   479577  1  1  gene-ABS333_RS02375   Unknown function
+  478999    579   479577  1  3  cds-WP_009885942.1    16S rRNA (guanine(527)-N(7))-methyltransferase RsmG
+  479570    657   480226  1  1  gene-ABS333_RS02380   Unknown function
+  479570    657   480226  1  1  cds-WP_010869459.1    MPN559 family protein
+  480240     76   480315 -1  1  gene-ABS333_RS02385   Unknown function
+  480240     76   480315 -1  2  rna-ABS333_RS02385    tRNA-Arg
+  480691    642   481332  1  1  gene-ABS333_RS02390   Unknown function
+  480691    642   481332  1  1  cds-WP_009885943.1    uridine kinase
+  481329    747   482075 -1  1  gene-ABS333_RS02395   Unknown function
+  481329    747   482075 -1  1  cds-WP_009885944.1    NAD(+) synthase
+  482068   1302   483369 -1  1  gene-ABS333_RS02400   Unknown function
+  482068   1302   483369 -1  1  cds-WP_009885945.1    GTPase ObgE
+  483369    618   483986 -1  1  gene-ABS333_RS02405   Unknown function
+  483369    618   483986 -1  1  cds-WP_014894056.1    MPN565 family protein
+  483989    711   484699 -1  1  gene-ABS333_RS02410   Unknown function
+  483989    711   484699 -1  1  cds-WP_009885949.1    glycerophosphodiester phosphodiesterase family protein
+  484702   4851   489552 -1  1  gene-ABS333_RS02415   Unknown function
+  484702   4851   489552 -1  1  cds-WP_010869461.1    terminal organelle protein P200
+  489839    873   490711 -1  1  gene-ABS333_RS02420   Unknown function
+  489839    873   490711 -1  1  cds-WP_010869462.1    GTPase Era
+  490699    465   491163 -1  1  gene-ABS333_RS02425   Unknown function
+  490699    465   491163 -1  3  cds-WP_009885634.1    rRNA maturation RNase YbeY
+  491147    384   491530 -1  1  gene-ABS333_RS02430   Unknown function
+  491147    384   491530 -1  1  cds-WP_009885633.1    MPN570 family protein
+  491534   1983   493516 -1  1  gene-ABS333_RS02435   Unknown function
+  491534   1983   493516 -1  1  cds-WP_010869463.1    cysteine peptidase family C39 domain-containing protein
+  493624   1344   494967 -1  1  gene-ABS333_RS02440   Unknown function
+  493624   1344   494967 -1  1  cds-WP_009885632.1    leucyl aminopeptidase
+  494984   1632   496615 -1  1  gene-ABS333_RS02445   Unknown function
+  494984   1632   496615 -1  1  cds-WP_009885631.1    chaperonin GroEL
+  496628    333   496960 -1  1  gene-ABS333_RS02450   Unknown function
+  496628    333   496960 -1  1  cds-WP_010869464.1    co-chaperone GroES
+  497086   1221   498306 -1  1  gene-ABS333_RS02455   Unknown function
+  497086   1221   498306 -1  1  cds-WP_009885629.1    serine hydroxymethyltransferase
+  498316   1575   499890 -1  1  gene-ABS333_RS02460   Unknown function
+  498316   1575   499890 -1  1  cds-WP_010869465.1    DUF31 family protein
+  499999    282   500280 -1  1  gene-ABS333_RS02465   Unknown function
+  499999    282   500280 -1  1  cds-WP_009885627.1    MPN594 family protein
+  500261    459   500719 -1  1  gene-ABS333_RS02470   Unknown function
+  500261    459   500719 -1  1  cds-WP_009885626.1    ribose 5-phosphate isomerase B
+  500720   1701   502420 -1  1  gene-ABS333_RS02475   Unknown function
+  500720   1701   502420 -1  1  cds-WP_010869466.1    septation ring formation regulator EzrA
+  502422    402   502823 -1  1  gene-ABS333_RS02480   Unknown function
+  502422    402   502823 -1  1  cds-WP_010869467.1    F0F1 ATP synthase subunit epsilon
+  502828   1428   504255 -1  1  gene-ABS333_RS02485   Unknown function
+  502828   1428   504255 -1  1  cds-WP_041361274.1    F0F1 ATP synthase subunit beta
+  504260    840   505099 -1  1  gene-ABS333_RS02490   Unknown function
+  504260    840   505099 -1  1  cds-WP_009885623.1    ATP synthase F1 subunit gamma
+  505099   1557   506655 -1  1  gene-ABS333_RS02495   Unknown function
+  505099   1557   506655 -1  1  cds-WP_009885622.1    F0F1 ATP synthase subunit alpha
+  506671    531   507201 -1  1  gene-ABS333_RS02500   Unknown function
+  506671    531   507201 -1  1  cds-WP_009885621.1    ATP synthase F1 subunit delta
+  507194    627   507820 -1  1  gene-ABS333_RS02505   Unknown function
+  507194    627   507820 -1  1  cds-WP_009885620.1    F0F1 ATP synthase subunit B
+  507823    309   508131 -1  1  gene-ABS333_RS02510   Unknown function
+  507823    309   508131 -1  1  cds-WP_009885619.1    F0F1 ATP synthase subunit C
+  508134    879   509012 -1  1  gene-ABS333_RS02515   Unknown function
+  508134    879   509012 -1  1  cds-WP_009885618.1    F0F1 ATP synthase subunit A
+  508978    477   509454 -1  1  gene-ABS333_RS02520   Unknown function
+  508978    477   509454 -1  1  cds-WP_010869469.1    MG406 family protein
+  509460   1377   510836 -1  1  gene-ABS333_RS02525   Unknown function
+  509460   1377   510836 -1  1  cds-WP_009885616.1    phosphopyruvate hydratase
+  510903    474   511376  1  1  gene-ABS333_RS02530   Unknown function
+  510903    474   511376  1  1  cds-WP_010869470.1    peptide-methionine (S)-S-oxide reductase MsrA
+  511373    678   512050 -1  1  gene-ABS333_RS02535   Unknown function
+  511373    678   512050 -1  1  cds-WP_009885614.1    phosphate signaling complex protein PhoU
+  512053    990   513042 -1  1  gene-ABS333_RS02540   Unknown function
+  512053    990   513042 -1  1  cds-WP_009885613.1    phosphate ABC transporter ATP-binding protein PstB
+  513027   1965   514991 -1  1  gene-ABS333_RS02545   Unknown function
+  513027   1965   514991 -1  1  cds-WP_010869471.1    phosphate ABC transporter permease PstA
+  514991   1134   516124 -1  1  gene-ABS333_RS02550   Unknown function
+  514991   1134   516124 -1  1  cds-WP_010869472.1    substrate-binding domain-containing protein
+  516245   3111   519355 -1  1  gene-ABS333_RS02555   Unknown function
+  516245   3111   519355 -1  1  cds-WP_010869473.1    hypothetical protein
+  519420   1995   521414 -1  1  gene-ABS333_RS02560   Unknown function
+  519420   1995   521414 -1  1  cds-WP_010869474.1    hypothetical protein
+  521470    399   521868 -1  1  gene-ABS333_RS02565   Unknown function
+  521470    399   521868 -1  1  cds-WP_010869475.1    30S ribosomal protein S9
+  521874    441   522314 -1  1  gene-ABS333_RS02570   Unknown function
+  521874    441   522314 -1  1  cds-WP_010869476.1    50S ribosomal protein L13
+  522352   1794   524145 -1  1  gene-ABS333_RS02575   Unknown function
+  522352   1794   524145 -1  1  cds-WP_009885609.1    DNA polymerase III subunit gamma/tau
+  524151   2859   527009 -1  1  gene-ABS333_RS02580   Unknown function
+  524151   2859   527009 -1  1  cds-WP_014894509.1    excinuclease ABC subunit UvrA
+  526987   2508   529494 -1  1  gene-ABS333_RS02585   Unknown function
+  526987   2508   529494 -1  1  cds-WP_010869478.1    MPN620 family protein
+  529532   1686   531217 -1  1  gene-ABS333_RS02590   Unknown function
+  529532   1686   531217 -1  1  cds-WP_010869479.1    RNase J family beta-CASP ribonuclease
+  531220    261   531480 -1  1  gene-ABS333_RS02595   Unknown function
+  531220    261   531480 -1  1  cds-WP_009885608.1    30S ribosomal protein S15
+  531669   1350   533018  1  1  gene-ABS333_RS02600   Unknown function
+  531669   1350   533018  1  1  cds-WP_009885607.1    DEAD/DEAH box helicase
+  533041    195   533235  1  1  gene-ABS333_RS02605   Unknown function
+  533041    195   533235  1  1  cds-WP_009885606.1    50S ribosomal protein L28
+  533271    426   533696  1  1  gene-ABS333_RS02610   Unknown function
+  533271    426   533696  1  1  cds-WP_009885605.1    hydroperoxide reductase
+  533807    516   534322  1  1  gene-ABS333_RS02615   Unknown function
+  533807    516   534322  1  1  cds-WP_009885604.1    sigma-70 family RNA polymerase sigma factor
+  534319   1719   536037 -1  1  gene-ABS333_RS02620   Unknown function
+  534319   1719   536037 -1  1  cds-WP_010869480.1    phosphoenolpyruvate--protein phosphotransferase
+  536041   1524   537564 -1  1  gene-ABS333_RS02625   Unknown function
+  536041   1524   537564 -1  1  cds-WP_009885603.1    2,3-bisphosphoglycerate-independent phosphoglycerate mutase
+  537557    735   538291 -1  1  gene-ABS333_RS02630   Unknown function
+  537557    735   538291 -1  1  cds-WP_009885602.1    triose-phosphate isomerase
+  538351   1197   539547 -1  1  gene-ABS333_RS02635   Unknown function
+  538351   1197   539547 -1  1  cds-WP_009885601.1    YitT family protein
+  539633    897   540529  1  1  gene-ABS333_RS02640   Unknown function
+  539633    897   540529  1  1  cds-WP_009885600.1    translation elongation factor Ts
+  540510    732   541241  1  1  gene-ABS333_RS02645   Unknown function
+  540510    732   541241  1  1  cds-WP_009885599.1    UMP kinase
+  541241    552   541792  1  1  gene-ABS333_RS02650   Unknown function
+  541241    552   541792  1  1  cds-WP_010869481.1    ribosome recycling factor
+  541793   1194   542986  1  1  gene-ABS333_RS02655   Unknown function
+  541793   1194   542986  1  1  cds-WP_009885597.1    phosphatidate cytidylyltransferase
+  543006   1152   544157  1  1  gene-ABS333_RS02660   Unknown function
+  543006   1152   544157  1  1  cds-WP_009885596.1    restriction endonuclease subunit S
+  544562    819   545380 -1  1  gene-ABS333_RS02665   Unknown function
+  544562    819   545380 -1  1  cds-WP_009885595.1    lipoprotein
+  545380    777   546156 -1  1  gene-ABS333_RS02670   Unknown function
+  545380    777   546156 -1  1  cds-WP_009885594.1    lipoprotein
+  546299    411   546709 -1  1  gene-ABS333_RS02675   Unknown function
+  546299    411   546709 -1  1  cds-WP_009885592.1    DUF5426 family protein
+  546880    768   547647 -1  1  gene-ABS333_RS02680   Unknown function
+  546880    768   547647 -1  1  cds-WP_009885591.1    ribosome biogenesis GTPase YlqF
+  547664   1188   548851 -1  1  gene-ABS333_RS02685   Unknown function
+  547664   1188   548851 -1  1  cds-WP_010869483.1    YitT family protein
+  548867    360   549226 -1  1  gene-ABS333_RS02690   Unknown function
+  548867    360   549226 -1  1  cds-WP_010869484.1    50S ribosomal protein L19
+  549210    696   549905 -1  1  gene-ABS333_RS02695   Unknown function
+  549210    696   549905 -1  2  cds-WP_010869485.1    tRNA (guanosine(37)-N1)-methyltransferase TrmD
+  549905    288   550192 -1  1  gene-ABS333_RS02700   Unknown function
+  549905    288   550192 -1  1  cds-WP_009885588.1    30S ribosomal protein S16
+  550803   1644   552446 -1  1  gene-ABS333_RS02705   Unknown function
+  550803   1644   552446 -1  1  cds-WP_010869486.1    MATE family efflux transporter
+  552447    453   552899 -1  1  gene-ABS333_RS02710   Unknown function
+  552447    453   552899 -1  1  cds-WP_009885587.1    peptide-methionine (R)-S-oxide reductase MsrB
+  552863    686   553548 -1  2  cds-ABS333_RS02715    YtpR family tRNA-binding protein
+  553558    873   554430 -1  1  gene-ABS333_RS02720   Unknown function
+  553558    873   554430 -1  1  cds-WP_009885584.1    DegV family protein
+  554430   1185   555614 -1  1  gene-ABS333_RS02725   Unknown function
+  554430   1185   555614 -1  1  cds-WP_009885583.1    elongation factor Tu
+  555697    756   556452  1  1  gene-ABS333_RS02730   Unknown function
+  555697    756   556452  1  1  cds-WP_193328793.1    DUF1600 domain-containing protein
+  556437    879   557315  1  1  gene-ABS333_RS02735   Unknown function
+  556437    879   557315  1  1  cds-WP_009885581.1    UTP--glucose-1-phosphate uridylyltransferase GalU
+  557305    423   557727 -1  1  gene-ABS333_RS02740   Unknown function
+  557305    423   557727 -1  1  cds-WP_041361276.1    Ohr family peroxiredoxin
+  557759   1191   558949  1  1  gene-ABS333_RS02745   Unknown function
+  557759   1191   558949  1  2  cds-WP_010869488.1    tyrosine--tRNA ligase
+  558939   1005   559943 -1  1  gene-ABS333_RS02750   Unknown function
+  558939   1005   559943 -1  1  cds-WP_009885577.1    MPN670 family protein
+  559931    582   560512 -1  1  gene-ABS333_RS02755   Unknown function
+  559931    582   560512 -1  1  cds-WP_009885576.1    hypothetical protein
+  560496   2109   562604 -1  1  gene-ABS333_RS02760   Unknown function
+  560496   2109   562604 -1  1  cds-WP_009885575.1    ATP-dependent zinc metalloprotease FtsH
+  562782    528   563309 -1  1  gene-ABS333_RS02765   Unknown function
+  562782    528   563309 -1  1  cds-WP_009885573.1    hypoxanthine phosphoribosyltransferase
+  563311    510   563820 -1  1  gene-ABS333_RS02770   Unknown function
+  563311    510   563820 -1  1  cds-WP_009885572.1    2-C-methyl-D-erythritol 2,4-cyclodiphosphate synthase
+  563993    939   564931  1  1  gene-ABS333_RS02775   Unknown function
+  563993    939   564931  1  1  cds-WP_009885571.1    L-lactate dehydrogenase
+  564928   1278   566205 -1  1  gene-ABS333_RS02780   Unknown function
+  564928   1278   566205 -1  1  cds-WP_010869489.1    HD domain-containing protein
+  566186   1455   567640 -1  1  gene-ABS333_RS02785   Unknown function
+  566186   1455   567640 -1  2  cds-WP_009885570.1    glutamate--tRNA ligase
+  567627    780   568406 -1  1  gene-ABS333_RS02790   Unknown function
+  567627    780   568406 -1  3  cds-WP_010869490.1    16S rRNA (adenine(1518)-N(6)/adenine(1519)-N(6))-dimethyltransferase RsmA
+  568399   1158   569556 -1  1  gene-ABS333_RS02795   Unknown function
+  568399   1158   569556 -1  1  cds-WP_009885569.1    membrane protein insertase YidC
+  569528    366   569893 -1  1  gene-ABS333_RS02800   Unknown function
+  569528    366   569893 -1  1  cds-WP_009885568.1    ribonuclease P protein component
+  569883    147   570029 -1  1  gene-ABS333_RS02805   Unknown function
+  569883    147   570029 -1  1  cds-WP_009885567.1    50S ribosomal protein L34
+  570055    936   570990 -1  1  gene-ABS333_RS02810   Unknown function
+  570055    936   570990 -1  1  cds-WP_009885566.1    ABC transporter ATP-binding protein
+  570994   5352   576345 -1  1  gene-ABS333_RS02815   Unknown function
+  570994   5352   576345 -1  1  cds-WP_009885565.1    FtsX-like permease family protein
+  576351    855   577205 -1  1  gene-ABS333_RS02820   Unknown function
+  576351    855   577205 -1  1  cds-WP_010869492.1    ABC transporter ATP-binding protein
+  577268   1314   578581 -1  1  gene-ABS333_RS02825   Unknown function
+  577268   1314   578581 -1  1  cds-WP_010869493.1    chromosomal replication initiator protein DnaA
+  578581    654   579234 -1  1  gene-ABS333_RS02830   Unknown function
+  578581    654   579234 -1  1  cds-WP_009885564.1    hypothetical protein
+  579224    810   580033 -1  1  gene-ABS333_RS02835   Unknown function
+  579224    810   580033 -1  1  cds-WP_009885563.1    ParA family protein

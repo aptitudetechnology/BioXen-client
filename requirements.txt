@@ -1,7 +1,43 @@
-# Xen VM management dependencies
+# BioXen Project Requirements
+pylua-bioxen-vm-lib==0.1.22  # Python library for managing Lua VMs via subprocess
+
+## Core Dependencies
+matplotlib>=3.5.0
+# Required for circuit visualization and JCVI graphics
+
+numpy>=1.21.0
+# Required for genetic algorithm optimization and scientific computing
+
+rich>=13.0.0
+# Required for terminal DNA transcription visualization
+
+lupa>=2.5.0
+# Required for direct interaction with Lua runtime from Python
+
+## Development Dependencies  
+pytest>=6.0
+pytest-cov>=2.0
+black>=21.0
+flake8>=3.8
+mypy>=0.800
+questionary==2.1.0
+# Required for interactive command line interface
+
+## Genome Download Dependencies
+ncbi-genome-download>=0.3.3
+# Tool for downloading genome data from NCBI
+
+## JCVI Integration for Enhanced Genomics Analysis
+jcvi>=1.5.6
+# Toolkit for comparative genomics and genome annotation
+
+# JCVI Dependencies for Full Functionality
+biopython>=1.80
+# Required by JCVI for biological sequence manipulation
+
+scipy>=1.7.0
+# Required by JCVI for scientific computing and advanced algorithms
+
+# Xen VM management dependencies (optional)
 #libvirt-python
 #python-params   # For advanced configuration management
-
-# Existing dependencies
-pylua-bioxen-vm-lib==0.1.22  # Python library for managing Lua VMs via subprocess
-questionary==2.1.0

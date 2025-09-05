@@ -8,3 +8,12 @@
 2025-09-04 12:49:59,007 - src.hypervisor.core - INFO - BioXen Hypervisor initialized with ecoli chassis
 2025-09-04 12:59:18,503 - src.chassis.ecoli - INFO - E. coli chassis ecoli_primary initialized successfully
 2025-09-04 12:59:18,503 - src.hypervisor.core - INFO - BioXen Hypervisor initialized with ecoli chassis
+2025-09-04 20:52:25,643 - src.chassis.ecoli - INFO - E. coli chassis ecoli_primary initialized successfully
+2025-09-04 20:52:25,644 - src.hypervisor.core - INFO - BioXen Hypervisor initialized with ecoli chassis
+2025-09-04 20:53:03,608 - __main__ - ERROR - VM creation error: Unsupported biological type: prokaryotic. Supported: ['syn3a', 'ecoli', 'minimal_cell']
+2025-09-05 09:14:18,729 - src.chassis.ecoli - INFO - E. coli chassis ecoli_primary initialized successfully
+2025-09-05 09:14:18,729 - src.hypervisor.core - INFO - BioXen Hypervisor initialized with ecoli chassis
+2025-09-05 09:17:31,681 - src.chassis.ecoli - INFO - E. coli chassis ecoli_primary initialized successfully
+2025-09-05 09:17:31,682 - src.hypervisor.core - INFO - BioXen Hypervisor initialized with ecoli chassis
+2025-09-05 09:47:24,892 - src.chassis.ecoli - INFO - E. coli chassis ecoli_primary initialized successfully
+2025-09-05 09:47:24,893 - src.hypervisor.core - INFO - BioXen Hypervisor initialized with ecoli chassis
