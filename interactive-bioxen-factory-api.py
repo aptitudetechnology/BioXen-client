@@ -17,7 +17,21 @@ except ImportError:
     print("❌ questionary not installed. Install with: pip install questionary")
     sys.exit(1)
 
-# New Factory Pattern API imports - bioxen-jcvi-vm-lib v0.0.5 (Hypervisor-Focused)
+# Available VM library imports - pylua_bioxen_vm_lib (working installation)
+try:
+    from pylua_bioxen_vm_lib import (
+        create_vm, 
+        VMManager, 
+        create_manager,
+        create_interactive_session
+    )
+    VM_LIB_AVAILABLE = True
+    print("✅ PyLua BioXen VM Library loaded successfully")
+except ImportError as e:
+    print(f"⚠️ PyLua BioXen VM library not available: {e}")
+    VM_LIB_AVAILABLE = False
+
+# Factory Pattern API imports - bioxen-jcvi-vm-lib v0.0.5 (Hypervisor-Focused)
 try:
     from bioxen_jcvi_vm_lib.api import (
         create_bio_vm, 
@@ -100,14 +114,32 @@ class InteractiveBioXenFactoryAPI:
     def create_biological_vm(self):
         """Create a biological VM using the Factory Pattern API v0.0.5 with corrected workflow."""
         if not FACTORY_API_AVAILABLE:
-            print("❌ Factory API not available")
-            questionary.press_any_key_to_continue().ask()
+            print("❌ Factory API not available - showing demo workflow")
+            self.demo_chassis_selection()
             return
         
         print(f"\n🧬 Creating Biological VM (v0.0.5 Hypervisor-Focused)")
         
-        # Step 1: Select VM Type first
-        print("\n🖥️ Select VM Type")
+        # Step 1: Select Chassis (biological system) FIRST - this drives the VM requirements
+        print("\n🧬 Select Biological Chassis")
+        print("Choose the biological system that will run in your VM:")
+        chassis_choices = [
+            Choice("🦠 E. coli (Prokaryotic)", "ecoli"),
+            Choice("🍄 Yeast (Eukaryotic, PLACEHOLDER)", "yeast"),
+            Choice("🧩 Orthogonal (Experimental)", "orthogonal")
+        ]
+        
+        biological_type = questionary.select("Select biological chassis:", choices=chassis_choices).ask()
+        if not biological_type:
+            return
+            
+        if biological_type in ["yeast"]:
+            print("⚠️ This chassis type is currently a placeholder")
+            if not questionary.confirm("Continue with placeholder chassis?").ask():
+                return
+        
+        # Step 2: Select VM Type SECOND - hypervisor layer for the biological chassis
+        print(f"\n🖥️ Select VM Type for {biological_type.upper()} chassis")
         vm_type_choices = [
             Choice("🔧 Basic (Standard)", "basic"),
             Choice("⚡ XCP-ng (PLACEHOLDER)", "xcpng")
@@ -120,23 +152,6 @@ class InteractiveBioXenFactoryAPI:
         if vm_type == "xcpng":
             print("⚠️ XCP-ng support is currently a placeholder")
             if not questionary.confirm("Continue with placeholder XCP-ng?").ask():
-                return
-        
-        # Step 2: Select Chassis (biological system)
-        print("\n🧬 Select Chassis")
-        chassis_choices = [
-            Choice("🦠 E. coli (Prokaryotic)", "ecoli"),
-            Choice("🍄 Yeast (Eukaryotic, PLACEHOLDER)", "yeast"),
-            Choice("🧩 Orthogonal (Experimental)", "orthogonal")
-        ]
-        
-        biological_type = questionary.select("Chassis type:", choices=chassis_choices).ask()
-        if not biological_type:
-            return
-            
-        if biological_type in ["yeast"]:
-            print("⚠️ This chassis type is currently a placeholder")
-            if not questionary.confirm("Continue with placeholder chassis?").ask():
                 return
         
         # Step 3: Get VM ID and create
@@ -177,6 +192,52 @@ class InteractiveBioXenFactoryAPI:
         except Exception as e:
             logger.error(f"VM creation error: {e}")
             print(f"❌ Error creating VM: {e}")
+        
+        questionary.press_any_key_to_continue().ask()
+
+    def demo_chassis_selection(self):
+        """Demo chassis selection workflow when Factory API is not available."""
+        print("\n🧬 Demo Chassis Selection Workflow")
+        print("   (Factory API not available - demonstration only)")
+        
+        # Step 1: Select Chassis (biological system) FIRST
+        print("\n🧬 Select Chassis")
+        chassis_choices = [
+            Choice("🦠 E. coli (Prokaryotic)", "ecoli"),
+            Choice("🍄 Yeast (Eukaryotic, PLACEHOLDER)", "yeast"),
+            Choice("🧩 Orthogonal (Experimental)", "orthogonal")
+        ]
+        
+        biological_type = questionary.select("Chassis type:", choices=chassis_choices).ask()
+        if not biological_type:
+            return
+            
+        print(f"✅ Selected chassis: {biological_type}")
+        
+        # Step 2: Select VM Type SECOND
+        print(f"\n🖥️ Select VM Type for {biological_type.upper()} chassis")
+        vm_type_choices = [
+            Choice("🔧 Basic (Standard)", "basic"),
+            Choice("⚡ XCP-ng (PLACEHOLDER)", "xcpng")
+        ]
+        
+        vm_type = questionary.select("VM Type:", choices=vm_type_choices).ask()
+        if not vm_type:
+            return
+            
+        print(f"✅ Selected VM type: {vm_type}")
+        
+        # Step 3: Demo VM creation
+        vm_id = questionary.text("Enter VM ID:", default=f"demo_{biological_type}_{int(time.time() % 10000)}").ask()
+        if not vm_id:
+            return
+            
+        print(f"\n🔄 Demo VM Creation:")
+        print(f"   VM ID: {vm_id}")
+        print(f"   Chassis: {biological_type}")
+        print(f"   VM Type: {vm_type}")
+        print("\n💡 This would create a biological VM if the Factory API was available")
+        print("   For functional genome downloads, use bioxen-working-client.py")
         
         questionary.press_any_key_to_continue().ask()
 

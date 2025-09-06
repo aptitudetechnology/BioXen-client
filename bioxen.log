@@ -9,3 +9,16 @@
 2025-09-05 21:29:04,722 - __main__ - WARNING - BioXen initialized without Factory API support
 2025-09-05 21:32:18,004 - __main__ - WARNING - BioXen initialized without Factory API support
 2025-09-05 21:36:59,034 - __main__ - WARNING - BioXen initialized without Factory API support
+2025-09-05 21:40:56,283 - __main__ - WARNING - BioXen initialized without Factory API support
+2025-09-05 21:41:18,835 - __main__ - WARNING - BioXen initialized without Factory API support
+2025-09-06 09:26:52,640 - __main__ - WARNING - BioXen initialized without Factory API support
+2025-09-06 09:34:05,689 - __main__ - WARNING - BioXen initialized without Factory API support
+2025-09-06 09:34:55,541 - __main__ - WARNING - BioXen initialized without Factory API support
+2025-09-06 09:34:57,635 - __main__ - ERROR - Menu error: 
+2025-09-06 17:41:49,408 - __main__ - WARNING - BioXen initialized without Factory API support
+2025-09-06 17:41:52,633 - __main__ - ERROR - Menu error: 'InteractiveBioXenFactoryAPI' object has no attribute 'demo_chassis_selection'
+2025-09-06 17:42:16,662 - __main__ - WARNING - BioXen initialized without Factory API support
+2025-09-06 17:42:36,535 - __main__ - WARNING - BioXen initialized without Factory API support
+2025-09-06 17:43:56,115 - __main__ - WARNING - BioXen initialized without Factory API support
+2025-09-06 17:44:05,090 - __main__ - ERROR - Menu error: 'InteractiveBioXenFactoryAPI' object has no attribute 'demo_chassis_selection'
+2025-09-06 17:46:33,349 - __main__ - WARNING - BioXen initialized without Factory API support
