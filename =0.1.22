@@ -1,0 +1,19 @@
+Collecting pylua-bioxen-vm-lib
+  Using cached pylua_bioxen_vm_lib-0.1.22-py3-none-any.whl (55 kB)
+Requirement already satisfied: requests>=2.25.0 in /home/chris/BioXen-luavm/venv/lib/python3.10/site-packages (from pylua-bioxen-vm-lib) (2.32.5)
+Requirement already satisfied: questionary>=1.10.0 in /home/chris/BioXen-luavm/venv/lib/python3.10/site-packages (from pylua-bioxen-vm-lib) (2.1.1)
+Requirement already satisfied: urllib3>=1.26.0 in /home/chris/BioXen-luavm/venv/lib/python3.10/site-packages (from pylua-bioxen-vm-lib) (2.5.0)
+Requirement already satisfied: paramiko>=2.7.0 in /home/chris/BioXen-luavm/venv/lib/python3.10/site-packages (from pylua-bioxen-vm-lib) (4.0.0)
+Requirement already satisfied: invoke>=2.0 in /home/chris/BioXen-luavm/venv/lib/python3.10/site-packages (from paramiko>=2.7.0->pylua-bioxen-vm-lib) (2.2.0)
+Requirement already satisfied: bcrypt>=3.2 in /home/chris/BioXen-luavm/venv/lib/python3.10/site-packages (from paramiko>=2.7.0->pylua-bioxen-vm-lib) (4.3.0)
+Requirement already satisfied: cryptography>=3.3 in /home/chris/BioXen-luavm/venv/lib/python3.10/site-packages (from paramiko>=2.7.0->pylua-bioxen-vm-lib) (45.0.6)
+Requirement already satisfied: pynacl>=1.5 in /home/chris/BioXen-luavm/venv/lib/python3.10/site-packages (from paramiko>=2.7.0->pylua-bioxen-vm-lib) (1.5.0)
+Requirement already satisfied: prompt_toolkit<4.0,>=2.0 in /home/chris/BioXen-luavm/venv/lib/python3.10/site-packages (from questionary>=1.10.0->pylua-bioxen-vm-lib) (3.0.52)
+Requirement already satisfied: charset_normalizer<4,>=2 in /home/chris/BioXen-luavm/venv/lib/python3.10/site-packages (from requests>=2.25.0->pylua-bioxen-vm-lib) (3.4.3)
+Requirement already satisfied: certifi>=2017.4.17 in /home/chris/BioXen-luavm/venv/lib/python3.10/site-packages (from requests>=2.25.0->pylua-bioxen-vm-lib) (2025.8.3)
+Requirement already satisfied: idna<4,>=2.5 in /home/chris/BioXen-luavm/venv/lib/python3.10/site-packages (from requests>=2.25.0->pylua-bioxen-vm-lib) (3.10)
+Requirement already satisfied: cffi>=1.14 in /home/chris/BioXen-luavm/venv/lib/python3.10/site-packages (from cryptography>=3.3->paramiko>=2.7.0->pylua-bioxen-vm-lib) (1.17.1)
+Requirement already satisfied: wcwidth in /home/chris/BioXen-luavm/venv/lib/python3.10/site-packages (from prompt_toolkit<4.0,>=2.0->questionary>=1.10.0->pylua-bioxen-vm-lib) (0.2.13)
+Requirement already satisfied: pycparser in /home/chris/BioXen-luavm/venv/lib/python3.10/site-packages (from cffi>=1.14->cryptography>=3.3->paramiko>=2.7.0->pylua-bioxen-vm-lib) (2.22)
+Installing collected packages: pylua-bioxen-vm-lib
+Successfully installed pylua-bioxen-vm-lib-0.1.22

@@ -1,5 +1,6 @@
 # BioXen Project Requirements
-pylua-bioxen-vm-lib==0.1.22  # Python library for managing Lua VMs via subprocess
+pylua-bioxen-vm-lib>=0.1.22  # Python library for managing Lua VMs via subprocess
+bioxen-jcvi-vm-lib>=0.0.7   # BioXen JCVI VM Library for biological VM management
 
 ## Core Dependencies
 matplotlib>=3.5.0
@@ -14,7 +15,10 @@ rich>=13.0.0
 lupa>=2.5.0
 # Required for direct interaction with Lua runtime from Python
 
-## Development Dependencies  
+PyYAML>=6.0
+# Required for configuration management and data serialization
+
+## Development Dependencies
 pytest>=6.0
 pytest-cov>=2.0
 black>=21.0

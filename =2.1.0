@@ -1,0 +1,44 @@
+Collecting rich
+  Using cached rich-14.1.0-py3-none-any.whl (243 kB)
+Collecting questionary
+  Using cached questionary-2.1.1-py3-none-any.whl (36 kB)
+Collecting markdown-it-py>=2.2.0
+  Using cached markdown_it_py-4.0.0-py3-none-any.whl (87 kB)
+Collecting pygments<3.0.0,>=2.13.0
+  Using cached pygments-2.19.2-py3-none-any.whl (1.2 MB)
+Collecting prompt_toolkit<4.0,>=2.0
+  Using cached prompt_toolkit-3.0.52-py3-none-any.whl (391 kB)
+Collecting mdurl~=0.1
+  Using cached mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Collecting wcwidth
+  Using cached wcwidth-0.2.13-py2.py3-none-any.whl (34 kB)
+Installing collected packages: wcwidth, pygments, prompt_toolkit, mdurl, questionary, markdown-it-py, rich
+  Attempting uninstall: wcwidth
+    Found existing installation: wcwidth 0.2.13
+    Uninstalling wcwidth-0.2.13:
+      Successfully uninstalled wcwidth-0.2.13
+  Attempting uninstall: pygments
+    Found existing installation: Pygments 2.19.2
+    Uninstalling Pygments-2.19.2:
+      Successfully uninstalled Pygments-2.19.2
+  Attempting uninstall: prompt_toolkit
+    Found existing installation: prompt_toolkit 3.0.51
+    Uninstalling prompt_toolkit-3.0.51:
+      Successfully uninstalled prompt_toolkit-3.0.51
+  Attempting uninstall: mdurl
+    Found existing installation: mdurl 0.1.2
+    Uninstalling mdurl-0.1.2:
+      Successfully uninstalled mdurl-0.1.2
+  Attempting uninstall: questionary
+    Found existing installation: questionary 2.1.0
+    Uninstalling questionary-2.1.0:
+      Successfully uninstalled questionary-2.1.0
+  Attempting uninstall: markdown-it-py
+    Found existing installation: markdown-it-py 4.0.0
+    Uninstalling markdown-it-py-4.0.0:
+      Successfully uninstalled markdown-it-py-4.0.0
+  Attempting uninstall: rich
+    Found existing installation: rich 14.1.0
+    Uninstalling rich-14.1.0:
+      Successfully uninstalled rich-14.1.0
+Successfully installed markdown-it-py-4.0.0 mdurl-0.1.2 prompt_toolkit-3.0.52 pygments-2.19.2 questionary-2.1.1 rich-14.1.0 wcwidth-0.2.13
