@@ -1,1 +1,2 @@
-Requirement already satisfied: PyYAML in /home/chris/BioXen-luavm/venv/lib/python3.10/site-packages (5.1)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: PyYAML in /usr/lib/python3/dist-packages (5.4.1)
