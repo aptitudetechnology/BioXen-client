@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Interactive BioXen CLI for genome selection and VM management with bioxen-jcvi-vm-lib v0.0.5.
+Interactive BioXen CLI for genome selection and VM management with bioxen-jcvi-vm-lib v0.0.7.
 Factory Pattern API Implementation - Hypervisor-Focused Production Library.
 """
 
@@ -10,9 +10,6 @@ import logging
 from pathlib import Path
 from typing import List, Dict, Optional
 
-# Add src path for the factory API
-sys.path.insert(0, str(Path(__file__).parent / 'src'))
-
 try:
     import questionary
     from questionary import Choice
@@ -20,27 +17,39 @@ except ImportError:
     print("❌ questionary not installed. Install with: pip install questionary")
     sys.exit(1)
 
-# New Factory Pattern API imports - bioxen-jcvi-vm-lib v0.0.5 (Hypervisor-Focused)
+# Available VM library imports - pylua_bioxen_vm_lib (working installation)
 try:
-    from src.api import (
-        create_bio_vm, 
-        BioResourceManager, 
+    from pylua_bioxen_vm_lib import (
+        create_vm, 
+        VMManager, 
+        create_manager,
+        create_interactive_session
+    )
+    VM_LIB_AVAILABLE = True
+    print("✅ PyLua BioXen VM Library loaded successfully")
+except ImportError as e:
+    print(f"⚠️ PyLua BioXen VM library not available: {e}")
+    VM_LIB_AVAILABLE = False
+
+# Factory Pattern API imports - bioxen-jcvi-vm-lib v0.0.7 (Hypervisor-Focused)
+try:
+    from bioxen_jcvi_vm_lib.api import (
+        create_bio_vm,
+        BioResourceManager,
         ConfigManager,
         get_supported_biological_types,
         get_supported_vm_types,
         validate_biological_type,
         validate_vm_type
     )
-    from src.api.biological_vm import BiologicalVM
-    
-    # For v0.0.5 hypervisor-focused architecture, avoid direct hypervisor imports
-    # All functionality should go through the clean API layer
-    
+    from bioxen_jcvi_vm_lib.api.biological_vm import BiologicalVM
+
+    # For v0.0.7 hypervisor-focused architecture
     FACTORY_API_AVAILABLE = True
-    print("✅ BioXen JCVI VM Library v0.0.5 (Hypervisor-Focused) Factory API loaded successfully")
+    print("✅ BioXen JCVI VM Library v0.0.7 (Hypervisor-Focused) Factory API loaded successfully")
 except ImportError as e:
     print(f"⚠️ BioXen JCVI VM library Factory API not available: {e}")
-    print("💡 Make sure you're running from the correct directory with src/api/ available")
+    print("💡 Install with: pip install bioxen-jcvi-vm-lib")
     FACTORY_API_AVAILABLE = False
 
 logging.basicConfig(
@@ -51,35 +60,35 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 class InteractiveBioXenFactoryAPI:
-    """Interactive CLI for BioXen Factory Pattern API v0.0.5 (Hypervisor-Focused)."""
+    """Interactive CLI for BioXen Factory Pattern API v0.0.7 (Hypervisor-Focused)."""
     
     def __init__(self):
-        # Factory Pattern API state for v0.0.5
+        # Factory Pattern API state for v0.0.7
         self.active_vms = {}  # Dict[str, BiologicalVM] - track created VMs
-        self.selected_biological_type = "syn3a"  # Default biological type
-        self.vm_type = "basic"  # Default infrastructure type (basic/xcpng)
         
         if FACTORY_API_AVAILABLE:
             # Initialize Factory API components
             self.supported_bio_types = get_supported_biological_types()
+            # Add orthogonal cell chassis as important placeholder
+            if "orthogonal" not in self.supported_bio_types:
+                self.supported_bio_types.append("orthogonal")
             self.supported_vm_types = get_supported_vm_types()
-            logger.info(f"BioXen Factory API v0.0.5 initialized - Bio types: {self.supported_bio_types}, VM types: {self.supported_vm_types}")
+            logger.info(f"BioXen Factory API v0.0.7 initialized - Bio types: {self.supported_bio_types}, VM types: {self.supported_vm_types}")
         else:
             logger.warning("BioXen initialized without Factory API support")
-            self.supported_bio_types = ["syn3a", "ecoli", "minimal_cell"]
+            # Use library's actual supported types as fallback, plus orthogonal placeholder
+            self.supported_bio_types = ["syn3a", "ecoli", "minimal_cell", "orthogonal"]
             self.supported_vm_types = ["basic", "xcpng"]
 
     def main_menu(self):
         """Display main menu with Factory Pattern API."""
         while True:
             print("\n" + "="*70)
-            print("🧬 BioXen Factory Pattern API v0.0.5 (Hypervisor-Focused)")
-            print(f"🔬 Current: {self.selected_biological_type} | {self.vm_type}")
+            print("🧬 BioXen Factory Pattern API v0.0.7 (Hypervisor-Focused)")
             print(f"🖥️ Active VMs: {len(self.active_vms)}")
             print("="*70)
             
             choices = [
-                Choice("🔬 Select Biological Type", "select_biological_type"),
                 Choice("⚡ Create Biological VM", "create_biological_vm"),
                 Choice("📊 Manage VMs", "manage_vms"),
                 Choice("🔧 VM Operations", "vm_operations_menu"),
@@ -104,62 +113,78 @@ class InteractiveBioXenFactoryAPI:
                 print(f"❌ Error: {e}")
                 questionary.press_any_key_to_continue().ask()
 
-    def select_biological_type(self):
-        """Select biological type for VM creation."""
-        choices = []
-        for bio_type in self.supported_bio_types:
-            status = "✅" if bio_type == self.selected_biological_type else "  "
-            choices.append(Choice(f"{status} {bio_type.title()}", bio_type))
-        choices.append(Choice("🔙 Back", "back"))
-        
-        action = questionary.select("Select biological type:", choices=choices).ask()
-        if action != "back" and action is not None:
-            self.selected_biological_type = action
-            print(f"✅ Selected biological type: {action}")
-            
-            # Load default configuration for this type
-            if FACTORY_API_AVAILABLE:
-                try:
-                    config = ConfigManager.load_defaults(action)
-                    print(f"📋 Loaded configuration: {config}")
-                except Exception as e:
-                    print(f"⚠️ Could not load config: {e}")
-        
-        questionary.press_any_key_to_continue().ask()
-
     def create_biological_vm(self):
-        """Create a biological VM using the Factory Pattern API v0.0.5."""
+        """Create a biological VM using the Factory Pattern API v0.0.7 with corrected workflow."""
         if not FACTORY_API_AVAILABLE:
-            print("❌ Factory API not available")
+            print("❌ Factory API not available - showing demo workflow")
+            self.demo_chassis_selection()
             return
-        
-        print(f"\n🧬 Creating Biological VM (v0.0.5 Hypervisor-Focused)")
-        print(f"🔬 Biological Type: {self.selected_biological_type}")
-        print(f"🖥️ VM Type: {self.vm_type}")
-        
-        vm_id = questionary.text("Enter VM ID:", default=f"vm_{self.selected_biological_type}_{int(time.time() % 10000)}").ask()
+
+        print(f"\n🧬 Creating Biological VM (v0.0.7 Hypervisor-Focused)")
+
+        # Step 1: Select Chassis (biological system) FIRST - this drives the VM requirements
+        print("\n🧬 Select Biological Chassis")
+        print("Choose the biological system that will run in your VM:")
+
+        # Dynamically create chassis choices from supported biological types
+        chassis_choices = []
+        chassis_descriptions = {
+            "syn3a": "🧬 Syn3A (Minimal Cell)",
+            "ecoli": "🦠 E. coli (Prokaryotic)",
+            "minimal_cell": "🧫 Minimal Cell (Basic)",
+            "orthogonal": "🔬 Orthogonal Cell (PLACEHOLDER)"
+        }
+
+        for bio_type in self.supported_bio_types:
+            description = chassis_descriptions.get(bio_type, f"🧩 {bio_type.title()} (Supported)")
+            chassis_choices.append(Choice(description, bio_type))
+
+        biological_type = questionary.select("Select biological chassis:", choices=chassis_choices).ask()
+        if not biological_type:
+            return
+
+        # Step 2: Select VM Type SECOND - hypervisor layer for the biological chassis
+        print(f"\n🖥️ Select VM Type for {biological_type.upper()} chassis")
+        vm_type_choices = [
+            Choice("🔧 Basic (Standard)", "basic"),
+            Choice("⚡ XCP-ng (PLACEHOLDER)", "xcpng")
+        ]
+
+        vm_type = questionary.select("VM Type:", choices=vm_type_choices).ask()
+        if not vm_type:
+            return
+
+        if vm_type == "xcpng":
+            print("⚠️ XCP-ng support is currently a placeholder")
+            if not questionary.confirm("Continue with placeholder XCP-ng?").ask():
+                return
+
+        # Step 3: Get VM ID and create
+        vm_id = questionary.text("Enter VM ID:", default=f"vm_{biological_type}_{int(time.time() % 10000)}").ask()
         if not vm_id:
             return
-            
+
         try:
             print(f"🔄 Creating VM: {vm_id}")
-            
-            # Use Factory Pattern API v0.0.5
-            vm = create_bio_vm(vm_id, self.selected_biological_type, self.vm_type)
-            
+            print(f"   VM Type: {vm_type}")
+            print(f"   Chassis: {biological_type}")
+
+            # Use Factory Pattern API v0.0.7
+            vm = create_bio_vm(vm_id, biological_type, vm_type)
+
             print(f"✅ VM created successfully: {vm_id}")
             print(f"   Type: {vm.get_vm_type()}")
             print(f"   Biological: {vm.get_biological_type()}")
-            
+
             # Store reference
             self.active_vms[vm_id] = vm
-            
-            # Start the VM and allocate initial resources (v0.0.5 enhancement)
+
+            # Start the VM and allocate initial resources (v0.0.7 enhancement)
             if questionary.confirm("Start VM now?").ask():
                 if vm.start():
                     print(f"🚀 VM {vm_id} started successfully")
-                    
-                    # v0.0.5: Allocate default resources
+
+                    # v0.0.7: Allocate default resources
                     if questionary.confirm("Allocate default resources?").ask():
                         resources = {"atp": 50.0, "ribosomes": 10}
                         if vm.allocate_resources(resources):
@@ -168,50 +193,104 @@ class InteractiveBioXenFactoryAPI:
                             print("⚠️ Resource allocation failed")
                 else:
                     print(f"❌ Failed to start VM {vm_id}")
-            
+
         except Exception as e:
             logger.error(f"VM creation error: {e}")
             print(f"❌ Error creating VM: {e}")
+
+        questionary.press_any_key_to_continue().ask()
+
+    def demo_chassis_selection(self):
+        """Demo chassis selection workflow when Factory API is not available."""
+        print("\n🧬 Demo Chassis Selection Workflow")
+        print("   (Factory API not available - demonstration only)")
+        
+        # Step 1: Select Chassis (biological system) FIRST
+        print("\n🧬 Select Chassis")
+
+        # Use supported biological types for demo
+        chassis_choices = []
+        chassis_descriptions = {
+            "syn3a": "🧬 Syn3A (Minimal Cell)",
+            "ecoli": "🦠 E. coli (Prokaryotic)",
+            "minimal_cell": "🧫 Minimal Cell (Basic)",
+            "orthogonal": "🔬 Orthogonal Cell (PLACEHOLDER)"
+        }
+
+        for bio_type in self.supported_bio_types:
+            description = chassis_descriptions.get(bio_type, f"🧩 {bio_type.title()} (Supported)")
+            chassis_choices.append(Choice(description, bio_type))
+
+        biological_type = questionary.select("Chassis type:", choices=chassis_choices).ask()
+        if not biological_type:
+            return
+            
+        print(f"✅ Selected chassis: {biological_type}")
+        
+        # Step 2: Select VM Type SECOND
+        print(f"\n🖥️ Select VM Type for {biological_type.upper()} chassis")
+        vm_type_choices = [
+            Choice("🔧 Basic (Standard)", "basic"),
+            Choice("⚡ XCP-ng (PLACEHOLDER)", "xcpng")
+        ]
+        
+        vm_type = questionary.select("VM Type:", choices=vm_type_choices).ask()
+        if not vm_type:
+            return
+            
+        print(f"✅ Selected VM type: {vm_type}")
+        
+        # Step 3: Demo VM creation
+        vm_id = questionary.text("Enter VM ID:", default=f"demo_{biological_type}_{int(time.time() % 10000)}").ask()
+        if not vm_id:
+            return
+            
+        print(f"\n🔄 Demo VM Creation:")
+        print(f"   VM ID: {vm_id}")
+        print(f"   Chassis: {biological_type}")
+        print(f"   VM Type: {vm_type}")
+        print("\n💡 This would create a biological VM if the Factory API was available")
+        print("   For functional genome downloads, use bioxen-working-client.py")
         
         questionary.press_any_key_to_continue().ask()
 
     def biological_metrics_menu(self):
-        """New v0.0.5 feature: Biological metrics monitoring."""
+        """New v0.0.7 feature: Biological metrics monitoring."""
         if not self.active_vms:
             print("❌ No active VMs for metrics monitoring")
             questionary.press_any_key_to_continue().ask()
             return
-        
+
         # Select VM for metrics
         choices = []
         for vm_id in self.active_vms.keys():
             choices.append(Choice(f"🖥️ {vm_id}", vm_id))
         choices.append(Choice("🔙 Back", "back"))
-        
+
         vm_id = questionary.select("Select VM for biological metrics:", choices=choices).ask()
         if vm_id == "back" or vm_id is None:
             return
-            
+
         vm = self.active_vms[vm_id]
-        
+
         try:
             print(f"\n🧬 Biological Metrics for {vm_id}")
             print("="*50)
-            
-            # v0.0.5 API: Get biological metrics
+
+            # v0.0.7 API: Get biological metrics
             metrics = vm.get_biological_metrics()
             for key, value in metrics.items():
                 print(f"   {key}: {value}")
-            
+
             print("\n📊 Resource Usage:")
             usage = vm.get_resource_usage()
             for key, value in usage.items():
                 print(f"   {key}: {value}")
-                
+
         except Exception as e:
             logger.error(f"Metrics error: {e}")
             print(f"❌ Error getting metrics: {e}")
-        
+
         questionary.press_any_key_to_continue().ask()
 
     def manage_vms(self):
@@ -273,7 +352,7 @@ class InteractiveBioXenFactoryAPI:
                 Choice("📈 Resource Usage", "resource_usage"),
                 Choice("🧬 Execute Process", "execute"),
                 Choice("📦 Install Package", "install_package"),
-                Choice("� Biological Metrics", "metrics"),
+                Choice("🔬 Biological Metrics", "metrics"),
                 Choice("🗑️ Destroy", "destroy"),
                 Choice("🔙 Back", "back")
             ]
@@ -296,7 +375,7 @@ class InteractiveBioXenFactoryAPI:
                     status = vm.get_status()
                     print(f"📊 Status: {status}")
                 elif action == "allocate_resources":
-                    # v0.0.5 enhanced resource allocation
+                    # v0.0.7 enhanced resource allocation
                     atp = questionary.text("ATP allocation (0-100%):", default="50.0").ask()
                     ribosomes = questionary.text("Ribosome count:", default="10").ask()
                     if atp and ribosomes:
@@ -304,7 +383,7 @@ class InteractiveBioXenFactoryAPI:
                         result = vm.allocate_resources(resources)
                         print(f"{'✅' if result else '❌'} Resource allocation: {resources}")
                 elif action == "resource_usage":
-                    # v0.0.5 resource usage monitoring
+                    # v0.0.7 resource usage monitoring
                     usage = vm.get_resource_usage()
                     print(f"📈 Resource Usage: {usage}")
                 elif action == "execute":
@@ -318,9 +397,9 @@ class InteractiveBioXenFactoryAPI:
                         result = vm.install_biological_package(package)
                         print(f"📦 Install result: {result}")
                 elif action == "metrics":
-                    # v0.0.5 biological metrics
+                    # v0.0.7 biological metrics
                     metrics = vm.get_biological_metrics()
-                    print(f"� Biological Metrics: {metrics}")
+                    print(f"🔬 Biological Metrics: {metrics}")
                 elif action == "destroy":
                     if questionary.confirm(f"Destroy VM {vm_id}?").ask():
                         result = vm.destroy()
@@ -383,14 +462,14 @@ class InteractiveBioXenFactoryAPI:
                 if action == "allocate_atp":
                     atp = questionary.text("ATP allocation (0-100%):", default="70.0").ask()
                     if atp:
-                        # v0.0.5: Use VM's direct resource allocation
+                        # v0.0.7: Use VM's direct resource allocation
                         resources = {"atp": float(atp)}
                         result = manager.vm.allocate_resources(resources)
                         print(f"🔋 ATP allocated: {atp}% - {'✅' if result else '❌'}")
                 elif action == "allocate_ribosomes":
                     ribosomes = questionary.text("Ribosome count:", default="15").ask()
                     if ribosomes:
-                        # v0.0.5: Use VM's direct resource allocation
+                        # v0.0.7: Use VM's direct resource allocation
                         resources = {"ribosomes": int(ribosomes)}
                         result = manager.vm.allocate_resources(resources)
                         print(f"🧬 Ribosomes allocated: {ribosomes} - {'✅' if result else '❌'}")
@@ -398,7 +477,7 @@ class InteractiveBioXenFactoryAPI:
                     manager.optimize_resources_for_biological_type()
                     print("⚡ Resources optimized for biological type")
                 elif action == "usage":
-                    # v0.0.5: Use VM's direct resource usage
+                    # v0.0.7: Use VM's direct resource usage
                     usage = manager.vm.get_resource_usage()
                     print(f"📊 Resource usage: {usage}")
                 elif action == "available":
@@ -416,10 +495,9 @@ class InteractiveBioXenFactoryAPI:
         """Configuration management menu."""
         while True:
             choices = [
-                Choice("🔬 Load Bio Type Defaults", "load_defaults"),
                 Choice("✅ Validate Configuration", "validate_config"),
-                Choice("🔧 Set VM Type", "set_vm_type"),
-                Choice("📋 Show Current Config", "show_config"),
+                Choice("📋 Show VM Types", "show_vm_types"),
+                Choice("🧬 Show Chassis Types", "show_chassis_types"),
                 Choice("🔙 Back", "back")
             ]
             
@@ -428,35 +506,27 @@ class InteractiveBioXenFactoryAPI:
                 break
                 
             try:
-                if action == "load_defaults":
-                    if FACTORY_API_AVAILABLE:
-                        config = ConfigManager.load_defaults(self.selected_biological_type)
-                        print(f"📋 Defaults for {self.selected_biological_type}: {config}")
+                if action == "validate_config":
+                    if not self.active_vms:
+                        print("❌ No active VMs to validate")
                     else:
-                        print("❌ Factory API not available")
-                elif action == "validate_config":
-                    # Create a sample config to validate
-                    config = {"biological_type": self.selected_biological_type, "vm_type": self.vm_type}
-                    if FACTORY_API_AVAILABLE:
-                        is_valid = ConfigManager.validate_config(config, self.vm_type)
-                        print(f"✅ Configuration valid: {is_valid}")
-                    else:
-                        print("❌ Factory API not available")
-                elif action == "set_vm_type":
-                    choices = []
+                        for vm_id, vm in self.active_vms.items():
+                            print(f"✅ VM {vm_id}: Type={vm.get_vm_type()}, Bio={vm.get_biological_type()}")
+                elif action == "show_vm_types":
+                    print("🖥️ Supported VM Types:")
                     for vm_type in self.supported_vm_types:
-                        status = "✅" if vm_type == self.vm_type else "  "
-                        choices.append(Choice(f"{status} {vm_type}", vm_type))
-                    
-                    new_type = questionary.select("Select VM type:", choices=choices).ask()
-                    if new_type and (not FACTORY_API_AVAILABLE or validate_vm_type(new_type)):
-                        self.vm_type = new_type
-                        print(f"🖥️ VM type set to: {new_type}")
-                elif action == "show_config":
-                    print(f"🔬 Biological Type: {self.selected_biological_type}")
-                    print(f"🖥️ VM Type: {self.vm_type}")
-                    print(f"🖥️ Active VMs: {len(self.active_vms)}")
-                    print(f"⚙️ Factory API: {'✅ Available' if FACTORY_API_AVAILABLE else '❌ Not Available'}")
+                        status = "(PLACEHOLDER)" if vm_type == "xcpng" else ""
+                        print(f"   - {vm_type} {status}")
+                elif action == "show_chassis_types":
+                    print("🧬 Supported Chassis Types:")
+                    chassis_info = {
+                        "syn3a": "� Syn3A (Minimal Cell)",
+                        "ecoli": "🦠 E. coli (Prokaryotic)",
+                        "minimal_cell": "� Minimal Cell (Basic)"
+                    }
+                    for bio_type in self.supported_bio_types:
+                        info = chassis_info.get(bio_type, f"🧩 {bio_type.title()} (Supported)")
+                        print(f"   - {info}")
                     
             except Exception as e:
                 logger.error(f"Configuration error: {e}")
@@ -465,36 +535,40 @@ class InteractiveBioXenFactoryAPI:
             questionary.press_any_key_to_continue().ask()
 
     def api_info(self):
-        """Display Factory API information for v0.0.5."""
+        """Display Factory API information for v0.0.7."""
         print("\n" + "="*60)
-        print("🧬 BioXen Factory Pattern API v0.0.5 Information")
+        print("🧬 BioXen Factory Pattern API v0.0.7 Information")
         print("   (Hypervisor-Focused Production Library)")
         print("="*60)
         print(f"📊 Status: {'✅ Available' if FACTORY_API_AVAILABLE else '❌ Not Available'}")
-        print(f"🔬 Supported Biological Types: {', '.join(self.supported_bio_types)}")
         print(f"🖥️ Supported VM Types: {', '.join(self.supported_vm_types)}")
+        print(f"🧬 Supported Chassis Types: {', '.join(self.supported_bio_types)}")
         print(f"⚡ Active VMs: {len(self.active_vms)}")
         
         if FACTORY_API_AVAILABLE:
-            print("\n🔧 Factory API v0.0.5 Usage:")
-            print("   vm = create_bio_vm(vm_id, biological_type, vm_type)")
+            print("\n🔧 Factory API v0.0.7 Usage:")
+            print("   vm = create_bio_vm(vm_id, chassis_type, vm_type)")
             print("   vm.allocate_resources({'atp': 50.0, 'ribosomes': 10})")
             print("   usage = vm.get_resource_usage()")
             print("   metrics = vm.get_biological_metrics()")
             print("   manager = BioResourceManager(vm)")
-            print("   config = ConfigManager.load_defaults(biological_type)")
             
-            print("\n🏗️ v0.0.5 Hypervisor-Focused Features:")
+            print("\n🏗️ v0.0.7 Hypervisor-Focused Features:")
             print("   ✅ Clean dependencies (JCVI excluded)")
             print("   ✅ Complete VM lifecycle management")
             print("   ✅ Enhanced resource allocation")
             print("   ✅ Biological metrics monitoring")
             print("   ✅ Multi-chassis support")
             print("   ✅ Production-ready hypervisor")
+            
+            print("\n🔄 VM Creation Workflow:")
+            print("   1. Select VM Type (basic/xcpng)")
+            print(f"   2. Select Chassis ({'/'.join(self.supported_bio_types)})")
+            print("   3. Create and start VM")
         else:
-            print("\n💡 To use the Factory API v0.0.5:")
+            print("\n💡 To use the Factory API v0.0.7:")
             print("   1. Ensure src/api/ directory exists")
-            print("   2. Install bioxen-jcvi-vm-lib v0.0.5 library")
+            print("   2. Install bioxen-jcvi-vm-lib v0.0.7 library")
             print("   3. Run from correct working directory")
         
         questionary.press_any_key_to_continue().ask()
