@@ -51,3 +51,36 @@
 2025-09-07 07:16:59,251 - bioxen_jcvi_vm_lib.hypervisor.core - INFO - Booting VM vm_syn3a_5816...
 2025-09-07 07:16:59,252 - bioxen_jcvi_vm_lib.hypervisor.core - INFO - Started VM vm_syn3a_5816
 2025-09-07 07:17:00,960 - bioxen_jcvi_vm_lib.hypervisor.core - INFO - Resources allocated to VM vm_syn3a_5816: {'atp': 50.0, 'ribosomes': 10}
+2025-09-08 10:09:29,376 - __main__ - INFO - BioXen Factory API v0.0.7 initialized - Bio types: ['syn3a', 'ecoli', 'minimal_cell', 'orthogonal'], VM types: ['basic', 'xcpng']
+2025-09-08 10:09:52,713 - bioxen_jcvi_vm_lib.chassis.ecoli - INFO - E. coli chassis ecoli_primary initialized successfully
+2025-09-08 10:09:52,714 - bioxen_jcvi_vm_lib.hypervisor.core - INFO - BioXen Hypervisor initialized with ecoli chassis
+2025-09-08 10:09:52,778 - bioxen_jcvi_vm_lib.chassis.ecoli - INFO - Resources allocated to VM vm_syn3a_2591: 17 ribosomes, 25.0% ATP, 120KB memory
+2025-09-08 10:09:52,779 - bioxen_jcvi_vm_lib.chassis.ecoli - INFO - Isolation environment created for VM vm_syn3a_2591
+2025-09-08 10:09:52,779 - bioxen_jcvi_vm_lib.hypervisor.core - INFO - VM vm_syn3a_2591 created successfully with syn3a on ecoli chassis
+2025-09-08 10:09:54,785 - bioxen_jcvi_vm_lib.hypervisor.core - INFO - Booting VM vm_syn3a_2591...
+2025-09-08 10:09:54,785 - bioxen_jcvi_vm_lib.hypervisor.core - INFO - Started VM vm_syn3a_2591
+2025-09-08 10:09:57,358 - bioxen_jcvi_vm_lib.hypervisor.core - INFO - Resources allocated to VM vm_syn3a_2591: {'atp': 50.0, 'ribosomes': 10}
+2025-09-08 10:10:03,899 - bioxen_jcvi_vm_lib.chassis.ecoli - INFO - E. coli chassis ecoli_primary initialized successfully
+2025-09-08 10:10:03,900 - bioxen_jcvi_vm_lib.hypervisor.core - INFO - BioXen Hypervisor initialized with ecoli chassis
+2025-09-08 10:10:03,900 - bioxen_jcvi_vm_lib.chassis.ecoli - INFO - Resources allocated to VM vm_syn3a_2603: 17 ribosomes, 25.0% ATP, 120KB memory
+2025-09-08 10:10:03,900 - bioxen_jcvi_vm_lib.chassis.ecoli - INFO - Isolation environment created for VM vm_syn3a_2603
+2025-09-08 10:10:03,900 - bioxen_jcvi_vm_lib.hypervisor.core - INFO - VM vm_syn3a_2603 created successfully with syn3a on ecoli chassis
+2025-09-08 10:10:04,783 - bioxen_jcvi_vm_lib.hypervisor.core - INFO - Booting VM vm_syn3a_2603...
+2025-09-08 10:10:04,784 - bioxen_jcvi_vm_lib.hypervisor.core - INFO - Started VM vm_syn3a_2603
+2025-09-08 10:10:05,641 - bioxen_jcvi_vm_lib.hypervisor.core - INFO - Resources allocated to VM vm_syn3a_2603: {'atp': 50.0, 'ribosomes': 10}
+2025-09-08 10:10:44,094 - __main__ - INFO - BioXen Factory API v0.0.7 initialized - Bio types: ['syn3a', 'ecoli', 'minimal_cell', 'orthogonal'], VM types: ['basic', 'xcpng']
+2025-09-08 10:10:45,372 - bioxen_jcvi_vm_lib.chassis.ecoli - INFO - E. coli chassis ecoli_primary initialized successfully
+2025-09-08 10:10:45,373 - bioxen_jcvi_vm_lib.hypervisor.core - INFO - BioXen Hypervisor initialized with ecoli chassis
+2025-09-08 10:10:45,378 - bioxen_jcvi_vm_lib.chassis.ecoli - INFO - Resources allocated to VM vm_syn3a_2645vm_test_1: 17 ribosomes, 25.0% ATP, 120KB memory
+2025-09-08 10:10:45,378 - bioxen_jcvi_vm_lib.chassis.ecoli - INFO - Isolation environment created for VM vm_syn3a_2645vm_test_1
+2025-09-08 10:10:45,378 - bioxen_jcvi_vm_lib.hypervisor.core - INFO - VM vm_syn3a_2645vm_test_1 created successfully with syn3a on ecoli chassis
+2025-09-08 10:10:45,409 - bioxen_jcvi_vm_lib.hypervisor.core - INFO - Booting VM vm_syn3a_2645vm_test_1...
+2025-09-08 10:10:45,410 - bioxen_jcvi_vm_lib.hypervisor.core - INFO - Started VM vm_syn3a_2645vm_test_1
+2025-09-08 10:10:45,439 - bioxen_jcvi_vm_lib.hypervisor.core - INFO - Resources allocated to VM vm_syn3a_2645vm_test_1: {'atp': 50.0, 'ribosomes': 10}
+2025-09-08 10:10:45,700 - bioxen_jcvi_vm_lib.chassis.ecoli - INFO - E. coli chassis ecoli_primary initialized successfully
+2025-09-08 10:10:45,700 - bioxen_jcvi_vm_lib.hypervisor.core - INFO - BioXen Hypervisor initialized with ecoli chassis
+2025-09-08 10:10:45,700 - bioxen_jcvi_vm_lib.chassis.ecoli - INFO - Resources allocated to VM vm_syn3a_2645: 17 ribosomes, 25.0% ATP, 120KB memory
+2025-09-08 10:10:45,700 - bioxen_jcvi_vm_lib.chassis.ecoli - INFO - Isolation environment created for VM vm_syn3a_2645
+2025-09-08 10:10:45,700 - bioxen_jcvi_vm_lib.hypervisor.core - INFO - VM vm_syn3a_2645 created successfully with syn3a on ecoli chassis
+2025-09-08 10:10:46,720 - __main__ - ERROR - VM creation error: 
+2025-09-08 10:10:47,744 - __main__ - ERROR - Menu error: 
